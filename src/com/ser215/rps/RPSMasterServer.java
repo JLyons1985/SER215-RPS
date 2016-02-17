@@ -10,11 +10,8 @@ import java.util.*;
 public class RPSMasterServer {
 	
 	// Class Variables
-	private String masterServerIp = "localhost";			// Holds the ip address to the master address, localhost for same computer
-	private int masterServerPort = 90000;					// port  to the master server
-	private int gameServerPort = 0;							// When a game server port is passed it goes here
-	private String gameServerIp = "localhost";				// When a game server ip is passed it goes here
 	private ServerSocket serverSocket;						// Holds the server socket for the master server
+	private Thread thread;									// Reference to a thread
 
 	// Class constructor
 	public RPSMasterServer() {
