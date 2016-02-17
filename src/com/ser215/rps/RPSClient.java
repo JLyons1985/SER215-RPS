@@ -10,7 +10,7 @@ import java.io.*;
 import java.net.*;
 
 public class RPSClient extends RPSNetworkingParent {
-	
+	//OK This is for test only
 	// Class variables
 	private DataOutputStream toServer;						// Output stream to master server or game server
 	private DataInputStream fromServer;						// Input from either the game server or master server
