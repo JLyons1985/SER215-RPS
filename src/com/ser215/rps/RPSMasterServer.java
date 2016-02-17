@@ -18,8 +18,19 @@ public class RPSMasterServer {
 		// Creation of master server sockets go here
 	}
 	
+	// Main entry
 	public static void main(String[] args) {
 		new RPSMasterServer();
 	}
+	
+	// Methods
+	
+	// Starts a new game server
+	public boolean startNewGameServer() {
+		
+		return false;			// Change this!!
+	}
+	
+	
 
 }

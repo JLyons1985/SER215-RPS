@@ -10,12 +10,12 @@ import java.io.*;
 import java.net.*;
 
 public class RPSClient extends RPSNetworkingParent {
-	// Changing your comment Nergal - Josh
 	// Class variables
 	private DataOutputStream toServer;						// Output stream to master server or game server
 	private DataInputStream fromServer;						// Input from either the game server or master server
 	private Player player;									// Holds a reference to the player data for this client
 	private boolean isPlayingSinglePlayer;					// Is the player playing the computer?
+	private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
 	
 	// Class constructor
 	public RPSClient() {
@@ -24,8 +24,51 @@ public class RPSClient extends RPSNetworkingParent {
 		
 	}
 	
+	// Main entry for the client
 	public static void main(String[] args) {
 		new RPSClient();
 	}
+	
+	// Class Methods
+	
+	// Connects to the master server
+	public void connectToMasterServer() {
+		
+	}
+	
+	// Lists all the available game sessions
+	// Mainly effects the gui as the list will populate a menu screen.
+	// Returns a list of unique gamesession ids
+	public String[] listGameSessions() {
+		
+		return new String[0]; 		// Change this!!!
+	}
+	
+	// Creates a game session by telling master server to create a new session
+	// Master server then takes the supplied username and creates a unique gamesessionid
+	public boolean createGameSession() {
+		
+		return false;				// Change this!!
+	}
+	
+	// Joins either a newly created game session or a session listed
+	// in the game session list by suppling the unique game session id
+	public boolean joinGameSession(String gameSessionId) {
+		
+		return false;				// Change This!!
+	}
+	
+	// Starts a single player game
+	// Will create a gameLogic object which will act as the CPU
+	public void startSinglePlayerGame() {
+		
+	}
+	
+	// Quits the game, informs master server the client is shutting down, and cleans
+	// up unneeded stuff.
+	public void quit() {
+		
+	}
+	
 
 }
