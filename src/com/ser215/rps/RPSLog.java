@@ -8,6 +8,8 @@ import java.io.File;
 // Imports
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -39,6 +41,12 @@ public class RPSLog {
 		
 		// Wrap below in a try for error catching
 		try {
+			// First check if the directory exists
+			if (!Files.isDirectory(Paths.get("./logs/"))) {
+				  // Create the directory
+				Files.createDirectory(Paths.get("./logs/"));
+				}
+			
 			// Determine that log based off printTo
 			if (this.printTo == "Client")
 				path = Paths.get("./logs/clientLog.txt");
@@ -53,7 +61,7 @@ public class RPSLog {
 			File file = new File(path.toString());
 		
 			// Create the write
-			FileWriter write = new FileWriter(file);
+			FileWriter write = new FileWriter(file, true);
 			PrintWriter printer = new PrintWriter(write);
 			
 			// Create the date objects so we can record the date info
