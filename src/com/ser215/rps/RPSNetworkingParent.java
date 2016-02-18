@@ -16,6 +16,7 @@ public class RPSNetworkingParent {
 	protected int masterServerPort = 90000;					// port  to the master server
 	protected int gameServerPort = 0;							// When a game server port is passed it goes here
 	
+	
 	// Constructors
 	public RPSNetworkingParent() {
 		

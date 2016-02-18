@@ -12,6 +12,8 @@ public class RPSMasterServer {
 	// Class Variables
 	private ServerSocket serverSocket;						// Holds the server socket for the master server
 	private Thread thread;									// Reference to a thread
+	private String masterServerPassword = "";				// Used for verifying commands from the client that affect the server
+	private RPSLog log;										// Reference to the lRPSLog class for printing to log files
 
 	// Class constructor
 	public RPSMasterServer() {
@@ -30,7 +32,7 @@ public class RPSMasterServer {
 		
 		return false;			// Change this!!
 	}
-	
+		
 	
 
 }

@@ -16,11 +16,17 @@ public class RPSClient extends RPSNetworkingParent {
 	private Player player;									// Holds a reference to the player data for this client
 	private boolean isPlayingSinglePlayer;					// Is the player playing the computer?
 	private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
+	private RPSLog log;										// Reference to the lRPSLog class for printing to log files
 	
 	// Class constructor
 	public RPSClient() {
 		
 		// Creation of gui, connection to master server at startup, and main program loop go in here
+		
+		// Create the client log
+		log = new RPSLog("Client");
+		// Now print to the log saying the client is starting up
+		log.printToLog("LOG", "Client starting up.");
 		
 	}
 	

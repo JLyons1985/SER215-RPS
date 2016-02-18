@@ -15,6 +15,7 @@ public class RPSGameServer {
 	private GameLogic gameLogic;							// Reference to the game logic for this game
 	private Player[] players;								// Array of players in this game session
 	private Thread thread;									// Thread reference
+	private RPSLog log;										// Reference to the lRPSLog class for printing to log files
 	
 	// Class constructor
 	public RPSGameServer() {
