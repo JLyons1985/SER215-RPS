@@ -8,6 +8,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.*;
 import java.net.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import com.google.gson.Gson;
 
 /**
  *
@@ -16,13 +19,16 @@ import java.net.*;
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private static DataOutputStream toServer;						// Output stream to master server or game server
-    private static DataInputStream fromServer;						// Input from either the game server or master server
+    private String masterServerIp = "localhost";                                        // Holds the ip address to the master address, localhost for same computer
+    private String gameServerIp = "";                                                   // When a game server ip is passed it goes here					
+    private int masterServerPort = 90000;                                               // port  to the master server
+    private int gameServerPort = 0;							// When a game server port is passed it goes here
     private static Player player;							// Holds a reference to the player data for this client
     private static boolean isPlayingSinglePlayer;					// Is the player playing the computer?
     private static GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
-		
+    private Thread clientThread;
+    private static DataOutputStream toServer;						// Output stream to master server or game server
 
     /**
      * Creates new form RPSClientApplication
@@ -58,6 +64,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
         jScrollPane1.setViewportView(statusBox);
 
         connectToMaster.setText("Connect To Master Server");
+        connectToMaster.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                connectToMasterMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +95,10 @@ public class RPSClientApplication extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void connectToMasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_connectToMasterMouseClicked
+        connectToMasterServer();     
+    }//GEN-LAST:event_connectToMasterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,6 +140,9 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	// Connects to the master server
 	public static void connectToMasterServer() {
 		
+            // Connects to the master server
+           
+            
 	}
 	
 	// Lists all the available game sessions
@@ -166,4 +184,70 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea statusBox;
     // End of variables declaration//GEN-END:variables
+
+  // Inner class
+  // Define the thread class for handling new connection
+  class ClientNetworkingThread implements Runnable {
+      
+      // Class variables
+      private Socket socket; // A connected socket
+      
+      private DataInputStream fromServer;						// Input from either the game server or master server
+      private boolean runThread = true;                                                 // Do we keep running the thread
+
+    /** Construct a thread */
+    public ClientNetworkingThread() {
+       
+    }
+      
+      /** Run a thread */
+    public void run() {
+        
+        // Try connecting to the master server
+        try {
+
+            // Create a socket to connect to the server
+            this.socket = new Socket(masterServerIp, masterServerPort);
+            
+            // Note it in the log
+            log.printToLog("LOG", "Connect to MasterServer at IP: " + socket.getInetAddress() + 
+                        " on PORT: " + socket.getPort());
+
+            // Create an input stream to receive data from the server
+            fromServer = new DataInputStream( socket.getInputStream() );
+
+            // Create an output stream to send data to the server
+            toServer =  new DataOutputStream( socket.getOutputStream() );
+            
+            // Main Loop
+            while (runThread) {
+                
+                // Check for data from the server
+                BufferedReader in = new BufferedReader(new InputStreamReader(fromServer));
+                Gson gson = new Gson();
+                
+		JSONObject json = new JSONObject(gson.fromJson(in, JSONObject.class));
+                
+                if (!json.isEmpty())
+                    handleDataFromServer(json);                
+            }
+            
+            // Loop not running now so close connection
+            socket.close();
+            fromServer.close();
+            toServer.close();
+        }
+        catch (IOException ex) {
+            log.printToLog("ERROR", ex.toString());
+        }        
+    }
+    
+    public void handleDataFromServer(JSONObject json) {
+        
+        // Determine how o handle the message
+        if (json.get("messageType") == "Test")
+            log.printToLog("TEST", json.get("message").toString());
+    }
+  }
+    
 }
