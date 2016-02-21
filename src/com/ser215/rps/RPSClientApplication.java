@@ -21,14 +21,16 @@ public class RPSClientApplication extends javax.swing.JFrame {
     // Class Variables
     private String masterServerIp = "localhost";                                        // Holds the ip address to the master address, localhost for same computer
     private String gameServerIp = "";                                                   // When a game server ip is passed it goes here					
-    private int masterServerPort = 90000;                                               // port  to the master server
+    private int masterServerPort = 9000;                                               // port  to the master server
     private int gameServerPort = 0;							// When a game server port is passed it goes here
     private static Player player;							// Holds a reference to the player data for this client
     private static boolean isPlayingSinglePlayer;					// Is the player playing the computer?
     private static GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
-    private Thread clientThread;
+    private Thread clientThread;                                                        // Reference to the client thread
+    private static Socket socket;                                                       // Reference to the client socket
     private static DataOutputStream toServer;						// Output stream to master server or game server
+    private boolean connectedToMasterServer = false;                                    // Are we connected to the master server
 
     /**
      * Creates new form RPSClientApplication
@@ -41,6 +43,9 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	log.printToLog("LOG", "Client starting up.");
         
         initComponents();
+        
+        // Automatically connect to master servers
+        connectToMasterServer();
     }
 
     /**
@@ -54,7 +59,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         statusBox = new javax.swing.JTextArea();
-        connectToMaster = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock, Paper, Scissors");
@@ -63,42 +67,25 @@ public class RPSClientApplication extends javax.swing.JFrame {
         statusBox.setRows(5);
         jScrollPane1.setViewportView(statusBox);
 
-        connectToMaster.setText("Connect To Master Server");
-        connectToMaster.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                connectToMasterMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(connectToMaster)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(372, Short.MAX_VALUE)
-                .addComponent(connectToMaster)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(401, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void connectToMasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_connectToMasterMouseClicked
-        connectToMasterServer();     
-    }//GEN-LAST:event_connectToMasterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -137,13 +124,17 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Methods
 	
-	// Connects to the master server
-	public static void connectToMasterServer() {
+    // Connects to the master server
+    public void connectToMasterServer() {
 		
-            // Connects to the master server
-           
+        // Connects to the master server
+        // Create a handler thread
+        ClientNetworkingThread task = new ClientNetworkingThread();
+                
+        // Start the new thread
+        new Thread(task).start();   
             
-	}
+    }
 	
 	// Lists all the available game sessions
 	// Mainly effects the gui as the list will populate a menu screen.
@@ -180,7 +171,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton connectToMaster;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea statusBox;
     // End of variables declaration//GEN-END:variables
@@ -190,14 +180,14 @@ public class RPSClientApplication extends javax.swing.JFrame {
   class ClientNetworkingThread implements Runnable {
       
       // Class variables
-      private Socket socket; // A connected socket
+      //private Socket socket; // A connected socket
       
       private DataInputStream fromServer;						// Input from either the game server or master server
       private boolean runThread = true;                                                 // Do we keep running the thread
 
     /** Construct a thread */
     public ClientNetworkingThread() {
-       
+       this.runThread = true;
     }
       
       /** Run a thread */
@@ -207,11 +197,13 @@ public class RPSClientApplication extends javax.swing.JFrame {
         try {
 
             // Create a socket to connect to the server
-            this.socket = new Socket(masterServerIp, masterServerPort);
+            socket = new Socket(masterServerIp, masterServerPort);
             
             // Note it in the log
-            log.printToLog("LOG", "Connect to MasterServer at IP: " + socket.getInetAddress() + 
+            log.printToLog("LOG", "Connect to MasterServer at IP: " + socket.getInetAddress().getHostAddress() + 
                         " on PORT: " + socket.getPort());
+            
+            connectedToMasterServer = true;
 
             // Create an input stream to receive data from the server
             fromServer = new DataInputStream( socket.getInputStream() );
@@ -224,12 +216,15 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 
                 // Check for data from the server
                 BufferedReader in = new BufferedReader(new InputStreamReader(fromServer));
-                Gson gson = new Gson();
                 
-		JSONObject json = new JSONObject(gson.fromJson(in, JSONObject.class));
+                if (in.ready()) {
+                    Gson gson = new Gson();
                 
-                if (!json.isEmpty())
-                    handleDataFromServer(json);                
+                    JSONObject json = new JSONObject(gson.fromJson(in.readLine(), JSONObject.class));
+                                        
+                    if (!json.isEmpty())
+                        handleDataFromServer(json);    
+                }
             }
             
             // Loop not running now so close connection
@@ -242,12 +237,19 @@ public class RPSClientApplication extends javax.swing.JFrame {
         }        
     }
     
+    // Handles the response from the game or master server
     public void handleDataFromServer(JSONObject json) {
+        //Gson gson = new Gson();
+      
+        //log.printToLog("TEST","Handling: " + gson.toJson(json));
         
-        // Determine how o handle the message
-        if (json.get("messageType") == "Test")
-            log.printToLog("TEST", json.get("message").toString());
+        // Determine how to handle the message
+        if (json.get("messageType").toString().equals("Test"))
+            log.printToLog("TEST", (String) json.get("message"));
+        else if (json.get("messageType").toString().equals("Info"))
+            log.printToLog("INFO", (String) json.get("message"));
     }
+    
   }
     
 }

@@ -72,6 +72,9 @@ public class RPSLog {
 			// Write the message
 			printer.println(dateFormat.format(date));
 			printer.println(category.toUpperCase() + ": " + message);
+                        
+                        // For Testing print to system also
+                        System.out.println(category.toUpperCase() + ": " + message);
 			
 			// Flush then close
 			write.flush();

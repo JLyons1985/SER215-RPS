@@ -1,0 +1,122 @@
+2016/02/20 17:20:13
+LOG: MasterServer starting up.
+2016/02/20 17:20:43
+LOG: MasterServer starting up.
+2016/02/20 17:20:43
+LOG: Server socket created.
+2016/02/20 17:30:50
+LOG: MasterServer starting up.
+2016/02/20 17:30:50
+LOG: Server socket created.
+2016/02/20 17:31:14
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:39:22
+LOG: MasterServer starting up.
+2016/02/20 17:39:23
+LOG: Server socket created.
+2016/02/20 17:39:32
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:42:20
+LOG: MasterServer starting up.
+2016/02/20 17:42:20
+LOG: Server socket created.
+2016/02/20 17:42:25
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:42:25
+LOG: Started Thread
+2016/02/20 17:43:15
+LOG: MasterServer starting up.
+2016/02/20 17:43:15
+LOG: Server socket created.
+2016/02/20 17:43:20
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:43:20
+LOG: Started Thread
+2016/02/20 17:47:17
+LOG: MasterServer starting up.
+2016/02/20 17:47:17
+LOG: Server socket created.
+2016/02/20 17:47:21
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:47:21
+LOG: Started Thread
+2016/02/20 17:48:33
+LOG: MasterServer starting up.
+2016/02/20 17:48:33
+LOG: Server socket created.
+2016/02/20 17:48:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:48:38
+LOG: Started Thread
+2016/02/20 17:49:09
+LOG: MasterServer starting up.
+2016/02/20 17:49:09
+LOG: Server socket created.
+2016/02/20 17:49:17
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:49:17
+LOG: Started Thread
+2016/02/20 17:51:02
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:51:02
+LOG: Started Thread
+2016/02/20 17:51:03
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:51:03
+LOG: Started Thread
+2016/02/20 17:53:03
+LOG: MasterServer starting up.
+2016/02/20 17:53:03
+LOG: Server socket created.
+2016/02/20 17:53:07
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:53:07
+LOG: Started Thread
+2016/02/20 17:54:32
+LOG: MasterServer starting up.
+2016/02/20 17:54:32
+LOG: Server socket created.
+2016/02/20 17:54:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 17:54:38
+LOG: Started Thread
+2016/02/20 18:05:35
+LOG: MasterServer starting up.
+2016/02/20 18:05:35
+LOG: Server socket created.
+2016/02/20 18:05:41
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 18:05:41
+LOG: Started Thread
+2016/02/20 18:05:45
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 18:05:45
+LOG: Started Thread
+2016/02/20 18:07:07
+LOG: MasterServer starting up.
+2016/02/20 18:07:07
+LOG: Server socket created.
+2016/02/20 18:07:11
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 18:07:11
+LOG: Started Thread
+2016/02/20 18:08:34
+LOG: MasterServer starting up.
+2016/02/20 18:08:34
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/20 18:08:43
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 18:08:43
+LOG: Started Thread
+2016/02/20 18:10:17
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 18:10:17
+LOG: Started Thread
+2016/02/20 23:10:30
+LOG: MasterServer starting up.
+2016/02/20 23:10:30
+LOG: Server socket created.
+2016/02/20 23:10:39
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 23:10:39
+LOG: Started Thread

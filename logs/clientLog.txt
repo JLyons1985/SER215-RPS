@@ -4,3 +4,101 @@ LOG: Client starting up.
 LOG: Client starting up.
 2016/02/18 15:43:25
 LOG: Client starting up.
+2016/02/20 17:19:58
+LOG: Client starting up.
+2016/02/20 17:21:02
+LOG: Client starting up.
+2016/02/20 17:30:56
+LOG: Client starting up.
+2016/02/20 17:31:13
+LOG: Client starting up.
+2016/02/20 17:31:14
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:39:30
+LOG: Client starting up.
+2016/02/20 17:39:32
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:42:24
+LOG: Client starting up.
+2016/02/20 17:42:25
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:43:19
+LOG: Client starting up.
+2016/02/20 17:43:20
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:47:20
+LOG: Client starting up.
+2016/02/20 17:47:21
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:48:37
+LOG: Client starting up.
+2016/02/20 17:48:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:48:38
+TEST: "{\"messageType\":\"Test\",\"message\":\"Connected test good. Now add more functions\"}"
+2016/02/20 17:49:12
+LOG: Client starting up.
+2016/02/20 17:49:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:50:52
+LOG: Client starting up.
+2016/02/20 17:51:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:51:02
+TEST: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 17:51:03
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:51:03
+TEST: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 17:53:06
+LOG: Client starting up.
+2016/02/20 17:53:07
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:53:07
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 17:54:37
+LOG: Client starting up.
+2016/02/20 17:54:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:54:38
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:05:40
+LOG: Client starting up.
+2016/02/20 18:05:41
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:05:41
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:05:45
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:05:45
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:07:10
+LOG: Client starting up.
+2016/02/20 18:07:11
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:07:11
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:07:11
+TEST: Test
+2016/02/20 18:08:42
+LOG: Client starting up.
+2016/02/20 18:08:43
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:08:44
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:08:44
+TEST: Test
+2016/02/20 18:10:15
+LOG: Client starting up.
+2016/02/20 18:10:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:10:17
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:10:17
+TEST: Test
+2016/02/20 18:10:17
+TEST: Connected test good. Now add more functions
+2016/02/20 23:10:39
+LOG: Client starting up.
+2016/02/20 23:10:39
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
