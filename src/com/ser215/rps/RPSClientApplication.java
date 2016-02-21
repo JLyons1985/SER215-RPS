@@ -59,13 +59,72 @@ public class RPSClientApplication extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         statusBox = new javax.swing.JTextArea();
+        opponentScissors = new javax.swing.JButton();
+        opponentRock = new javax.swing.JButton();
+        opponentPaper = new javax.swing.JButton();
+        playerRock = new javax.swing.JButton();
+        playerPaper = new javax.swing.JButton();
+        playerScissors = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock, Paper, Scissors");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         statusBox.setColumns(20);
         statusBox.setRows(5);
         jScrollPane1.setViewportView(statusBox);
+
+        opponentScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/s.png"))); // NOI18N
+        opponentScissors.setText("Scissors");
+        opponentScissors.setToolTipText("");
+        opponentScissors.setActionCommand("opponentScissors");
+        opponentScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        opponentScissors.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opponentScissors.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        opponentRock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/r.png"))); // NOI18N
+        opponentRock.setText("Rock");
+        opponentRock.setToolTipText("");
+        opponentRock.setActionCommand("opponentRock");
+        opponentRock.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        opponentRock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opponentRock.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        opponentPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/p.png"))); // NOI18N
+        opponentPaper.setText("Paper");
+        opponentPaper.setToolTipText("");
+        opponentPaper.setActionCommand("opponentPaper");
+        opponentPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        opponentPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opponentPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        playerRock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/r.png"))); // NOI18N
+        playerRock.setText("Rock");
+        playerRock.setToolTipText("");
+        playerRock.setActionCommand("playerRock");
+        playerRock.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        playerRock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        playerRock.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        playerPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/p.png"))); // NOI18N
+        playerPaper.setText("Paper");
+        playerPaper.setToolTipText("");
+        playerPaper.setActionCommand("playerPaper");
+        playerPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        playerPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        playerPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        playerScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/s.png"))); // NOI18N
+        playerScissors.setText("Scissors");
+        playerScissors.setToolTipText("");
+        playerScissors.setActionCommand("playerScissors");
+        playerScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        playerScissors.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        playerScissors.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,19 +132,50 @@ public class RPSClientApplication extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(opponentRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(opponentPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(opponentScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(playerRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(playerPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(playerScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(401, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opponentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(opponentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(opponentRock, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(playerPaper, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(playerScissors, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(playerRock, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    // Closes sockect connections as the app is closing
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        quit();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -166,12 +256,39 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	
 	// Quits the game, informs master server the client is shutting down, and cleans
 	// up unneeded stuff.
-	public static void quit() {
-		
+	public void quit() {
+		// Close sockets when window is closing
+            if (socket != null) {
+                log.printToLog("INFO", "Closing socket connections.");
+                try {
+                    // Tell the master server we are closing
+                    JSONObject json = new JSONObject();
+                    json.put("messageType", "Action");
+                    json.put("message", "ClosingConnection");
+                    
+                    // Gson to convert from json to string
+                    Gson gson = new Gson();
+                    PrintWriter pw = new PrintWriter(toServer);
+                    
+                    pw.println(gson.toJson(json));
+                    pw.flush();
+                
+                    socket.close();
+                }
+                catch (IOException ex) {
+                    log.printToLog("ERROR", ex.toString());
+                }
+            }
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton opponentPaper;
+    private javax.swing.JButton opponentRock;
+    private javax.swing.JButton opponentScissors;
+    private javax.swing.JButton playerPaper;
+    private javax.swing.JButton playerRock;
+    private javax.swing.JButton playerScissors;
     private javax.swing.JTextArea statusBox;
     // End of variables declaration//GEN-END:variables
 
@@ -246,8 +363,10 @@ public class RPSClientApplication extends javax.swing.JFrame {
         // Determine how to handle the message
         if (json.get("messageType").toString().equals("Test"))
             log.printToLog("TEST", (String) json.get("message"));
-        else if (json.get("messageType").toString().equals("Info"))
+        else if (json.get("messageType").toString().equals("Info")) {
             log.printToLog("INFO", (String) json.get("message"));
+            statusBox.setText((String) json.get("message"));
+        }
     }
     
   }

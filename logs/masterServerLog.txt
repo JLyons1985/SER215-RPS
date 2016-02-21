@@ -120,3 +120,73 @@ LOG: Server socket created.
 LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
 2016/02/20 23:10:39
 LOG: Started Thread
+2016/02/20 23:22:08
+LOG: MasterServer starting up.
+2016/02/20 23:22:08
+LOG: Server socket created.
+2016/02/20 23:22:10
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 23:22:10
+LOG: Started Thread
+2016/02/20 23:56:33
+LOG: MasterServer starting up.
+2016/02/20 23:56:33
+LOG: Server socket created.
+2016/02/20 23:56:37
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 23:56:37
+LOG: Started Thread
+2016/02/20 23:59:52
+LOG: MasterServer starting up.
+2016/02/20 23:59:52
+LOG: Server socket created.
+2016/02/20 23:59:56
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/20 23:59:56
+LOG: Started Thread
+2016/02/21 00:01:10
+LOG: MasterServer starting up.
+2016/02/21 00:01:10
+LOG: Server socket created.
+2016/02/21 00:01:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/21 00:01:13
+LOG: Started Thread
+2016/02/21 00:08:02
+LOG: MasterServer starting up.
+2016/02/21 00:08:02
+LOG: Server socket created.
+2016/02/21 00:08:05
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/21 00:08:05
+LOG: Started Thread
+2016/02/21 00:09:01
+LOG: MasterServer starting up.
+2016/02/21 00:09:01
+LOG: Server socket created.
+2016/02/21 00:09:04
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/21 00:09:04
+LOG: Started Thread
+2016/02/21 00:09:06
+INFO: Client disconnected.
+2016/02/21 00:09:06
+INFO: Client disconnected.
+2016/02/21 00:09:32
+LOG: MasterServer starting up.
+2016/02/21 00:09:32
+LOG: Server socket created.
+2016/02/21 00:09:36
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/21 00:09:36
+LOG: Started Thread
+2016/02/21 00:16:19
+LOG: MasterServer starting up.
+2016/02/21 00:16:19
+LOG: Server socket created.
+2016/02/21 00:16:22
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/21 00:16:22
+LOG: Started Thread
+2016/02/21 00:16:24
+INFO: Client disconnected.

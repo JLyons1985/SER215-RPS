@@ -52,9 +52,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
         }
         catch(IOException ex) {
             log.printToLog("ERROR", ex.toString());
-        }
-            
-            
+        }            
     }
 	
 	// Main entry
@@ -77,6 +75,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
             
             // Variables
             private Socket socket; // A connected socket
+            private boolean clientConnected = true;
             
             // Constructor
             public HandleAClient(Socket socket) {
@@ -107,7 +106,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
                     pw.flush();
 
                     // Continuously serve the client
-                    while (true) {
+                    while (clientConnected) {
                     
                     // Check for data from the server
                     BufferedReader in = new BufferedReader(new InputStreamReader(inputFromClient));
@@ -120,7 +119,13 @@ public class RPSMasterServer extends RPSNetworkingParent {
                         if (!json.isEmpty())
                             handleDataFromClient(json);           
                         }
-                    }                
+                    }
+                    
+                    // If socket has been closed by the client then end this thread
+                    if (socket.isClosed()) {
+                        clientConnected = false;
+                    }
+                    
                 }
                 catch(IOException e) {
                     log.printToLog("ERROR", e.toString());
@@ -134,6 +139,19 @@ public class RPSMasterServer extends RPSNetworkingParent {
                 // Determine how o handle the message
                 if (json.get("messageType").toString().equals("Test"))
                     log.printToLog("TEST", json.get("message").toString());
+                else if (json.get("messageType").toString().equals("Action")) {
+                    if (json.get("message").toString().equals("ClosingConnection")) {
+                        try {
+                            this.socket.close();
+                            clientConnected = false;
+                            // Log the disconnect
+                            log.printToLog("INFO", "Client disconnected.");
+                        }
+                        catch(IOException e) {
+                            log.printToLog("ERROR", e.toString());
+                        }
+                    }
+                }
                 
             }
         

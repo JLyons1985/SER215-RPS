@@ -102,3 +102,91 @@ TEST: Connected test good. Now add more functions
 LOG: Client starting up.
 2016/02/20 23:10:39
 LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:22:10
+LOG: Client starting up.
+2016/02/20 23:22:10
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:22:11
+INFO: Connected to server.
+2016/02/20 23:56:37
+LOG: Client starting up.
+2016/02/20 23:56:37
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:56:37
+INFO: Connected to server.
+2016/02/20 23:56:50
+INFO: Closing socket connections.
+2016/02/20 23:59:56
+LOG: Client starting up.
+2016/02/20 23:59:56
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:59:56
+INFO: Connected to server.
+2016/02/20 23:59:59
+INFO: Closing socket connections.
+2016/02/21 00:01:13
+LOG: Client starting up.
+2016/02/21 00:01:13
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:01:13
+INFO: Connected to server.
+2016/02/21 00:01:16
+INFO: Closing socket connections.
+2016/02/21 00:08:05
+LOG: Client starting up.
+2016/02/21 00:08:05
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:08:06
+INFO: Connected to server.
+2016/02/21 00:08:07
+INFO: Closing socket connections.
+2016/02/21 00:09:04
+LOG: Client starting up.
+2016/02/21 00:09:04
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:09:04
+INFO: Connected to server.
+2016/02/21 00:09:06
+INFO: Closing socket connections.
+2016/02/21 00:09:35
+LOG: Client starting up.
+2016/02/21 00:09:36
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:09:36
+INFO: Connected to server.
+2016/02/21 00:09:41
+INFO: Closing socket connections.
+2016/02/21 00:10:31
+LOG: Client starting up.
+2016/02/21 00:10:32
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:10:42
+INFO: Closing socket connections.
+2016/02/21 00:10:43
+INFO: Closing socket connections.
+2016/02/21 00:10:44
+INFO: Closing socket connections.
+2016/02/21 00:12:47
+LOG: Client starting up.
+2016/02/21 00:12:48
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:13:53
+LOG: Client starting up.
+2016/02/21 00:13:54
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:15:38
+LOG: Client starting up.
+2016/02/21 00:15:39
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:16:12
+LOG: Client starting up.
+2016/02/21 00:16:13
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:16:22
+LOG: Client starting up.
+2016/02/21 00:16:22
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:16:22
+INFO: Connected to server.
+2016/02/21 00:16:24
+INFO: Closing socket connections.
