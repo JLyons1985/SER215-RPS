@@ -1,1 +1,11 @@
+/nbproject/private/
+nbproject/project.xml
+*.properties
+nbproject/build-impl.xml
+*.xml
+/build/
 /bin/
+
+*.class
+*.class
+bin/com/ser215/rps/RPSClientApplication$1.class
