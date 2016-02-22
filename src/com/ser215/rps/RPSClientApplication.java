@@ -11,6 +11,7 @@ import java.net.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import com.google.gson.Gson;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +24,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private String gameServerIp = "";                                                   // When a game server ip is passed it goes here					
     private int masterServerPort = 9000;                                               // port  to the master server
     private int gameServerPort = 0;							// When a game server port is passed it goes here
-    private static Player player;							// Holds a reference to the player data for this client
+    private Player player;							// Holds a reference to the player data for this client
     private static boolean isPlayingSinglePlayer;					// Is the player playing the computer?
     private static GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
@@ -41,6 +42,9 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	log = new RPSLog("Client");
 	// Now print to the log saying the client is starting up
 	log.printToLog("LOG", "Client starting up.");
+        
+        // Setup player
+        player = new Player();
         
         initComponents();
         
@@ -65,6 +69,15 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerRock = new javax.swing.JButton();
         playerPaper = new javax.swing.JButton();
         playerScissors = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        chatMessages = new javax.swing.JTextArea();
+        chatInput = new javax.swing.JTextField();
+        chatSend = new javax.swing.JButton();
+        opponentUsername = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        playerUsername = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        shutDownServer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock, Paper, Scissors");
@@ -126,45 +139,135 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerScissors.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerScissors.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        chatMessages.setColumns(20);
+        chatMessages.setRows(5);
+        jScrollPane2.setViewportView(chatMessages);
+
+        chatInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chatInputActionPerformed(evt);
+            }
+        });
+
+        chatSend.setText("Send");
+        chatSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chatSendActionPerformed(evt);
+            }
+        });
+
+        opponentUsername.setEditable(false);
+        opponentUsername.setToolTipText("");
+
+        jLabel1.setLabelFor(opponentUsername);
+        jLabel1.setText("Username");
+
+        playerUsername.setToolTipText("");
+        playerUsername.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                playerUsernameInputMethodTextChanged(evt);
+            }
+        });
+        playerUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerUsernameActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setLabelFor(opponentUsername);
+        jLabel2.setText("Username");
+
+        shutDownServer.setText("Shutdown Master Server");
+        shutDownServer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shutDownServerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(opponentRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(opponentPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(opponentScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(playerRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(playerPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(playerScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addComponent(jLabel2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(shutDownServer)
+                                .addGap(75, 75, 75)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(opponentRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(opponentPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(opponentScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(playerRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(playerPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(playerScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chatSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(opponentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jLabel1)))))
+                        .addGap(0, 10, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opponentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(opponentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(opponentRock, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(opponentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(opponentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(opponentRock, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(opponentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chatSend))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playerPaper, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(playerScissors, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(playerRock, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(playerPaper, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(playerScissors, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(playerRock, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(shutDownServer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -176,6 +279,69 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         quit();
     }//GEN-LAST:event_formWindowClosing
+
+    // Sends the message in the chatInput to the master server to be sent out to other players
+    private void chatSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatSendActionPerformed
+        
+        // First construct the message String
+        String tmpMessage = this.player.getPlayerUsername() + ": ";
+        tmpMessage = tmpMessage + chatInput.getText();
+        
+        // Now send the message to the server
+        sendMessageToServer("ChatMessage", tmpMessage);
+        
+        // Now clear the inputMessage
+        chatInput.setText("");
+        
+    }//GEN-LAST:event_chatSendActionPerformed
+    
+    // Changes the players username when the username field is changed
+    private void playerUsernameInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_playerUsernameInputMethodTextChanged
+        this.player.setPlayerUsername(playerUsername.getText());
+    }//GEN-LAST:event_playerUsernameInputMethodTextChanged
+
+    // Changes the players username when the username field is changed
+    private void playerUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerUsernameActionPerformed
+        this.player.setPlayerUsername(playerUsername.getText());
+    }//GEN-LAST:event_playerUsernameActionPerformed
+
+    // Sends the message in the chatInput to the master server to be sent out to other players
+    private void chatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatInputActionPerformed
+        // First construct the message String
+        String tmpMessage = this.player.getPlayerUsername() + ": ";
+        tmpMessage = tmpMessage + chatInput.getText();
+        
+        // Now send the message to the server
+        sendMessageToServer("ChatMessage", tmpMessage);
+        
+        // Now clear the inputMessage
+        chatInput.setText("");
+    }//GEN-LAST:event_chatInputActionPerformed
+
+    // Tells the master server to shutdown
+    private void shutDownServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutDownServerActionPerformed
+        
+        // Create an input dialog asking for password
+        String input = (String) JOptionPane.showInputDialog(rootPane, "What is the Master Server's password.", "Input Password", JOptionPane.PLAIN_MESSAGE);
+        
+        // Now send the message
+        // Create JSON and GSon objects
+        JSONObject json = new JSONObject();
+        Gson gson = new Gson();
+            
+        // Put message into JSON
+        json.put("messageType", "Action");
+        json.put("message", "Shutdown");
+        json.put("password", input);
+            
+        //Make printer writer
+        PrintWriter pw = new PrintWriter(toServer);
+            
+        // Send the message
+        pw.println(gson.toJson(json));
+        pw.flush();
+        
+    }//GEN-LAST:event_shutDownServerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,52 +392,63 @@ public class RPSClientApplication extends javax.swing.JFrame {
             
     }
 	
-	// Lists all the available game sessions
-	// Mainly effects the gui as the list will populate a menu screen.
-	// Returns a list of unique gamesession ids
-	public static String[] listGameSessions() {
+    // Lists all the available game sessions
+    // Mainly effects the gui as the list will populate a menu screen.
+    // Returns a list of unique gamesession ids
+    public static String[] listGameSessions() {
 		
 		return new String[0]; 		// Change this!!!
 	}
 	
-	// Creates a game session by telling master server to create a new session
-	// Master server then takes the supplied username and creates a unique gamesessionid
-	public static boolean createGameSession() {
+    // Creates a game session by telling master server to create a new session
+    // Master server then takes the supplied username and creates a unique gamesessionid
+    public static boolean createGameSession() {
 		
 		return false;				// Change this!!
 	}
 	
-	// Joins either a newly created game session or a session listed
-	// in the game session list by suppling the unique game session id
-	public static boolean joinGameSession(String gameSessionId) {
+    // Joins either a newly created game session or a session listed
+    // in the game session list by suppling the unique game session id
+    public static boolean joinGameSession(String gameSessionId) {
 		
 		return false;				// Change This!!
 	}
 	
-	// Starts a single player game
-	// Will create a gameLogic object which will act as the CPU
-	public static void startSinglePlayerGame() {
+    // Starts a single player game
+    // Will create a gameLogic object which will act as the CPU
+    public static void startSinglePlayerGame() {
 		
 	}
 	
-	// Quits the game, informs master server the client is shutting down, and cleans
-	// up unneeded stuff.
+    // Sends a message to the server
+    public void sendMessageToServer(String messageType, String message) {
+             
+        // Create JSON and GSon objects
+        JSONObject json = new JSONObject();
+        Gson gson = new Gson();
+            
+        // Put message into JSON
+        json.put("messageType", messageType);
+        json.put("message", message);
+            
+        //Make printer writer
+        PrintWriter pw = new PrintWriter(toServer);
+            
+        // Send the message
+        pw.println(gson.toJson(json));
+        pw.flush();
+                        
+    }
+        
+    // Quits the game, informs master server the client is shutting down, and cleans
+    // up unneeded stuff.
 	public void quit() {
 		// Close sockets when window is closing
             if (socket != null) {
                 log.printToLog("INFO", "Closing socket connections.");
                 try {
                     // Tell the master server we are closing
-                    JSONObject json = new JSONObject();
-                    json.put("messageType", "Action");
-                    json.put("message", "ClosingConnection");
-                    
-                    // Gson to convert from json to string
-                    Gson gson = new Gson();
-                    PrintWriter pw = new PrintWriter(toServer);
-                    
-                    pw.println(gson.toJson(json));
-                    pw.flush();
+                    sendMessageToServer("Action", "ClosingConnection");
                 
                     socket.close();
                 }
@@ -282,13 +459,22 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField chatInput;
+    private javax.swing.JTextArea chatMessages;
+    private javax.swing.JButton chatSend;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton opponentPaper;
     private javax.swing.JButton opponentRock;
     private javax.swing.JButton opponentScissors;
+    private javax.swing.JTextField opponentUsername;
     private javax.swing.JButton playerPaper;
     private javax.swing.JButton playerRock;
     private javax.swing.JButton playerScissors;
+    private javax.swing.JTextField playerUsername;
+    private javax.swing.JButton shutDownServer;
     private javax.swing.JTextArea statusBox;
     // End of variables declaration//GEN-END:variables
 
@@ -356,16 +542,21 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Handles the response from the game or master server
     public void handleDataFromServer(JSONObject json) {
-        //Gson gson = new Gson();
-      
-        //log.printToLog("TEST","Handling: " + gson.toJson(json));
-        
+                
         // Determine how to handle the message
-        if (json.get("messageType").toString().equals("Test"))
+        if (json.get("messageType").toString().equals("Test"))                  // Test Message
             log.printToLog("TEST", (String) json.get("message"));
-        else if (json.get("messageType").toString().equals("Info")) {
+        
+        else if (json.get("messageType").toString().equals("Info")) {           // Print to log
             log.printToLog("INFO", (String) json.get("message"));
             statusBox.setText((String) json.get("message"));
+        }
+        
+        else if (json.get("messageType").toString().equals("ChatMessage")) {    // Chat message recieved add to chat box
+            // Add the message to the chat box
+            String tmpMessages = chatMessages.getText();
+            tmpMessages = tmpMessages + json.get("message").toString() + "\n";
+            chatMessages.setText(tmpMessages);
         }
     }
     

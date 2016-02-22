@@ -190,3 +190,87 @@ LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating ha
 LOG: Started Thread
 2016/02/21 00:16:24
 INFO: Client disconnected.
+2016/02/22 08:58:43
+LOG: MasterServer starting up.
+2016/02/22 08:58:43
+LOG: Server socket created.
+2016/02/22 08:58:48
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 08:58:48
+LOG: Started Thread
+2016/02/22 09:00:01
+INFO: Client disconnected.
+2016/02/22 09:03:05
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:03:05
+LOG: Started Thread
+2016/02/22 09:03:38
+INFO: Client disconnected.
+2016/02/22 09:04:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:04:38
+LOG: Started Thread
+2016/02/22 09:04:56
+INFO: Client disconnected.
+2016/02/22 09:05:57
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:05:57
+LOG: Started Thread
+2016/02/22 09:06:13
+INFO: Client disconnected.
+2016/02/22 09:06:23
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:06:23
+LOG: Started Thread
+2016/02/22 09:06:43
+INFO: Client disconnected.
+2016/02/22 09:08:08
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:08:08
+LOG: Started Thread
+2016/02/22 09:08:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:08:13
+LOG: Started Thread
+2016/02/22 09:08:46
+INFO: Client disconnected.
+2016/02/22 09:08:48
+INFO: Client disconnected.
+2016/02/22 09:30:03
+LOG: MasterServer starting up.
+2016/02/22 09:30:03
+LOG: Server socket created.
+2016/02/22 09:30:07
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:30:07
+LOG: Started Thread
+2016/02/22 09:30:31
+INFO: Client disconnected.
+2016/02/22 09:32:48
+LOG: MasterServer starting up.
+2016/02/22 09:32:48
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/22 09:40:57
+LOG: MasterServer starting up.
+2016/02/22 09:40:57
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/22 09:41:09
+LOG: MasterServer starting up.
+2016/02/22 09:41:09
+LOG: Server socket created.
+2016/02/22 09:41:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:41:13
+LOG: Started Thread
+2016/02/22 09:41:22
+ERROR: java.net.SocketException: socket closed
+2016/02/22 09:41:25
+INFO: Client disconnected.
+2016/02/22 09:42:52
+LOG: MasterServer starting up.
+2016/02/22 09:42:52
+LOG: Server socket created.
+2016/02/22 09:42:56
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/22 09:42:56
+LOG: Started Thread
