@@ -20,11 +20,11 @@ import javax.swing.JOptionPane;
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private String masterServerIp = "localhost";                                        // Holds the ip address to the master address, localhost for same computer
-    private String gameServerIp = "";                                                   // When a game server ip is passed it goes here					
-    private int masterServerPort = 9000;                                               // port  to the master server
+    private String masterServerIp = "localhost";                         // Holds the ip address to the master address, localhost for same computer
+    private String gameServerIp = "localhost";                           // When a game server ip is passed it goes here					
+    private int masterServerPort = 9000;                                                // port  to the master server
     private int gameServerPort = 0;							// When a game server port is passed it goes here
-    private Player player;							// Holds a reference to the player data for this client
+    private Player player;                                                              // Holds a reference to the player data for this client
     private static boolean isPlayingSinglePlayer;					// Is the player playing the computer?
     private static GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
@@ -78,6 +78,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         shutDownServer = new javax.swing.JButton();
+        showGameSessions = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock, Paper, Scissors");
@@ -186,6 +187,13 @@ public class RPSClientApplication extends javax.swing.JFrame {
             }
         });
 
+        showGameSessions.setText("Join Game Session");
+        showGameSessions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGameSessionsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,15 +205,17 @@ public class RPSClientApplication extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(showGameSessions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(shutDownServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(26, 26, 26)
                                     .addComponent(jLabel2)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(shutDownServer)
-                                .addGap(75, 75, 75)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(opponentRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +241,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(53, 53, 53)
                                         .addComponent(jLabel1)))))
-                        .addGap(0, 10, Short.MAX_VALUE))))
+                        .addGap(0, 40, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +271,10 @@ public class RPSClientApplication extends javax.swing.JFrame {
                             .addComponent(playerPaper, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(playerScissors, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(playerRock, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(shutDownServer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(showGameSessions, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(shutDownServer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -342,6 +355,12 @@ public class RPSClientApplication extends javax.swing.JFrame {
         pw.flush();
         
     }//GEN-LAST:event_shutDownServerActionPerformed
+
+    // Show tyhe game session form
+    private void showGameSessionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGameSessionsActionPerformed
+        RPSGameSessionList gsList = new RPSGameSessionList(this, true);
+        gsList.setVisible(true);
+    }//GEN-LAST:event_showGameSessionsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,6 +493,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private javax.swing.JButton playerRock;
     private javax.swing.JButton playerScissors;
     private javax.swing.JTextField playerUsername;
+    private javax.swing.JButton showGameSessions;
     private javax.swing.JButton shutDownServer;
     private javax.swing.JTextArea statusBox;
     // End of variables declaration//GEN-END:variables

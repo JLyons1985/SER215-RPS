@@ -35,17 +35,20 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="showGameSessions" max="32767" attributes="0"/>
+                          <Component id="shutDownServer" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="playerUsername" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="shutDownServer" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="opponentRock" min="-2" pref="157" max="-2" attributes="0"/>
@@ -80,7 +83,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -119,7 +122,11 @@
                           <Component id="playerPaper" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="playerScissors" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="playerRock" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="shutDownServer" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="showGameSessions" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="shutDownServer" min="-2" pref="37" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                   </Group>
@@ -319,6 +326,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shutDownServerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="showGameSessions">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Join Game Session"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showGameSessionsActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
