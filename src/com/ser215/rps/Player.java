@@ -8,7 +8,7 @@ public class Player {
 	
 	// Class Variables
 	private String playerId;					// Holds the players unique id
-	private String playerUsername;				// Holds the players display name
+	private String playerUsername;                                  // Holds the players display name
 	private String playerIp;					// Holds the players ip to make sure it really is them
 	private int tiesTotal;						// Holds the total ties this player has accumulated
 	private int winsTotal;						// Holds the total wins this player has accumulated
@@ -16,6 +16,7 @@ public class Player {
 	private int tiesThisGame;					// Holds the total ties this player has accumulated this game
 	private int winsThisGame;					// Holds the total wins this player has accumulated this game
 	private int lossesThisGame;					// Holds the total losses this player has accumulated this game
+        private boolean[] rpsUses = new boolean[3];                                      // Holds the array for if the player used any options
 	
 	// Constructors
 	public Player() {
@@ -28,11 +29,14 @@ public class Player {
 		this.tiesThisGame = 0;
 		this.winsThisGame = 0;
 		this.lossesThisGame = 0;
+                this.rpsUses[0] = false;
+                this.rpsUses[1] = false;
+                this.rpsUses[2] = false;
 	}
 	
 	public Player (String username) {
 		this.playerId = "";
-		this.playerUsername = "username";
+		this.playerUsername = username;
 		this.playerIp = "";
 		this.tiesTotal = 0;
 		this.winsTotal = 0;
@@ -40,6 +44,9 @@ public class Player {
 		this.tiesThisGame = 0;
 		this.winsThisGame = 0;
 		this.lossesThisGame = 0;
+                this.rpsUses[0] = false;
+                this.rpsUses[1] = false;
+                this.rpsUses[2] = false;
 	}
 	
 	// Methods
@@ -80,6 +87,10 @@ public class Player {
 	public void setLossesThisGame(int lossesThisGame){
 		this.lossesThisGame = lossesThisGame;
 	}
+        
+        public void setRPSUses(int rpsArraySlot, boolean used) {
+            this.rpsUses[rpsArraySlot] = used;
+        }
 	
 	// Getters for the various attributes
 	public String getPlayerId() {
@@ -117,5 +128,9 @@ public class Player {
 	public int getLossesThisGame(){
 		return this.lossesThisGame;
 	}
+        
+        public boolean getRPSUses(int rpsArraySlot) {
+            return this.rpsUses[rpsArraySlot];
+        }
 	
 }

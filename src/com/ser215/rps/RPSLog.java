@@ -43,9 +43,9 @@ public class RPSLog {
 		try {
 			// First check if the directory exists
 			if (!Files.isDirectory(Paths.get("./logs/"))) {
-				  // Create the directory
-				Files.createDirectory(Paths.get("./logs/"));
-				}
+                            // Create the directory
+                            Files.createDirectory(Paths.get("./logs/"));
+			}
 			
 			// Determine that log based off printTo
 			if (this.printTo == "Client")

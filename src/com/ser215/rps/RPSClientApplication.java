@@ -9,8 +9,11 @@ import java.io.DataOutputStream;
 import java.io.*;
 import java.net.*;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,13 +23,13 @@ import javax.swing.JOptionPane;
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private String masterServerIp = "localhost";                         // Holds the ip address to the master address, localhost for same computer
-    private String gameServerIp = "localhost";                           // When a game server ip is passed it goes here					
-    private int masterServerPort = 9000;                                                // port  to the master server
+    private final String masterServerIp = "localhost";                         // Holds the ip address to the master address, localhost for same computer
+    private final String gameServerIp = "localhost";                           // When a game server ip is passed it goes here					
+    private final int masterServerPort = 9000;                                                // port  to the master server
     private int gameServerPort = 0;							// When a game server port is passed it goes here
     private Player player;                                                              // Holds a reference to the player data for this client
-    private static boolean isPlayingSinglePlayer;					// Is the player playing the computer?
-    private static GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
+    private boolean isPlayingSinglePlayer;					// Is the player playing the computer?
+    private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
     private Thread clientThread;                                                        // Reference to the client thread
     private static Socket socket;                                                       // Reference to the client socket
@@ -44,10 +47,14 @@ public class RPSClientApplication extends javax.swing.JFrame {
 	log.printToLog("LOG", "Client starting up.");
         
         // Setup player
-        player = new Player();
+        this.player = new Player();
         
         initComponents();
         
+        // Load player previous data from file
+        loadPlayerDataFromFile();
+        loadPlayerDataToGui();
+       
         // Automatically connect to master servers
         connectToMasterServer();
     }
@@ -61,8 +68,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        statusBox = new javax.swing.JTextArea();
         opponentScissors = new javax.swing.JButton();
         opponentRock = new javax.swing.JButton();
         opponentPaper = new javax.swing.JButton();
@@ -73,12 +78,30 @@ public class RPSClientApplication extends javax.swing.JFrame {
         chatMessages = new javax.swing.JTextArea();
         chatInput = new javax.swing.JTextField();
         chatSend = new javax.swing.JButton();
-        opponentUsername = new javax.swing.JTextField();
+        oponnentUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         playerUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         shutDownServer = new javax.swing.JButton();
         showGameSessions = new javax.swing.JButton();
+        playerTotalWins = new javax.swing.JTextField();
+        playerTotalTies = new javax.swing.JTextField();
+        playerTotalLosses = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        oponnentTotalLosses = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        oponnentTotalTies = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        oponnentTotalWins = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        startSinglePlayerGame = new javax.swing.JButton();
+        round = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        turn = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock, Paper, Scissors");
@@ -87,10 +110,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-
-        statusBox.setColumns(20);
-        statusBox.setRows(5);
-        jScrollPane1.setViewportView(statusBox);
 
         opponentScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/s.png"))); // NOI18N
         opponentScissors.setText("Scissors");
@@ -157,10 +176,10 @@ public class RPSClientApplication extends javax.swing.JFrame {
             }
         });
 
-        opponentUsername.setEditable(false);
-        opponentUsername.setToolTipText("");
+        oponnentUsername.setEditable(false);
+        oponnentUsername.setToolTipText("");
 
-        jLabel1.setLabelFor(opponentUsername);
+        jLabel1.setLabelFor(oponnentUsername);
         jLabel1.setText("Username");
 
         playerUsername.setToolTipText("");
@@ -177,7 +196,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setLabelFor(opponentUsername);
+        jLabel2.setLabelFor(oponnentUsername);
         jLabel2.setText("Username");
 
         shutDownServer.setText("Shutdown Master Server");
@@ -194,94 +213,214 @@ public class RPSClientApplication extends javax.swing.JFrame {
             }
         });
 
+        playerTotalWins.setEditable(false);
+        playerTotalWins.setToolTipText("");
+
+        playerTotalTies.setEditable(false);
+        playerTotalTies.setToolTipText("");
+
+        playerTotalLosses.setEditable(false);
+        playerTotalLosses.setToolTipText("");
+
+        jLabel3.setText("Losses");
+
+        jLabel4.setText("Ties");
+
+        jLabel5.setText("Wins");
+
+        oponnentTotalLosses.setEditable(false);
+        oponnentTotalLosses.setToolTipText("");
+
+        jLabel6.setText("Losses");
+
+        oponnentTotalTies.setEditable(false);
+        oponnentTotalTies.setToolTipText("");
+
+        jLabel7.setText("Ties");
+
+        oponnentTotalWins.setEditable(false);
+        oponnentTotalWins.setToolTipText("");
+
+        jLabel8.setText("Wins");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Totals");
+
+        startSinglePlayerGame.setText("Start Single Player");
+        startSinglePlayerGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startSinglePlayerGameActionPerformed(evt);
+            }
+        });
+
+        round.setEditable(false);
+        round.setToolTipText("");
+
+        jLabel10.setText("Round");
+
+        turn.setEditable(false);
+        turn.setToolTipText("");
+
+        jLabel11.setText("Turn");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(shutDownServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(showGameSessions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(shutDownServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(45, 45, 45)
+                            .addComponent(startSinglePlayerGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(opponentRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(opponentPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(opponentScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(playerRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(playerPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(playerScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chatSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(round, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(turn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jLabel2)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(opponentRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(opponentPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(opponentScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(playerRock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(playerPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(playerScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chatSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(opponentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(jLabel1)))))
-                        .addGap(0, 40, Short.MAX_VALUE))))
+                            .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(playerTotalTies, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(playerTotalLosses, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel2))
+                            .addComponent(playerTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oponnentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel8))
+                            .addComponent(oponnentTotalTies, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oponnentTotalLosses, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel7))
+                            .addComponent(oponnentTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel5))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel9)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(opponentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(opponentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(opponentRock, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(startSinglePlayerGame, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(showGameSessions, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(shutDownServer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(opponentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chatSend))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(playerPaper, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(playerScissors, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(playerRock, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(showGameSessions, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(shutDownServer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(opponentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(opponentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(opponentRock, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(27, 27, 27)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chatSend)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(oponnentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(oponnentTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(oponnentTotalTies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addGap(4, 4, 4)
+                                .addComponent(oponnentTotalLosses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67)
+                                .addComponent(jLabel9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(turn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(playerScissors))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(playerTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(playerTotalTies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addGap(4, 4, 4)
+                                .addComponent(playerTotalLosses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(round, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(playerPaper)
+                                    .addComponent(playerRock))))))
                 .addContainerGap())
         );
 
@@ -316,6 +455,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     // Changes the players username when the username field is changed
     private void playerUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerUsernameActionPerformed
         this.player.setPlayerUsername(playerUsername.getText());
+        this.player.setPlayerId(playerUsername.getText());
     }//GEN-LAST:event_playerUsernameActionPerformed
 
     // Sends the message in the chatInput to the master server to be sent out to other players
@@ -362,6 +502,30 @@ public class RPSClientApplication extends javax.swing.JFrame {
         gsList.setVisible(true);
     }//GEN-LAST:event_showGameSessionsActionPerformed
 
+    // Starting single player game
+    private void startSinglePlayerGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSinglePlayerGameActionPerformed
+        
+        // Variables
+        this.gameLogic = new GameLogic(true);
+        this.gameLogic.handleNewPlayer(this.player);
+        
+        // Let the player know a new single player game has started
+        String tmpMessages = chatMessages.getText();
+        tmpMessages = tmpMessages + "[SYSTEM] New single player game started. Begin by making your first throw! \n";
+        chatMessages.setText(tmpMessages);
+        
+        // Start a new round
+        this.gameLogic.newRound();
+        
+        // Load opponent data
+        Player tmpPlayer = this.gameLogic.getPlayerData(2);
+        loadOponnentDataToGui(tmpPlayer);
+        
+        // Update gui with new data
+        updateGameDataOnGui();
+        
+    }//GEN-LAST:event_startSinglePlayerGameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -398,6 +562,92 @@ public class RPSClientApplication extends javax.swing.JFrame {
     }
     
     // Class Methods
+    
+    // Update gui from game logic
+    public void updateGameDataOnGui() {
+        this.round.setText(String.valueOf(this.gameLogic.getRound()));
+        this.turn.setText(String.valueOf(this.gameLogic.getTurn()));
+    }
+    
+    // Loads the player data to the gui
+    private void loadPlayerDataToGui() {
+        this.playerUsername.setText(this.player.getPlayerUsername());
+        this.playerTotalWins.setText(String.valueOf(this.player.getWinsTotal()));
+        this.playerTotalTies.setText(String.valueOf(this.player.getTiesTotal()));
+        this.playerTotalLosses.setText(String.valueOf(this.player.getLossesTotal()));
+    }
+    
+    // Loads the oponnent data to gui
+    private void loadOponnentDataToGui (Player player){
+        this.oponnentUsername.setText(player.getPlayerUsername());
+        this.oponnentTotalWins.setText(String.valueOf(player.getWinsTotal()));
+        this.oponnentTotalTies.setText(String.valueOf(player.getTiesTotal()));
+        this.oponnentTotalLosses.setText(String.valueOf(player.getLossesTotal()));
+    }
+    
+    // Load player data from file
+    private void loadPlayerDataFromFile() {
+        
+        // Load file
+        Path path = Paths.get("./saves/userData.txt");
+        
+        if (Files.exists(path)) {
+        
+            try {
+                byte[] encoded = Files.readAllBytes(path);
+                String jsonString = new String(encoded, StandardCharsets.UTF_8);
+            
+                Gson gson = new Gson();
+                JSONObject json = new JSONObject(gson.fromJson(jsonString, JSONObject.class));
+            
+                // Now put the variables where the need to go
+                this.player.setPlayerUsername(json.get("playerUsername").toString());
+                this.player.setPlayerId(json.get("playerId").toString());
+                this.player.setWinsTotal(Integer.parseInt(json.get("winsTotal").toString()));
+                this.player.setTiesTotal(Integer.parseInt(json.get("tiesTotal").toString()));
+                this.player.setLossesTotal(Integer.parseInt(json.get("lossesTotal").toString()));
+            }
+            catch (IOException ex) {
+                log.printToLog("ERROR", ex.toString());
+            }  
+        }
+    }
+    
+    // Saves player data to file
+    private void savePlayerDataToFile() {
+        
+        // Variables
+        JSONObject json = new JSONObject();
+        
+        // Load json with data
+        json.put("playerUsername", player.getPlayerUsername());
+        json.put("playerId", player.getPlayerId());
+        json.put("winsTotal", String.valueOf(player.getWinsTotal()));
+        json.put("tiesTotal", String.valueOf(player.getTiesTotal()));
+        json.put("lossesTotal", String.valueOf(player.getLossesTotal()));
+        
+        // Now save to file
+        try {
+            // First check if the directory exists
+            if (!Files.isDirectory(Paths.get("./saves/"))) {
+                // Create the directory
+                Files.createDirectory(Paths.get("./saves/"));
+            }
+            
+            Path path = Paths.get("./saves/userData.txt");
+            FileOutputStream fos = new FileOutputStream(path.toString());
+            
+            byte[] encoded = json.toJSONString().getBytes(StandardCharsets.UTF_8);
+            
+            fos.write(encoded);
+            
+            fos.flush();
+            fos.close();
+        }
+        catch (IOException ex) {
+            log.printToLog("ERROR", ex.toString());
+        }        
+    }
 	
     // Connects to the master server
     public void connectToMasterServer() {
@@ -475,6 +725,8 @@ public class RPSClientApplication extends javax.swing.JFrame {
                     log.printToLog("ERROR", ex.toString());
                 }
             }
+            
+            savePlayerDataToFile();
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -482,20 +734,36 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private javax.swing.JTextArea chatMessages;
     private javax.swing.JButton chatSend;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField oponnentTotalLosses;
+    private javax.swing.JTextField oponnentTotalTies;
+    private javax.swing.JTextField oponnentTotalWins;
+    private javax.swing.JTextField oponnentUsername;
     private javax.swing.JButton opponentPaper;
     private javax.swing.JButton opponentRock;
     private javax.swing.JButton opponentScissors;
-    private javax.swing.JTextField opponentUsername;
     private javax.swing.JButton playerPaper;
     private javax.swing.JButton playerRock;
     private javax.swing.JButton playerScissors;
+    private javax.swing.JTextField playerTotalLosses;
+    private javax.swing.JTextField playerTotalTies;
+    private javax.swing.JTextField playerTotalWins;
     private javax.swing.JTextField playerUsername;
+    private javax.swing.JTextField round;
     private javax.swing.JButton showGameSessions;
     private javax.swing.JButton shutDownServer;
-    private javax.swing.JTextArea statusBox;
+    private javax.swing.JButton startSinglePlayerGame;
+    private javax.swing.JTextField turn;
     // End of variables declaration//GEN-END:variables
 
   // Inner class
@@ -568,8 +836,10 @@ public class RPSClientApplication extends javax.swing.JFrame {
             log.printToLog("TEST", (String) json.get("message"));
         
         else if (json.get("messageType").toString().equals("Info")) {           // Print to log
+            String tmpMessages = chatMessages.getText();
+            tmpMessages = tmpMessages + "[SYSTEM] " + json.get("message").toString() + "\n";
+            chatMessages.setText(tmpMessages);
             log.printToLog("INFO", (String) json.get("message"));
-            statusBox.setText((String) json.get("message"));
         }
         
         else if (json.get("messageType").toString().equals("ChatMessage")) {    // Chat message recieved add to chat box
