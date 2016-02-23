@@ -78,18 +78,44 @@ public class GameLogic {
             }
         }
         
-        // Handles when a player makes a throw
-        public void playerMadeAThrow(Player player, int throwType){
+        // Checks if player is allowed to make a throw
+        public boolean canPlayerMakeThrow(String playerId, int throwType){
             
-            // First, is this a single player game
-            if (this.isSinglePlayer) {
-                
-                // Save that throw
-                
-                
+            // First has the player made a throw this turn
+            if (this.playerOne.getPlayerId().matches(playerId)){  // Player one made the throw
+                if (!this.playerOne.getCanMakeAThrow())
+                    return false;
             }
             else {
-                
+                if (!this.playerTwo.getCanMakeAThrow())
+                    return false;
+            }
+            
+            // Alright if we made it this far then they can make a throw
+            // but have they made this type of throw already this round
+            if (this.playerOne.getPlayerId().matches(playerId)){  // Player one made the throw
+                if (this.playerOne.getRPSUses(throwType))
+                    return false;
+            }
+            else {
+                if (this.playerTwo.getRPSUses(throwType))
+                    return false;
+            }
+            
+            return true;
+        }
+        
+        // Handles when a player makes a throw
+        public void playerMadeAThrow(String playerId, int throwType){
+            
+            // First was it player one or two
+            if (this.playerOne.getPlayerId().matches(playerId)){  // Player one made the throw
+                // Set the throw to true
+                this.playerOne.setRPSUses(throwType, true);
+            }
+            else {
+                // Set the throw to true
+                this.playerTwo.setRPSUses(throwType, true);
             }
             
         }

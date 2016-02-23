@@ -16,7 +16,8 @@ public class Player {
 	private int tiesThisGame;					// Holds the total ties this player has accumulated this game
 	private int winsThisGame;					// Holds the total wins this player has accumulated this game
 	private int lossesThisGame;					// Holds the total losses this player has accumulated this game
-        private boolean[] rpsUses = new boolean[3];                                      // Holds the array for if the player used any options
+        private boolean[] rpsUses = new boolean[3];                     // Holds the array for if the player used any options
+        private boolean canMakeAThrow = true;                           // Can the playe make a throw or have they already gone.
 	
 	// Constructors
 	public Player() {
@@ -88,6 +89,10 @@ public class Player {
 		this.lossesThisGame = lossesThisGame;
 	}
         
+        public void setCanMakeAThrow(boolean canMakeAThrow){
+		this.canMakeAThrow = canMakeAThrow;
+	}
+        
         public void setRPSUses(int rpsArraySlot, boolean used) {
             this.rpsUses[rpsArraySlot] = used;
         }
@@ -132,5 +137,9 @@ public class Player {
         public boolean getRPSUses(int rpsArraySlot) {
             return this.rpsUses[rpsArraySlot];
         }
+        
+        public boolean getCanMakeAThrow(){
+		return this.canMakeAThrow;
+	}
 	
 }

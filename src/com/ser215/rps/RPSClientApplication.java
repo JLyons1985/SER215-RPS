@@ -142,6 +142,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerRock.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         playerRock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerRock.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        playerRock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerRockActionPerformed(evt);
+            }
+        });
 
         playerPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/p.png"))); // NOI18N
         playerPaper.setText("Paper");
@@ -150,6 +155,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         playerPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        playerPaper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerPaperActionPerformed(evt);
+            }
+        });
 
         playerScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/s.png"))); // NOI18N
         playerScissors.setText("Scissors");
@@ -158,6 +168,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         playerScissors.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerScissors.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        playerScissors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerScissorsActionPerformed(evt);
+            }
+        });
 
         chatMessages.setColumns(20);
         chatMessages.setRows(5);
@@ -508,6 +523,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         // Variables
         this.gameLogic = new GameLogic(true);
         this.gameLogic.handleNewPlayer(this.player);
+        this.isPlayingSinglePlayer = true;
         
         // Let the player know a new single player game has started
         String tmpMessages = chatMessages.getText();
@@ -525,6 +541,21 @@ public class RPSClientApplication extends javax.swing.JFrame {
         updateGameDataOnGui();
         
     }//GEN-LAST:event_startSinglePlayerGameActionPerformed
+
+    // Player clicked on the rock button
+    private void playerRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerRockActionPerformed
+       makeAThrow(0);
+    }//GEN-LAST:event_playerRockActionPerformed
+
+    // Player clicked on the paper buttn
+    private void playerPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerPaperActionPerformed
+        makeAThrow(1);
+    }//GEN-LAST:event_playerPaperActionPerformed
+
+    // Player clicked on the scissors button
+    private void playerScissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerScissorsActionPerformed
+        makeAThrow(2);
+    }//GEN-LAST:event_playerScissorsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -562,6 +593,26 @@ public class RPSClientApplication extends javax.swing.JFrame {
     }
     
     // Class Methods
+    
+    // Make a throw
+    public void makeAThrow (int throwType) {
+        // First is this a single player game
+        if (this.isPlayingSinglePlayer) {
+            // Single player so talk to local game logic
+            
+            // Can the player go or have they already used this throw
+            if (this.gameLogic.canPlayerMakeThrow(this.player.getPlayerId(), throwType)) {
+                // Player can make this throw so make it
+                
+            }
+            else {
+                // Player cant make this throw so tell them
+                String tmpMessages = chatMessages.getText();
+                tmpMessages = tmpMessages + "[SYSTEM] You can not make the same throw twice in a round make another. \n";
+                chatMessages.setText(tmpMessages);
+            }
+        }
+    }
     
     // Update gui from game logic
     public void updateGameDataOnGui() {
@@ -681,12 +732,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
     public static boolean joinGameSession(String gameSessionId) {
 		
 		return false;				// Change This!!
-	}
-	
-    // Starts a single player game
-    // Will create a gameLogic object which will act as the CPU
-    public static void startSinglePlayerGame() {
-		
 	}
 	
     // Sends a message to the server
