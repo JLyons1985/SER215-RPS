@@ -80,12 +80,14 @@ public class RPSMasterServer extends RPSNetworkingParent {
             if (portAvailable(i)) {
                 availPort = i;
                 
+                String tmpGameId = new Date() + "-" + availPort;
+                
                 // Now start the game server and return the port
                 try {
-                    Process p = Runtime.getRuntime().exec("java -cp SER215-RPS.jar com.ser215.rps.RPSGameServer " + availPort);
+                    Process p = Runtime.getRuntime().exec("java -cp SER215-RPS.jar com.ser215.rps.RPSGameServer " + availPort + " " + tmpGameId);
                     
                     // Add game server port to game servers
-                    this.gameServers.add(availPort);
+                    this.gameServers.add(tmpGameId);
                     return availPort;
                     
                 } catch (IOException e) {

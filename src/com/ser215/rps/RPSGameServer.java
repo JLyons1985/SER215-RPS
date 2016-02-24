@@ -19,10 +19,11 @@ public class RPSGameServer extends RPSNetworkingParent{
     private boolean gameServerRunning = true;                           // Holds a reference to if the master server is running.
 	
     // Class constructor
-    public RPSGameServer(int port) {
+    public RPSGameServer(int port, String gameId) {
             
         // Setup
         this.gameServerPort = port;
+        players = new Player[2];
             
         // Setup the logs
         log = new RPSLog("GameServer");
@@ -30,7 +31,10 @@ public class RPSGameServer extends RPSNetworkingParent{
         log.printToLog("LOG", "GameServer starting up.");
         
         // Create the gamesession id
-        this.gameSessionId = new Date() + "-" + gameServerPort;
+        this.gameSessionId = gameId;
+        
+        // Create the gameLogic object
+        this.gameLogic = new GameLogic(false);
             
         // Create initial sockets list
         this.sockets = new ArrayList(0);
@@ -40,6 +44,7 @@ public class RPSGameServer extends RPSNetworkingParent{
             this.serverSocket = new ServerSocket(gameServerPort); 
             // Tell the log the socket was created
             log.printToLog("LOG", "Game Server socket created. GameSessionId: " + this.gameSessionId);
+            
             
             // Loop through while master server is running to listen for clients
             while (gameServerRunning) {
@@ -70,7 +75,7 @@ public class RPSGameServer extends RPSNetworkingParent{
 
     // Main entry
     public static void main(String[] args) {
-	new RPSGameServer(Integer.parseInt(args[0]));
+	new RPSGameServer(Integer.parseInt(args[0]), args[1]);
     }
 
     // Methods
@@ -88,6 +93,12 @@ public class RPSGameServer extends RPSNetworkingParent{
         catch(IOException e) {
             log.printToLog("ERROR", e.toString());
         }
+    }
+    
+    // Send game logic data to players
+    public void sendGameLogicToPlayers() {
+        // Send logic to all players
+        broadcastMessage("UpdateGameLogic", gameLogic.getGameLogicAsJson().toJSONString());
     }
     
     // Inner class for HandleAClient
@@ -115,6 +126,9 @@ public class RPSGameServer extends RPSNetworkingParent{
                     
                 // Tell the client that they were connected
                 sendMessageToClient("Info", "Connected to server.", this.socket);
+                
+                // Now request player data
+                sendMessageToClient("Action", "SendPlayerData", this.socket);
 
                 // Continuously serve the client
                 while (clientConnected) {
@@ -181,6 +195,40 @@ public class RPSGameServer extends RPSNetworkingParent{
                         // Send password wrong
                         sendMessageToClient("Info", "Password is incorrect.", this.socket);
                     }
+                }
+                
+                else if (json.get("message").toString().equals("NewPlayer")) {   // New player
+                    // Make data into a player
+                    Player tmpPlayer = new Player();
+                    
+                    // Load data into player
+                    tmpPlayer.setPlayerId(json.get("playerId").toString());
+                    tmpPlayer.setPlayerUsername(json.get("playerUsername").toString());
+                    tmpPlayer.setWinsTotal(Integer.parseInt(json.get("totalWins").toString()));
+                    tmpPlayer.setTiesTotal(Integer.parseInt(json.get("totalTies").toString()));
+                    tmpPlayer.setLossesTotal(Integer.parseInt(json.get("totalLosses").toString()));
+                    
+                    // Add the player to the array and inside the game logic
+                    if (players[0].getPlayerId().equals("")){  // Add here
+                        players[0] = tmpPlayer;
+                        gameLogic.handleNewPlayer(tmpPlayer);
+                    }
+                    else {
+                        players[1] = tmpPlayer;
+                        gameLogic.handleNewPlayer(tmpPlayer);
+                    }
+                    
+                    // Now check if session is full or not
+                    if (gameLogic.getCurrentPlayers() == gameLogic.getMaxPlayers()) { // Full session start game
+                        gameLogic.newRound();
+                        
+                        // send game logic data to players
+                        sendGameLogicToPlayers();
+                    }
+                    else { // Waiting for anothe rplayer
+                        sendGameLogicToPlayers();
+                    }
+                    
                 }
                 
                 

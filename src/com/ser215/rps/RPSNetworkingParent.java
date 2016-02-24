@@ -54,6 +54,10 @@ public class RPSNetworkingParent {
                     sendMessageToClient("Info", "Server closing", (Socket) this.sockets.get(i));
                 }
                 
+                else if (messageType.equals("UpdateGameLogic")) {
+                    sendMessageToClient("UpdateGameLogic", message, (Socket) this.sockets.get(i));
+                }
+                
             }
             
         }

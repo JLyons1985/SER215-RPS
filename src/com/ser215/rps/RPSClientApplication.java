@@ -23,12 +23,12 @@ import javax.swing.JOptionPane;
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private final String masterServerIp = "www.lyonsdensoftware.com";                         // Holds the ip address to the master address, localhost for same computer
-    private final String gameServerIp = "www.lyonsdensoftware.com";                           // When a game server ip is passed it goes here					
-    private final int masterServerPort = 9000;                                                // port  to the master server
+    private final String masterServerIp = "www.lyonsdensoftware.com";                   // Holds the ip address to the master address, localhost for same computer
+    private final String gameServerIp = "www.lyonsdensoftware.com";                     // When a game server ip is passed it goes here					
+    private final int masterServerPort = 9000;                                          // port  to the master server
     private int gameServerPort = 0;							// When a game server port is passed it goes here
     private Player player;                                                              // Holds a reference to the player data for this client
-    private boolean isPlayingSinglePlayer;					// Is the player playing the computer?
+    private boolean isPlayingSinglePlayer;                                              // Is the player playing the computer?
     private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
     private Thread clientThread;                                                        // Reference to the client thread
@@ -773,6 +773,35 @@ public class RPSClientApplication extends javax.swing.JFrame {
             
             savePlayerDataToFile();
 	}
+        
+    // Refresh gui from gameLogic
+    public void refreshGui() {
+        // First load all pertinent data from gameLogic
+        this.updateGameDataOnGui();
+        
+        // Now load the player data first see which player the user is
+        if (player.getPlayerId().equals(gameLogic.getPlayerData(1).getPlayerId())) {
+            // user is player one
+            
+            // Update player data
+            player = gameLogic.getPlayerData(1);
+            this.loadPlayerDataToGui();
+            this.loadOponnentDataToGui(gameLogic.getPlayerData(2));
+        }
+        else{ // user is player two
+            // Update player data
+            player = gameLogic.getPlayerData(2);
+            this.loadPlayerDataToGui();
+            this.loadOponnentDataToGui(gameLogic.getPlayerData(1));
+        }
+        
+        // Now update throw boxes disable or change image based on if they used them or not
+        // Player
+        
+        // Oponnent
+            
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField chatInput;
@@ -892,6 +921,47 @@ public class RPSClientApplication extends javax.swing.JFrame {
             String tmpMessages = chatMessages.getText();
             tmpMessages = tmpMessages + json.get("message").toString() + "\n";
             chatMessages.setText(tmpMessages);
+        }
+        
+        else if (json.get("messageType").toString().equals("Action")) {         // Action Performed from client
+            
+            // Send player data
+            if (json.get("message").toString().equals("SendPlayerData")) {
+                
+                // Create json of player data
+                JSONObject tmpJson = new JSONObject();
+                Gson gson = new Gson();
+            
+                // Put message into JSON
+                tmpJson.put("messageType", "NewPlayer");
+                tmpJson.put("message", "PlayerData");
+                tmpJson.put("playerId", player.getPlayerId());
+                tmpJson.put("playerUsername", player.getPlayerUsername());
+                tmpJson.put("totalWins", String.valueOf(player.getWinsTotal()));
+                tmpJson.put("totalTies", String.valueOf(player.getTiesTotal()));
+                tmpJson.put("totalLosses", String.valueOf(player.getLossesTotal()));
+            
+                //Make printer writer
+                PrintWriter pw = new PrintWriter(toServer);
+            
+                // Send the message
+                pw.println(gson.toJson(json));
+                pw.flush();
+            }
+            
+        }
+        
+        else if (json.get("messageType").toString().equals("UpdateGameLogic")) {         // Action Performed from client
+            
+            // create json from string
+            Gson gson = new Gson();
+            JSONObject jsontmp = new JSONObject(gson.fromJson(json.get("message").toString(), JSONObject.class));
+            
+            // update game logic
+            gameLogic.setGameLogicFromJson(jsontmp);
+            
+            // Now refresh gui
+            refreshGui();
         }
     }
     

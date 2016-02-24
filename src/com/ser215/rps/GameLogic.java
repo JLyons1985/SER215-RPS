@@ -3,11 +3,13 @@ package com.ser215.rps;
 // Game logic for each game goes here
 
 // Imports
+import org.json.simple.JSONObject;
+import com.google.gson.Gson;
 
 public class GameLogic {
 
 	// Class Variables
-	private boolean isSinglePlayer;					// Is the game a single player game
+	private boolean isSinglePlayer = false;                         // Is the game a single player game
         private int numOfPlayers = 0;                                   // Num of players in the game currently
         private int numOfMaxPlayers = 2;                                // Num of max players ithe game allows
         private Player playerOne = null, playerTwo = null;              // Reference to the players
@@ -144,6 +146,19 @@ public class GameLogic {
             return new Player();
         }
         
+        public void setGameLogicFromJson(JSONObject json){
+            
+            // Now go through the task of creating the json
+            this.isSinglePlayer = Boolean.getBoolean(json.get("isSinglePlayer").toString());
+            this.numOfMaxPlayers = Integer.parseInt(json.get("numOfMaxPlayers").toString());
+            this.numOfPlayers = Integer.parseInt(json.get("numOfPlayers").toString());
+            this.playerOne.setPlayerDataFromJson((JSONObject)json.get("playerOne"));
+            this.playerTwo.setPlayerDataFromJson((JSONObject)json.get("playerTwo"));
+            this.round = Integer.parseInt(json.get("round").toString());
+            this.turn = Integer.parseInt(json.get("turn").toString());
+            
+        }
+        
         // Get round data
         public int getRound(){
             return this.round;
@@ -152,6 +167,34 @@ public class GameLogic {
         // Get rturn data
         public int getTurn(){
             return this.turn;
+        }
+        
+        // Get max players
+        public int getMaxPlayers(){
+            return this.numOfMaxPlayers;
+        }
+        
+        // Get current players nu,
+        public int getCurrentPlayers(){
+            return this.numOfPlayers;
+        }
+        
+        public JSONObject getGameLogicAsJson(){
+            
+            // Create json object
+            JSONObject json = new JSONObject();
+            
+            // Now go through the task of creating the json
+            json.put("isSinglePlayer", String.valueOf(this.isSinglePlayer));
+            json.put("numOfPlayers", String.valueOf(this.numOfPlayers));
+            json.put("numOfMaxPlayers", String.valueOf(this.numOfMaxPlayers));
+            json.put("playerOne", playerOne.getPlayerDataAsJson());
+            json.put("playerTwo", playerTwo.getPlayerDataAsJson());
+            json.put("round", String.valueOf(this.round));
+            json.put("turn", String.valueOf(this.turn));
+            
+            // Return json
+            return json;
         }
 	
 }

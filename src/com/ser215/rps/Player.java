@@ -3,6 +3,8 @@ package com.ser215.rps;
 // Player data goes here
 
 // Imports
+import org.json.simple.JSONObject;
+import com.google.gson.Gson;
 
 public class Player {
 	
@@ -96,6 +98,24 @@ public class Player {
         public void setRPSUses(int rpsArraySlot, boolean used) {
             this.rpsUses[rpsArraySlot] = used;
         }
+        
+        public void setPlayerDataFromJson(JSONObject json) {
+            
+            // Now add all the data from the JSON
+            this.setPlayerUsername(json.get("playerUsername").toString());
+            this.setPlayerId(json.get("playerId").toString());
+            this.setWinsTotal(Integer.parseInt(json.get("winsTotal").toString()));
+            this.setTiesTotal(Integer.parseInt(json.get("tiesTotal").toString()));
+            this.setLossesTotal(Integer.parseInt(json.get("lossesTotal").toString()));
+            this.setWinsThisGame(Integer.parseInt(json.get("winsThisGame").toString()));
+            this.setTiesThisGame(Integer.parseInt(json.get("tiesThisGame").toString()));
+            this.setLossesThisGame(Integer.parseInt(json.get("lossesThisGame").toString()));
+            
+            for (int i = 0; i < 3; i++){
+                this.setRPSUses(i, Boolean.getBoolean(json.get("rpsUses" + i).toString()));
+            }
+            
+        }
 	
 	// Getters for the various attributes
 	public String getPlayerId() {
@@ -142,4 +162,27 @@ public class Player {
 		return this.canMakeAThrow;
 	}
 	
+        public JSONObject getPlayerDataAsJson() {
+            
+            // Make json
+            JSONObject json = new JSONObject();
+            
+            // Now add all the dat to the JSON
+            json.put("playerUsername", this.getPlayerUsername());
+            json.put("playerId", this.getPlayerId());
+            json.put("winsTotal", String.valueOf(this.getWinsTotal()));
+            json.put("tiesTotal", String.valueOf(this.getTiesTotal()));
+            json.put("lossesTotal", String.valueOf(this.getLossesTotal()));
+            json.put("winsThisGame", String.valueOf(this.getWinsThisGame()));
+            json.put("tiesThisGame", String.valueOf(this.getTiesThisGame()));
+            json.put("lossesThisGame", String.valueOf(this.getLossesThisGame()));
+            json.put("canMakeThrow", String.valueOf(this.getCanMakeAThrow()));
+            
+            for (int i = 0; i < 3; i++){
+                json.put("rpsUses" + i, String.valueOf(this.getRPSUses(i)));
+            }
+            
+            // return json
+            return json;
+        }
 }
