@@ -960,3 +960,7 @@ LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating ha
 LOG: Started Thread
 2016/02/24 17:22:27
 INFO: Client disconnected.
+2016/02/24 17:51:17
+LOG: MasterServer starting up.
+2016/02/24 17:51:17
+LOG: Server socket created.
