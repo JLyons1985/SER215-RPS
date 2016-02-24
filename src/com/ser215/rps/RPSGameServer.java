@@ -9,7 +9,7 @@ import java.net.*;
 import java.util.*;
 import org.json.simple.JSONObject;
 
-public class RPSGameServer extends RPSNetworkingParent{
+public class RPSGameServer extends RPSNetworkingParent implements Runnable{
 	
     // Class Variables
     private ServerSocket serverSocket;                                  // Holds the server socket for the game server
@@ -17,13 +17,17 @@ public class RPSGameServer extends RPSNetworkingParent{
     private GameLogic gameLogic;					// Reference to the game logic for this game
     private Player[] players;                                           // Reference to the lRPSLog class for printing to log files
     private boolean gameServerRunning = true;                           // Holds a reference to if the master server is running.
+    private RPSMasterServer masterServerRef;                            // Holds a reference to master server
 	
     // Class constructor
-    public RPSGameServer(int port, String gameId) {
+    public RPSGameServer(int port, String gameId, RPSMasterServer masterServer) {
             
         // Setup
         this.gameServerPort = port;
         players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+        this.masterServerRef = masterServer;
             
         // Setup the logs
         log = new RPSLog("GameServer");
@@ -39,11 +43,15 @@ public class RPSGameServer extends RPSNetworkingParent{
         // Create initial sockets list
         this.sockets = new ArrayList(0);
             
+    }
+
+    // Run
+    public void run(){
         try {
             // Create a server socket
             this.serverSocket = new ServerSocket(gameServerPort); 
             // Tell the log the socket was created
-            log.printToLog("LOG", "Game Server socket created. GameSessionId: " + this.gameSessionId);
+            this.log.printToLog("LOG", "Game Server socket created. GameSessionId: " + this.gameSessionId);
             
             
             // Loop through while master server is running to listen for clients
@@ -53,29 +61,23 @@ public class RPSGameServer extends RPSNetworkingParent{
                 Socket socket = serverSocket.accept();
                 
                 // Tell the log we have a new connection
-                log.printToLog("LOG", "New client connected on IP: " + socket.getInetAddress().getHostAddress() + 
+                this.log.printToLog("LOG", "New client connected on IP: " + socket.getInetAddress().getHostAddress() + 
                         " with HOSTNAME: " + socket.getInetAddress().getHostName() + ". Creating handler thread. ");
                 
                 // Add the socket to the socket array list
                 this.sockets.add(socket);
                 
                 // Create a handler thread
-                HandleAClient task = new HandleAClient(socket);
+                HandleAClientOnGameServer task = new HandleAClientOnGameServer(socket);
                 
                 // Start the new thread
                 new Thread(task).start();   
             }
-            
-            
+ 
         }
         catch(IOException ex) {
-            log.printToLog("ERROR", ex.toString());
+            this.log.printToLog("ERROR", ex.toString());
         }    
-    }
-
-    // Main entry
-    public static void main(String[] args) {
-	new RPSGameServer(Integer.parseInt(args[0]), args[1]);
     }
 
     // Methods
@@ -83,26 +85,33 @@ public class RPSGameServer extends RPSNetworkingParent{
     public void shutdown() {
         // First send out message to all that the server is shutting down
         broadcastMessage("Shutdown", "");
+        this.log.printToLog("INFO", "Shutting down session: " + this.gameSessionId);
             
         // Now close server socket
         try {
-            serverSocket.close();
-            gameServerRunning = false;
-            System.exit(0);
+            this.serverSocket.close();
+            this.gameServerRunning = false;
+            
+            // Tell master server to remove me
+            masterServerRef.removeGameSession(this);
         }
         catch(IOException e) {
-            log.printToLog("ERROR", e.toString());
+            this.log.printToLog("ERROR", e.toString());
         }
     }
     
     // Send game logic data to players
     public void sendGameLogicToPlayers() {
         // Send logic to all players
-        broadcastMessage("UpdateGameLogic", gameLogic.getGameLogicAsJson().toJSONString());
+        broadcastMessage("UpdateGameLogic", gameLogic.getGameLogicAsJson());
+    }
+    
+    public String getGameSessionId() {
+        return this.gameSessionId;
     }
     
     // Inner class for HandleAClient
-    class HandleAClient implements Runnable {
+    class HandleAClientOnGameServer implements Runnable {
             
         // Variables
         private Socket socket;                              // A connected socket
@@ -110,7 +119,7 @@ public class RPSGameServer extends RPSNetworkingParent{
         private DataInputStream inputFromClient;            // input stream
             
         // Constructor
-        public HandleAClient(Socket socket) {
+        public HandleAClientOnGameServer(Socket socket) {
             this.socket = socket;
         }
             
@@ -125,7 +134,10 @@ public class RPSGameServer extends RPSNetworkingParent{
                 log.printToLog("LOG", "Started Thread");
                     
                 // Tell the client that they were connected
-                sendMessageToClient("Info", "Connected to server.", this.socket);
+                sendMessageToClient("Info", "Connected to game server.", this.socket);
+                
+                // Check for data from the server
+                BufferedReader in = new BufferedReader(new InputStreamReader(this.inputFromClient));
                 
                 // Now request player data
                 sendMessageToClient("Action", "SendPlayerData", this.socket);
@@ -134,7 +146,6 @@ public class RPSGameServer extends RPSNetworkingParent{
                 while (clientConnected) {
                     
                     // Check for data from the server
-                    BufferedReader in = new BufferedReader(new InputStreamReader(inputFromClient));
                     JSONObject json;
                     Gson gson;
                     
@@ -149,8 +160,8 @@ public class RPSGameServer extends RPSNetworkingParent{
                     }
                     
                     // If socket has been closed by the client then end this thread
-                    if (socket.isClosed()) {
-                        clientConnected = false;
+                    if (this.socket.isClosed()) {
+                        this.clientConnected = false;
                     }
                     
                 }
@@ -164,40 +175,55 @@ public class RPSGameServer extends RPSNetworkingParent{
         public void handleDataFromClient(JSONObject json) {
                 
             // Determine how to handle the message
-            if (json.get("messageType").toString().equals("Test"))                  // Test Message
-                log.printToLog("TEST", json.get("message").toString());
+            switch(json.get("messageType").toString()){
                 
-            else if (json.get("messageType").toString().equals("Action")) {         // Action Performed from client
+                case "Test":
+                    log.printToLog("TEST", json.get("message").toString());
+                    break;
                     
-                if (json.get("message").toString().equals("ClosingConnection")) {   // Client Closing Connection
-                    try {
+                case "Action":
+                    switch (json.get("message").toString()) {   
+                        
+                        case "ClosingConnection":
+                            try {
                             
-                        //Remove this socket from socket list first find it
-                        sockets.remove(socket);
-                        this.socket.close();
-                        this.inputFromClient.close();
+                                //Remove this socket from socket list first find it
+                                sockets.remove(socket);
+                                this.socket.close();
+                                this.inputFromClient.close();
                                                         
-                        clientConnected = false;
-                        // Log the disconnect
-                        log.printToLog("INFO", "Client disconnected.");
+                                clientConnected = false;
+                                // Log the disconnect
+                                log.printToLog("INFO", "Client disconnected.");
+                                
+                                gameLogic.setCurrentPlayers(gameLogic.getCurrentPlayers() - 1);
+                                
+                                if (gameLogic.getCurrentPlayers() <= 0) {
+                                    // Shut down
+                                    shutdown();
+                                }
+                            }
+                            catch(IOException e) {
+                                log.printToLog("ERROR", e.toString());
+                            }
+                            break;
+                            
+                        case "Shutdown":
+                          // First can we trust the client
+                            if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
+                                shutdown();
+                            }
+                            else {
+                                // Send password wrong
+                                sendMessageToClient("Info", "Password is incorrect.", this.socket);
+                            }
+                            break;
                     }
-                    catch(IOException e) {
-                        log.printToLog("ERROR", e.toString());
-                    }
-                }
-                    
-                else if (json.get("message").toString().equals("Shutdown")) {   // Client says to shut down server
-                    // First can we trust the client
-                    if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
-                        shutdown();
-                    }
-                    else {
-                        // Send password wrong
-                        sendMessageToClient("Info", "Password is incorrect.", this.socket);
-                    }
-                }
+                    break;
                 
-                else if (json.get("message").toString().equals("NewPlayer")) {   // New player
+                case "NewPlayer":
+                    log.printToLog("Info", "New player is joining....");
+                    
                     // Make data into a player
                     Player tmpPlayer = new Player();
                     
@@ -220,24 +246,28 @@ public class RPSGameServer extends RPSNetworkingParent{
                     
                     // Now check if session is full or not
                     if (gameLogic.getCurrentPlayers() == gameLogic.getMaxPlayers()) { // Full session start game
+                        
+                        // Tell players the game has begun
+                        broadcastMessage("Info", "The game has started.");
+                        
                         gameLogic.newRound();
                         
                         // send game logic data to players
                         sendGameLogicToPlayers();
                     }
-                    else { // Waiting for anothe rplayer
+                    else { // Waiting for another rplayer
+                        
+                        // Tell players waiting for another
+                        broadcastMessage("Info", "Waiting on another player...");
+                        
                         sendGameLogicToPlayers();
                     }
+                    break;
                     
-                }
-                
-                
-            }
-                
-            else if (json.get("messageType").toString().equals("ChatMessage")) {   // Chat message retrieved broadcast to all
-                broadcastMessage("ChatMessage", json.get("message").toString());
-            }              
-                
+                case "ChatMessage":
+                    broadcastMessage("ChatMessage", json.get("message").toString());
+                    break;
+            }             
                 
         }
         

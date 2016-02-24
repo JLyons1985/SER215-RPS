@@ -5,6 +5,12 @@
  */
 package com.ser215.rps;
 
+import java.io.IOException;
+import java.net.Socket;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.*;
+
 /**
  *
  * @author jlyon
@@ -14,9 +20,14 @@ public class RPSGameSessionList extends javax.swing.JDialog {
     /**
      * Creates new form RPSGameSessionList
      */
+    
+    private RPSClientApplication rpsMain;
+    
     public RPSGameSessionList(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        rpsMain = (RPSClientApplication) parent;
+        rpsMain.sendMessageToServer("Action", "RequestGames");
     }
 
     /**
@@ -28,16 +39,25 @@ public class RPSGameSessionList extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        gamesListSL = new javax.swing.JScrollPane();
+        gamesListPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         createGameSession = new javax.swing.JButton();
         closeSessionList = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        gamesListPanel.setLayout(new java.awt.GridLayout(0, 1, 0, 5));
+        gamesListSL.setViewportView(gamesListPanel);
+
         jLabel1.setText("Game Sessions");
 
         createGameSession.setText("Create Game Session");
+        createGameSession.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createGameSessionActionPerformed(evt);
+            }
+        });
 
         closeSessionList.setText("Close Session List");
         closeSessionList.addActionListener(new java.awt.event.ActionListener() {
@@ -63,8 +83,8 @@ public class RPSGameSessionList extends javax.swing.JDialog {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(gamesListSL, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +92,7 @@ public class RPSGameSessionList extends javax.swing.JDialog {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gamesListSL, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createGameSession)
@@ -88,6 +108,29 @@ public class RPSGameSessionList extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_closeSessionListActionPerformed
 
+    // Tell master server to create new game session
+    private void createGameSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGameSessionActionPerformed
+        
+        // See if creating a game session is successful
+        if (rpsMain.createGameSession()) {
+            rpsMain.sendMessageToServer("Action", "RequestGames");
+        }
+    }//GEN-LAST:event_createGameSessionActionPerformed
+
+    // Game server button clicked
+    private void gameSessionActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        
+        // First find the port from the button
+        int tmpPort = Integer.parseInt(((JButton)evt.getSource()).getText().split("-")[1]);
+        
+        rpsMain.joinGameSession(tmpPort);
+        
+        // change game session text
+        rpsMain.changeGameSessionText("Leave Game Session");
+        
+        // now close the window
+        this.dispose();
+    } 
     /**
      * @param args the command line arguments
      */
@@ -129,11 +172,49 @@ public class RPSGameSessionList extends javax.swing.JDialog {
             }
         });
     }
+    
+    // Methods
+    
+    // Refreshes the list of game servers
+    public void refreshList(String[] games){
+        
+        // First clear the list
+        this.gamesListPanel.removeAll();
+        
+        // Add buttons
+        for (int i = 0; i < games.length; i++){
+            
+            // Create the panel
+            JPanel tmpPanel = new JPanel();
+            tmpPanel.setPreferredSize(new java.awt.Dimension(this.gamesListSL.getWidth() - 5, 50));
+            tmpPanel.setLayout(new java.awt.GridLayout());
+            
+            // Create the button
+            JButton tmpButton = new JButton(games[i]);
+            tmpButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    gameSessionActionPerformed(evt);
+                }
+                });
+            
+            tmpPanel.add(tmpButton);
+            
+            // Add all to the list
+            this.gamesListPanel.add(tmpPanel);  
+            
+            this.gamesListPanel.getComponent(i).setPreferredSize(new java.awt.Dimension(this.gamesListSL.getWidth() - 5, 50));
+            
+        }
+        
+        this.gamesListSL.updateUI();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeSessionList;
     private javax.swing.JButton createGameSession;
+    private javax.swing.JPanel gamesListPanel;
+    private javax.swing.JScrollPane gamesListSL;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

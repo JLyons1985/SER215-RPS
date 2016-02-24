@@ -296,3 +296,1119 @@ LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
 INFO: Connected to server.
 2016/02/23 22:33:11
 INFO: Closing socket connections.
+2016/02/24 08:04:51
+LOG: Client starting up.
+2016/02/24 08:04:55
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/24 08:23:33
+LOG: Client starting up.
+2016/02/24 08:23:33
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:23:33
+INFO: Connected to server.
+2016/02/24 08:26:01
+LOG: Client starting up.
+2016/02/24 08:26:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:26:02
+INFO: Connected to server.
+2016/02/24 08:26:07
+INFO: Closing socket connections.
+2016/02/24 08:26:08
+INFO: Closing socket connections.
+2016/02/24 08:26:13
+LOG: Client starting up.
+2016/02/24 08:26:13
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:26:13
+INFO: Connected to server.
+2016/02/24 08:26:18
+INFO: Sending create game session
+2016/02/24 08:26:31
+INFO: Closing socket connections.
+2016/02/24 08:28:02
+LOG: Client starting up.
+2016/02/24 08:28:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:28:02
+INFO: Connected to server.
+2016/02/24 08:28:07
+INFO: Server closing
+2016/02/24 08:28:10
+INFO: Closing socket connections.
+2016/02/24 08:28:25
+LOG: Client starting up.
+2016/02/24 08:28:25
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:28:25
+INFO: Connected to server.
+2016/02/24 08:28:30
+INFO: Server closing
+2016/02/24 08:28:47
+INFO: Closing socket connections.
+2016/02/24 08:30:11
+LOG: Client starting up.
+2016/02/24 08:30:13
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/24 08:30:20
+LOG: Client starting up.
+2016/02/24 08:30:20
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:30:20
+INFO: Connected to server.
+2016/02/24 08:30:24
+INFO: Sending create game session
+2016/02/24 08:38:02
+LOG: Client starting up.
+2016/02/24 08:38:03
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:38:03
+INFO: Connected to server.
+2016/02/24 08:38:05
+INFO: Sending create game session
+2016/02/24 08:38:09
+INFO: Closing socket connections.
+2016/02/24 08:43:17
+LOG: Client starting up.
+2016/02/24 08:43:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:43:18
+INFO: Connected to server.
+2016/02/24 08:43:20
+INFO: Sending create game session
+2016/02/24 08:46:56
+INFO: Closing socket connections.
+2016/02/24 08:48:33
+LOG: Client starting up.
+2016/02/24 08:48:33
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:48:33
+INFO: Connected to server.
+2016/02/24 08:48:45
+INFO: Sending create game session
+2016/02/24 08:48:59
+INFO: Closing socket connections.
+2016/02/24 08:53:02
+LOG: Client starting up.
+2016/02/24 08:53:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:53:02
+INFO: Connected to server.
+2016/02/24 08:53:09
+INFO: Sending create game session
+2016/02/24 08:53:10
+INFO: Wed Feb 24 08:53:10 CST 2016-9001
+2016/02/24 08:53:39
+INFO: Closing socket connections.
+2016/02/24 08:57:25
+LOG: Client starting up.
+2016/02/24 08:57:25
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 08:57:25
+INFO: Connected to server.
+2016/02/24 08:57:35
+INFO: Sending create game session
+2016/02/24 08:57:36
+INFO: 2016_02_24_08_57_36-9001
+2016/02/24 08:58:25
+INFO: Server closing
+2016/02/24 09:00:01
+LOG: Client starting up.
+2016/02/24 09:00:01
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 09:00:01
+INFO: Connected to server.
+2016/02/24 09:00:03
+INFO: Sending create game session
+2016/02/24 09:00:04
+INFO: 2016_02_24_09_00_04-9001
+2016/02/24 09:00:17
+INFO: Server closing
+2016/02/24 09:03:43
+LOG: Client starting up.
+2016/02/24 09:03:43
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 09:03:44
+INFO: Connected to server.
+2016/02/24 09:03:48
+INFO: Sending create game session
+2016/02/24 09:03:49
+INFO: 2016_02_24_09_03_49-9001
+2016/02/24 09:04:17
+INFO: Closing socket connections.
+2016/02/24 09:05:05
+LOG: Client starting up.
+2016/02/24 09:05:06
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 09:05:06
+INFO: Connected to server.
+2016/02/24 09:05:14
+INFO: Sending create game session
+2016/02/24 09:05:15
+INFO: 9001
+2016/02/24 09:06:28
+INFO: Sending create game session
+2016/02/24 09:06:29
+INFO: 9001
+2016/02/24 09:17:18
+LOG: Client starting up.
+2016/02/24 09:17:18
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 09:17:18
+INFO: Connected to server.
+2016/02/24 09:17:21
+INFO: Sending create game session
+2016/02/24 09:17:22
+INFO: 9001
+2016/02/24 09:17:33
+INFO: Closing socket connections.
+2016/02/24 09:17:37
+LOG: Client starting up.
+2016/02/24 09:17:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 09:17:38
+INFO: Connected to server.
+2016/02/24 09:17:42
+INFO: Server closing
+2016/02/24 09:17:46
+INFO: Closing socket connections.
+2016/02/24 09:18:15
+LOG: Client starting up.
+2016/02/24 09:18:15
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 09:18:16
+INFO: Connected to server.
+2016/02/24 09:18:18
+INFO: Sending create game session
+2016/02/24 09:18:19
+INFO: 9001
+2016/02/24 09:18:31
+INFO: Closing socket connections.
+2016/02/24 10:03:55
+LOG: Client starting up.
+2016/02/24 10:03:55
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 10:03:55
+INFO: Connected to server.
+2016/02/24 10:03:59
+INFO: Server closing
+2016/02/24 10:04:03
+INFO: Closing socket connections.
+2016/02/24 10:04:12
+LOG: Client starting up.
+2016/02/24 10:04:13
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 10:04:13
+INFO: Connected to server.
+2016/02/24 10:04:15
+INFO: Sending create game session
+2016/02/24 10:04:42
+INFO: Closing socket connections.
+2016/02/24 10:08:09
+LOG: Client starting up.
+2016/02/24 10:08:10
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 10:08:10
+INFO: Connected to server.
+2016/02/24 10:08:14
+INFO: Sending create game session
+2016/02/24 10:08:15
+INFO: 2016_02_24_10_08_15-9001
+2016/02/24 10:08:23
+INFO: Closing socket connections.
+2016/02/24 11:10:01
+LOG: Client starting up.
+2016/02/24 11:10:01
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:10:02
+INFO: Connected to server.
+2016/02/24 11:10:04
+INFO: Sending create game session
+2016/02/24 11:14:09
+LOG: Client starting up.
+2016/02/24 11:14:09
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:14:09
+INFO: Connected to server.
+2016/02/24 11:14:13
+INFO: Sending create game session
+2016/02/24 11:17:17
+LOG: Client starting up.
+2016/02/24 11:17:18
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:17:18
+INFO: Connected to server.
+2016/02/24 11:17:19
+INFO: [Ljava.lang.String;@22ba72c0
+2016/02/24 11:17:34
+INFO: [Ljava.lang.String;@33c8d544
+2016/02/24 11:17:35
+INFO: Sending create game session
+2016/02/24 11:17:36
+INFO: [Ljava.lang.String;@5ddb26c2
+2016/02/24 11:17:36
+INFO: Sending create game session
+2016/02/24 11:17:37
+INFO: [Ljava.lang.String;@465f799f
+2016/02/24 11:17:44
+INFO: [Ljava.lang.String;@23dc7aeb
+2016/02/24 11:18:04
+INFO: Server closing
+2016/02/24 11:18:13
+INFO: Closing socket connections.
+2016/02/24 11:22:05
+LOG: Client starting up.
+2016/02/24 11:22:06
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:22:06
+INFO: Connected to server.
+2016/02/24 11:22:07
+INFO: [Ljava.lang.String;@74fc1068
+2016/02/24 11:22:09
+INFO: Sending create game session
+2016/02/24 11:22:10
+INFO: [Ljava.lang.String;@78ec695f
+2016/02/24 11:22:11
+INFO: Sending create game session
+2016/02/24 11:22:12
+INFO: [Ljava.lang.String;@14d3ef27
+2016/02/24 11:22:12
+INFO: [Ljava.lang.String;@6959fa67
+2016/02/24 11:22:24
+INFO: [Ljava.lang.String;@1f0594bc
+2016/02/24 11:22:28
+INFO: Closing socket connections.
+2016/02/24 11:23:14
+LOG: Client starting up.
+2016/02/24 11:23:15
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:23:15
+INFO: Connected to server.
+2016/02/24 11:23:16
+INFO: [Ljava.lang.String;@5c57bd69
+2016/02/24 11:23:30
+INFO: Sending create game session
+2016/02/24 11:23:31
+INFO: [Ljava.lang.String;@54db1474
+2016/02/24 11:23:31
+INFO: [Ljava.lang.String;@4f90d62b
+2016/02/24 11:23:41
+INFO: Closing socket connections.
+2016/02/24 11:28:16
+LOG: Client starting up.
+2016/02/24 11:28:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:28:17
+INFO: Connected to server.
+2016/02/24 11:28:18
+INFO: [Ljava.lang.String;@22ba72c0
+2016/02/24 11:28:25
+INFO: Sending create game session
+2016/02/24 11:28:27
+INFO: [Ljava.lang.String;@28ccbac8
+2016/02/24 11:28:27
+INFO: [Ljava.lang.String;@6176747b
+2016/02/24 11:28:30
+INFO: Sending create game session
+2016/02/24 11:28:31
+INFO: [Ljava.lang.String;@7f7afc69
+2016/02/24 11:28:31
+INFO: [Ljava.lang.String;@3fbbc79f
+2016/02/24 11:28:52
+INFO: Sending create game session
+2016/02/24 11:28:52
+INFO: Sending create game session
+2016/02/24 11:28:53
+INFO: Sending create game session
+2016/02/24 11:28:53
+INFO: Sending create game session
+2016/02/24 11:28:53
+INFO: Sending create game session
+2016/02/24 11:28:53
+INFO: Sending create game session
+2016/02/24 11:28:53
+INFO: Sending create game session
+2016/02/24 11:28:55
+INFO: [Ljava.lang.String;@4eb1b13f
+2016/02/24 11:28:55
+INFO: [Ljava.lang.String;@68036476
+2016/02/24 11:29:06
+INFO: Closing socket connections.
+2016/02/24 11:31:16
+LOG: Client starting up.
+2016/02/24 11:31:20
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:31:20
+INFO: Connected to server.
+2016/02/24 11:31:23
+INFO: [Ljava.lang.String;@165cd6ef
+2016/02/24 11:31:43
+INFO: Server closing
+2016/02/24 11:31:46
+INFO: Closing socket connections.
+2016/02/24 11:43:59
+LOG: Client starting up.
+2016/02/24 11:43:59
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:43:59
+INFO: Connected to server.
+2016/02/24 11:44:01
+INFO: [Ljava.lang.String;@22ba72c0
+2016/02/24 11:44:01
+INFO: Sending create game session
+2016/02/24 11:44:02
+INFO: [Ljava.lang.String;@4bcaec27
+2016/02/24 11:44:02
+INFO: [Ljava.lang.String;@42958d8f
+2016/02/24 11:44:17
+INFO: Server closing
+2016/02/24 11:44:20
+INFO: Closing socket connections.
+2016/02/24 11:55:43
+LOG: Client starting up.
+2016/02/24 11:55:43
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:55:44
+INFO: Connected to server.
+2016/02/24 11:55:45
+INFO: [Ljava.lang.String;@7ef2edb8
+2016/02/24 11:55:46
+INFO: Sending create game session
+2016/02/24 11:55:47
+INFO: [Ljava.lang.String;@f750b2b
+2016/02/24 11:55:47
+INFO: [Ljava.lang.String;@1edd12f7
+2016/02/24 11:55:48
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:56:13
+LOG: Client starting up.
+2016/02/24 11:56:14
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:56:14
+INFO: Connected to server.
+2016/02/24 11:56:20
+INFO: Closing socket connections.
+2016/02/24 11:56:20
+INFO: Closing socket connections.
+2016/02/24 11:59:02
+LOG: Client starting up.
+2016/02/24 11:59:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:59:02
+INFO: Connected to server.
+2016/02/24 11:59:08
+LOG: Client starting up.
+2016/02/24 11:59:09
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:59:09
+INFO: Connected to server.
+2016/02/24 11:59:15
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 11:59:16
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 11:59:16
+INFO: Connected to server.
+2016/02/24 11:59:31
+INFO: Closing socket connections.
+2016/02/24 11:59:32
+INFO: Closing socket connections.
+2016/02/24 11:59:38
+LOG: Client starting up.
+2016/02/24 11:59:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 11:59:38
+INFO: Connected to server.
+2016/02/24 11:59:42
+INFO: Server closing
+2016/02/24 11:59:44
+INFO: Closing socket connections.
+2016/02/24 12:32:01
+LOG: Client starting up.
+2016/02/24 12:32:01
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:32:01
+INFO: Connected to server.
+2016/02/24 12:32:06
+LOG: Client starting up.
+2016/02/24 12:32:06
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:32:07
+INFO: Connected to server.
+2016/02/24 12:32:12
+INFO: [Ljava.lang.String;@21582425
+2016/02/24 12:32:14
+INFO: Sending create game session
+2016/02/24 12:32:15
+INFO: [Ljava.lang.String;@596ff2a9
+2016/02/24 12:32:16
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 12:32:16
+INFO: Connected to game server.
+2016/02/24 12:32:28
+INFO: Closing socket connections.
+2016/02/24 12:32:29
+INFO: Closing socket connections.
+2016/02/24 12:35:05
+LOG: Client starting up.
+2016/02/24 12:35:05
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:35:05
+INFO: Connected to server.
+2016/02/24 12:35:07
+INFO: Closing socket connections.
+2016/02/24 12:35:16
+LOG: Client starting up.
+2016/02/24 12:35:16
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:35:16
+INFO: Connected to server.
+2016/02/24 12:35:19
+INFO: [Ljava.lang.String;@57035060
+2016/02/24 12:35:20
+INFO: Sending create game session
+2016/02/24 12:35:21
+INFO: [Ljava.lang.String;@2168db3
+2016/02/24 12:35:21
+INFO: [Ljava.lang.String;@372caf2f
+2016/02/24 12:35:22
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 12:35:22
+INFO: Connected to game server.
+2016/02/24 12:35:32
+INFO: Closing socket connections.
+2016/02/24 12:37:45
+LOG: Client starting up.
+2016/02/24 12:37:46
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:37:46
+INFO: Connected to server.
+2016/02/24 12:37:48
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 12:37:48
+INFO: Sending create game session
+2016/02/24 12:37:49
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 12:37:49
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 12:37:50
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 12:37:50
+INFO: Connected to game server.
+2016/02/24 12:37:50
+INFO: Sending player data for new game.
+2016/02/24 12:46:33
+LOG: Client starting up.
+2016/02/24 12:46:34
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:46:34
+INFO: Connected to server.
+2016/02/24 12:46:35
+INFO: [Ljava.lang.String;@4cbe6873
+2016/02/24 12:46:36
+INFO: Sending create game session
+2016/02/24 12:46:37
+INFO: [Ljava.lang.String;@6b3fcba8
+2016/02/24 12:46:37
+INFO: [Ljava.lang.String;@2c91973c
+2016/02/24 12:46:38
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 12:46:38
+INFO: Connected to game server.
+2016/02/24 12:46:38
+INFO: Sending player data for new game.
+2016/02/24 12:59:54
+LOG: Client starting up.
+2016/02/24 12:59:54
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 12:59:54
+INFO: Connected to server.
+2016/02/24 13:00:01
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:00:02
+INFO: Sending create game session
+2016/02/24 13:00:03
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:00:03
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:00:04
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:00:04
+INFO: Connected to game server.
+2016/02/24 13:00:04
+INFO: Sending player data for new game.
+2016/02/24 13:05:37
+LOG: Client starting up.
+2016/02/24 13:05:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:05:38
+INFO: Connected to server.
+2016/02/24 13:07:11
+INFO: [Ljava.lang.String;@4cbe6873
+2016/02/24 13:07:12
+INFO: Sending create game session
+2016/02/24 13:07:13
+INFO: [Ljava.lang.String;@6b3fcba8
+2016/02/24 13:07:13
+INFO: [Ljava.lang.String;@2c91973c
+2016/02/24 13:07:15
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:07:15
+INFO: Connected to game server.
+2016/02/24 13:07:15
+INFO: Sending player data for new game.
+2016/02/24 13:09:41
+LOG: Client starting up.
+2016/02/24 13:09:41
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:09:41
+INFO: Connected to server.
+2016/02/24 13:09:42
+INFO: [Ljava.lang.String;@4cbe6873
+2016/02/24 13:09:43
+INFO: Sending create game session
+2016/02/24 13:09:44
+INFO: [Ljava.lang.String;@6b3fcba8
+2016/02/24 13:09:44
+INFO: [Ljava.lang.String;@2c91973c
+2016/02/24 13:09:45
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:09:45
+INFO: Connected to game server.
+2016/02/24 13:09:45
+INFO: Sending player data for new game.
+2016/02/24 13:11:27
+LOG: Client starting up.
+2016/02/24 13:11:27
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:11:28
+INFO: Connected to server.
+2016/02/24 13:11:28
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:11:29
+INFO: Sending create game session
+2016/02/24 13:11:30
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:11:30
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:11:31
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:11:31
+INFO: Connected to game server.
+2016/02/24 13:11:31
+INFO: Sending player data for new game.
+2016/02/24 13:11:39
+INFO: Closing socket connections.
+2016/02/24 13:16:08
+LOG: Client starting up.
+2016/02/24 13:16:08
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:16:08
+INFO: Connected to server.
+2016/02/24 13:16:09
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:16:10
+INFO: Sending create game session
+2016/02/24 13:16:11
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:16:11
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:16:12
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:16:12
+INFO: Connected to game server.
+2016/02/24 13:16:12
+INFO: Sending player data for new game.
+2016/02/24 13:20:15
+LOG: Client starting up.
+2016/02/24 13:20:15
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:20:15
+INFO: Connected to server.
+2016/02/24 13:20:21
+INFO: Closing socket connections.
+2016/02/24 13:20:23
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:20:24
+INFO: Sending create game session
+2016/02/24 13:20:25
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:20:25
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:20:28
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:20:28
+INFO: Connected to game server.
+2016/02/24 13:20:28
+INFO: Sending player data for new game.
+2016/02/24 13:20:40
+INFO: Closing socket connections.
+2016/02/24 13:21:21
+LOG: Client starting up.
+2016/02/24 13:21:21
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:21:22
+INFO: Connected to server.
+2016/02/24 13:21:23
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:21:23
+INFO: Sending create game session
+2016/02/24 13:21:24
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:21:24
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:21:25
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:21:25
+INFO: Connected to game server.
+2016/02/24 13:21:25
+INFO: Sending player data for new game.
+2016/02/24 13:21:34
+INFO: Closing socket connections.
+2016/02/24 13:22:24
+LOG: Client starting up.
+2016/02/24 13:22:24
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:22:24
+INFO: Connected to server.
+2016/02/24 13:22:26
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:22:26
+INFO: Sending create game session
+2016/02/24 13:22:27
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:22:28
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:22:28
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:22:28
+INFO: Connected to game server.
+2016/02/24 13:22:28
+INFO: Sending player data for new game.
+2016/02/24 13:24:00
+LOG: Client starting up.
+2016/02/24 13:24:00
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:24:00
+INFO: Connected to server.
+2016/02/24 13:24:02
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:24:02
+INFO: Sending create game session
+2016/02/24 13:24:04
+INFO: [Ljava.lang.String;@7a78f8f9
+2016/02/24 13:24:04
+INFO: [Ljava.lang.String;@3303ade3
+2016/02/24 13:24:04
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:24:04
+INFO: Connected to game server.
+2016/02/24 13:24:04
+INFO: Sending player data for new game.
+2016/02/24 13:24:04
+INFO: Waiting on another player...
+2016/02/24 13:24:14
+LOG: Client starting up.
+2016/02/24 13:24:14
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:24:14
+INFO: Connected to server.
+2016/02/24 13:24:16
+INFO: [Ljava.lang.String;@1d4c00fb
+2016/02/24 13:24:17
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:24:17
+INFO: Connected to game server.
+2016/02/24 13:24:17
+INFO: Sending player data for new game.
+2016/02/24 13:24:17
+INFO: Waiting on another player...
+2016/02/24 13:28:59
+LOG: Client starting up.
+2016/02/24 13:28:59
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:28:59
+INFO: Connected to server.
+2016/02/24 13:29:03
+INFO: [Ljava.lang.String;@57035060
+2016/02/24 13:29:04
+INFO: Sending create game session
+2016/02/24 13:29:05
+INFO: [Ljava.lang.String;@2168db3
+2016/02/24 13:29:05
+INFO: [Ljava.lang.String;@372caf2f
+2016/02/24 13:29:05
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:29:05
+INFO: Connected to game server.
+2016/02/24 13:29:05
+INFO: Sending player data for new game.
+2016/02/24 13:29:05
+INFO: Waiting on another player...
+2016/02/24 13:29:10
+LOG: Client starting up.
+2016/02/24 13:29:10
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:29:10
+INFO: Connected to server.
+2016/02/24 13:29:12
+INFO: [Ljava.lang.String;@57035060
+2016/02/24 13:29:13
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:29:13
+INFO: Connected to game server.
+2016/02/24 13:29:13
+INFO: Sending player data for new game.
+2016/02/24 13:29:13
+INFO: The game has started.
+2016/02/24 13:34:35
+LOG: Client starting up.
+2016/02/24 13:34:35
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:34:36
+INFO: Connected to server.
+2016/02/24 13:34:37
+INFO: [Ljava.lang.String;@7ef2edb8
+2016/02/24 13:34:38
+INFO: Sending create game session
+2016/02/24 13:34:39
+INFO: [Ljava.lang.String;@f750b2b
+2016/02/24 13:34:39
+INFO: [Ljava.lang.String;@1edd12f7
+2016/02/24 13:34:40
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:34:40
+INFO: Connected to game server.
+2016/02/24 13:34:40
+INFO: Sending player data for new game.
+2016/02/24 13:34:40
+INFO: Waiting on another player...
+2016/02/24 13:34:51
+LOG: Client starting up.
+2016/02/24 13:34:51
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:34:51
+INFO: Connected to server.
+2016/02/24 13:34:53
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:34:54
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:34:54
+INFO: Connected to game server.
+2016/02/24 13:34:54
+INFO: Sending player data for new game.
+2016/02/24 13:34:54
+INFO: The game has started.
+2016/02/24 13:37:03
+LOG: Client starting up.
+2016/02/24 13:37:03
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:37:03
+INFO: Connected to server.
+2016/02/24 13:37:04
+INFO: [Ljava.lang.String;@1d4c00fb
+2016/02/24 13:37:05
+INFO: Sending create game session
+2016/02/24 13:37:06
+INFO: [Ljava.lang.String;@78e89c7a
+2016/02/24 13:37:06
+INFO: [Ljava.lang.String;@7d63ffb4
+2016/02/24 13:37:06
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:37:06
+INFO: Connected to game server.
+2016/02/24 13:37:06
+INFO: Sending player data for new game.
+2016/02/24 13:37:06
+INFO: Waiting on another player...
+2016/02/24 13:37:12
+LOG: Client starting up.
+2016/02/24 13:37:12
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:37:12
+INFO: Connected to server.
+2016/02/24 13:37:14
+INFO: [Ljava.lang.String;@532c52ac
+2016/02/24 13:37:15
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:37:15
+INFO: Connected to game server.
+2016/02/24 13:37:15
+INFO: Sending player data for new game.
+2016/02/24 13:37:15
+INFO: The game has started.
+2016/02/24 13:42:44
+LOG: Client starting up.
+2016/02/24 13:42:44
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:42:44
+INFO: Connected to server.
+2016/02/24 13:42:46
+INFO: [Ljava.lang.String;@1d4c00fb
+2016/02/24 13:42:46
+INFO: Sending create game session
+2016/02/24 13:42:48
+INFO: [Ljava.lang.String;@78e89c7a
+2016/02/24 13:42:48
+INFO: [Ljava.lang.String;@7d63ffb4
+2016/02/24 13:42:48
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:42:48
+INFO: Connected to game server.
+2016/02/24 13:42:48
+INFO: Sending player data for new game.
+2016/02/24 13:42:48
+INFO: Waiting on another player...
+2016/02/24 13:42:54
+LOG: Client starting up.
+2016/02/24 13:42:55
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:42:55
+INFO: Connected to server.
+2016/02/24 13:42:57
+INFO: [Ljava.lang.String;@57035060
+2016/02/24 13:42:57
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:42:57
+INFO: Connected to game server.
+2016/02/24 13:46:49
+LOG: Client starting up.
+2016/02/24 13:46:49
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:46:49
+INFO: Connected to server.
+2016/02/24 13:46:51
+INFO: [Ljava.lang.String;@7ef2edb8
+2016/02/24 13:46:51
+INFO: Sending create game session
+2016/02/24 13:46:52
+INFO: [Ljava.lang.String;@f750b2b
+2016/02/24 13:46:52
+INFO: [Ljava.lang.String;@1edd12f7
+2016/02/24 13:46:53
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:46:53
+INFO: Connected to game server.
+2016/02/24 13:46:53
+INFO: Sending player data for new game.
+2016/02/24 13:46:53
+INFO: Waiting on another player...
+2016/02/24 13:47:02
+LOG: Client starting up.
+2016/02/24 13:47:03
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:47:03
+INFO: Connected to server.
+2016/02/24 13:47:07
+INFO: [Ljava.lang.String;@1d4c00fb
+2016/02/24 13:47:08
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:47:08
+INFO: Connected to game server.
+2016/02/24 13:47:08
+INFO: Sending player data for new game.
+2016/02/24 13:47:08
+INFO: The game has started.
+2016/02/24 13:47:39
+INFO: Closing socket connections.
+2016/02/24 13:47:41
+INFO: Closing socket connections.
+2016/02/24 13:49:01
+LOG: Client starting up.
+2016/02/24 13:49:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:49:02
+INFO: Connected to server.
+2016/02/24 13:49:12
+LOG: Client starting up.
+2016/02/24 13:49:12
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:49:12
+INFO: Connected to server.
+2016/02/24 13:49:15
+INFO: [Ljava.lang.String;@7ef2edb8
+2016/02/24 13:49:16
+INFO: Sending create game session
+2016/02/24 13:49:17
+INFO: [Ljava.lang.String;@f750b2b
+2016/02/24 13:49:17
+INFO: [Ljava.lang.String;@1edd12f7
+2016/02/24 13:49:18
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:49:18
+INFO: Connected to game server.
+2016/02/24 13:49:18
+INFO: Sending player data for new game.
+2016/02/24 13:50:05
+LOG: Client starting up.
+2016/02/24 13:50:05
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:50:05
+INFO: Connected to server.
+2016/02/24 13:50:07
+INFO: [Ljava.lang.String;@74fc1068
+2016/02/24 13:50:08
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:50:08
+INFO: Connected to game server.
+2016/02/24 13:50:08
+INFO: Sending player data for new game.
+2016/02/24 13:50:13
+INFO: Closing socket connections.
+2016/02/24 13:50:14
+INFO: Closing socket connections.
+2016/02/24 13:51:17
+LOG: Client starting up.
+2016/02/24 13:51:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:51:17
+INFO: Connected to server.
+2016/02/24 13:51:19
+INFO: [Ljava.lang.String;@1d4c00fb
+2016/02/24 13:51:19
+INFO: Sending create game session
+2016/02/24 13:51:20
+INFO: [Ljava.lang.String;@78e89c7a
+2016/02/24 13:51:20
+INFO: [Ljava.lang.String;@7d63ffb4
+2016/02/24 13:51:21
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:51:21
+INFO: Connected to game server.
+2016/02/24 13:51:21
+INFO: Sending player data for new game.
+2016/02/24 13:51:21
+INFO: Waiting on another player...
+2016/02/24 13:51:25
+LOG: Client starting up.
+2016/02/24 13:51:26
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:51:26
+INFO: Connected to server.
+2016/02/24 13:51:28
+INFO: [Ljava.lang.String;@57035060
+2016/02/24 13:51:29
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:51:29
+INFO: Connected to game server.
+2016/02/24 13:51:45
+INFO: Closing socket connections.
+2016/02/24 13:51:46
+INFO: Closing socket connections.
+2016/02/24 13:53:31
+LOG: Client starting up.
+2016/02/24 13:53:32
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:53:32
+INFO: Connected to server.
+2016/02/24 13:53:36
+INFO: [Ljava.lang.String;@74fc1068
+2016/02/24 13:53:37
+INFO: Sending create game session
+2016/02/24 13:53:38
+INFO: [Ljava.lang.String;@78ec695f
+2016/02/24 13:53:38
+INFO: [Ljava.lang.String;@14d3ef27
+2016/02/24 13:53:40
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:53:40
+INFO: Connected to game server.
+2016/02/24 13:53:40
+INFO: Sending player data for new game.
+2016/02/24 13:53:40
+INFO: Waiting on another player...
+2016/02/24 13:53:55
+LOG: Client starting up.
+2016/02/24 13:53:56
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 13:53:56
+INFO: Connected to server.
+2016/02/24 13:54:00
+INFO: [Ljava.lang.String;@1d4c00fb
+2016/02/24 13:54:01
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 13:54:01
+INFO: Connected to game server.
+2016/02/24 13:54:01
+INFO: Sending player data for new game.
+2016/02/24 13:54:01
+INFO: The game has started.
+2016/02/24 13:54:01
+INFO: The game has started.
+2016/02/24 13:54:10
+INFO: Closing socket connections.
+2016/02/24 13:54:11
+INFO: Closing socket connections.
+2016/02/24 17:18:09
+LOG: Client starting up.
+2016/02/24 17:18:09
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 17:18:09
+INFO: Connected to server.
+2016/02/24 17:18:11
+INFO: [Ljava.lang.String;@4cbe6873
+2016/02/24 17:18:11
+INFO: Sending create game session
+2016/02/24 17:18:12
+INFO: [Ljava.lang.String;@6b3fcba8
+2016/02/24 17:18:12
+INFO: [Ljava.lang.String;@2c91973c
+2016/02/24 17:18:13
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 17:18:13
+INFO: Connected to game server.
+2016/02/24 17:18:13
+INFO: Sending player data for new game.
+2016/02/24 17:18:13
+INFO: Waiting on another player...
+2016/02/24 17:18:16
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 17:18:16
+INFO: Connected to server.
+2016/02/24 17:18:29
+INFO: [Ljava.lang.String;@28dfcf14
+2016/02/24 17:18:32
+INFO: Sending create game session
+2016/02/24 17:18:33
+INFO: [Ljava.lang.String;@22eff391
+2016/02/24 17:18:36
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 17:18:36
+INFO: Connected to game server.
+2016/02/24 17:18:36
+INFO: Sending player data for new game.
+2016/02/24 17:18:36
+INFO: Waiting on another player...
+2016/02/24 17:18:41
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 17:18:41
+INFO: Connected to server.
+2016/02/24 17:18:45
+INFO: Closing socket connections.
+2016/02/24 17:22:12
+LOG: Client starting up.
+2016/02/24 17:22:12
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 17:22:12
+INFO: Connected to master server.
+2016/02/24 17:22:13
+INFO: [Ljava.lang.String;@21582425
+2016/02/24 17:22:14
+INFO: Sending create game session
+2016/02/24 17:22:15
+INFO: [Ljava.lang.String;@596ff2a9
+2016/02/24 17:22:15
+INFO: [Ljava.lang.String;@4177db6a
+2016/02/24 17:22:16
+LOG: Connect to GameServer at IP: 127.0.0.1 on PORT: 9001
+2016/02/24 17:22:16
+INFO: Connected to game server.
+2016/02/24 17:22:16
+INFO: Sending player data for new game.
+2016/02/24 17:22:16
+INFO: Waiting on another player...
+2016/02/24 17:22:18
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/24 17:22:18
+INFO: Connected to master server.
+2016/02/24 17:22:27
+INFO: Closing socket connections.

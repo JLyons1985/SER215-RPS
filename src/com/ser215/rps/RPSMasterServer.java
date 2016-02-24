@@ -8,6 +8,8 @@ import java.net.*;
 import java.util.*;
 import org.json.simple.JSONObject;
 import com.google.gson.Gson;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class RPSMasterServer extends RPSNetworkingParent {
 	
@@ -70,39 +72,52 @@ public class RPSMasterServer extends RPSNetworkingParent {
     // Methods
 	
     // Starts a new game server
-    public int startNewGameServer() {
+    public String startNewGameServer() {
 		
         // First find the first available port
-        int availPort = 0;                                              // Available port holder       
-        
+        int availPort = 0;                                              // Available port holder  
+        String tmpGameId = "";
+                
         for (int i = PORTSTART; i <= PORTEND; i++) {
             
             if (portAvailable(i)) {
                 availPort = i;
                 
-                String tmpGameId = new Date() + "-" + availPort;
+                // Create the date objects so we can record the date info
+		DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		//get current date time with Date()
+		Date date = new Date();
+                
+                tmpGameId = dateFormat.format(date) + "-" + availPort;
                 
                 // Now start the game server and return the port
-                try {
-                    Process p = Runtime.getRuntime().exec("java -cp SER215-RPS.jar com.ser215.rps.RPSGameServer " + availPort + " " + tmpGameId);
+                
+                    RPSGameServer tmpServer = new RPSGameServer(availPort, tmpGameId, this);
+                    
+                    // Start the new thread
+                    new Thread(tmpServer).start(); 
                     
                     // Add game server port to game servers
-                    this.gameServers.add(tmpGameId);
-                    return availPort;
-                    
-                } catch (IOException e) {
-                    log.printToLog("ERROR", e.getMessage());
-                }
+                    this.gameServers.add(tmpServer);
+                    return tmpGameId;
             }
         }
           
-	return 0;			// Change this!!
+	return tmpGameId;			
     }
+    
     
     public JSONObject createGameServersList() {
         
         // Variables
         JSONObject json = new JSONObject();
+        
+        json.put("numOfGames", String.valueOf(gameServers.size()));
+        
+        // Now loop through adding each
+        for (int i = 0; i < gameServers.size(); i++){
+            json.put("server" + i, ((RPSGameServer)gameServers.get(i)).getGameSessionId());
+        }
         
         return json;
     }
@@ -142,6 +157,17 @@ public class RPSMasterServer extends RPSNetworkingParent {
             
         // Now close server socket
         try {
+            
+            // First loop through all game sessions and tell them to shut down
+            for (int i = 0; i < gameServers.size(); i++) {
+                
+                ((RPSGameServer) gameServers.get(i)).shutdown();
+
+            }
+            
+            // Clear out game servers
+            gameServers.clear();
+            
             serverSocket.close();
             masterServerRunning = false;
             System.exit(0);
@@ -149,6 +175,11 @@ public class RPSMasterServer extends RPSNetworkingParent {
         catch(IOException e) {
             log.printToLog("ERROR", e.toString());
         }
+    }
+    
+    // Remove a gameserver
+    public void removeGameSession(RPSGameServer rpsGameServer){
+        gameServers.remove(rpsGameServer);
     }
                
         
@@ -176,7 +207,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
                 log.printToLog("LOG", "Started Thread");
                     
                 // Tell the client that they were connected
-                sendMessageToClient("Info", "Connected to server.", this.socket);
+                sendMessageToClient("Info", "Connected to master server.", this.socket);
 
                 // Continuously serve the client
                 while (clientConnected) {
@@ -246,14 +277,22 @@ public class RPSMasterServer extends RPSNetworkingParent {
                 }
                 
                 else if (json.get("message").toString().equals("CreateGameServer")) {   // Client says create a new game server
+                    log.printToLog("INFO", "Received create game session: " + json.toJSONString());
                     if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
                         // Send the client the game port that a new game session is created on
-                        sendMessageToClient("GameSessionCreated", String.valueOf(startNewGameServer()), this.socket);
+                        sendMessageToClient("GameSessionCreated", startNewGameServer(), this.socket);
                     }
                     else {
                         // Send password wrong
                         sendMessageToClient("Info", "Password is incorrect.", this.socket);
                     }
+                }
+                
+                else if (json.get("message").toString().equals("RequestGames")) {   // Send the list of games to client
+                    
+                    // Send the list of games to the player
+                    sendMessageToClient("Action", "RequestedGames", createGameServersList().toJSONString(), this.socket);
+                    
                 }
             }
                 

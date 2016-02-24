@@ -23,18 +23,20 @@ import javax.swing.JOptionPane;
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private final String masterServerIp = "www.lyonsdensoftware.com";                   // Holds the ip address to the master address, localhost for same computer
-    private final String gameServerIp = "www.lyonsdensoftware.com";                     // When a game server ip is passed it goes here					
+    private final String masterServerIp = "localhost";                                  // Holds the ip address to the master address, localhost for same computer
+    private final String gameServerIp = "localhost";                                    // When a game server ip is passed it goes here					
     private final int masterServerPort = 9000;                                          // port  to the master server
     private int gameServerPort = 0;							// When a game server port is passed it goes here
     private Player player;                                                              // Holds a reference to the player data for this client
     private boolean isPlayingSinglePlayer;                                              // Is the player playing the computer?
     private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
-    private static RPSLog log;								// Reference to the lRPSLog class for printing to log files
+    public static RPSLog log;								// Reference to the lRPSLog class for printing to log files
     private Thread clientThread;                                                        // Reference to the client thread
-    private static Socket socket;                                                       // Reference to the client socket
+    private Socket socket;                                                       // Reference to the client socket
     private static DataOutputStream toServer;						// Output stream to master server or game server
-    private boolean connectedToMasterServer = false;                                    // Are we connected to the master server
+    private static DataInputStream fromServer;						// Input from either the game server or master server
+    private boolean connectedToMasterServer = false, connectedToGameServer = false;     // Are we connected to the master server
+    private RPSGameSessionList gsList;                                                  // Holds a reference to the session list form
 
     /**
      * Creates new form RPSClientApplication
@@ -48,6 +50,9 @@ public class RPSClientApplication extends javax.swing.JFrame {
         
         // Setup player
         this.player = new Player();
+        
+        // Setup game logic
+        this.gameLogic = new GameLogic(false);
         
         initComponents();
         
@@ -514,10 +519,53 @@ public class RPSClientApplication extends javax.swing.JFrame {
 
     // Show tyhe game session form
     private void showGameSessionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGameSessionsActionPerformed
-        RPSGameSessionList gsList = new RPSGameSessionList(this, true);
-        gsList.setVisible(true);
+        
+        // Are we connected to master server right now
+        if (connectedToMasterServer){
+            gsList = new RPSGameSessionList(this, true);
+            gsList.setVisible(true);
+        }
+        else if (connectedToGameServer){
+            
+            // Connected to game server so connect back to master server and tell game server you quit.
+            sendMessageToServer("Action", "ClosingConnection");
+            
+            String tmpMessages;
+            tmpMessages = chatMessages.getText();
+            tmpMessages = tmpMessages + "[SYSTEM] " + "Leaving game session. " + "\n";
+            chatMessages.setText(tmpMessages);
+            
+            try {
+                // Create a socket to connect to the server
+                Socket tmpSocket = new Socket(masterServerIp, masterServerPort);
+            
+                // Note it in the log
+                log.printToLog("LOG", "Connect to MasterServer at IP: " + tmpSocket.getInetAddress().getHostAddress() + 
+                        " on PORT: " + tmpSocket.getPort());
+            
+                connectedToMasterServer = true;
+                connectedToGameServer = false;
+            
+                this.socket = tmpSocket;
+            
+                toServer = new DataOutputStream(this.socket.getOutputStream());
+                fromServer = new DataInputStream(this.socket.getInputStream());
+            }
+            catch (IOException ex) {
+                log.printToLog("ERROR", ex.toString());
+            }
+            
+            // Change the button text back to join
+            changeGameSessionText("Join Game Session");
+            
+        }
     }//GEN-LAST:event_showGameSessionsActionPerformed
 
+    // Change jjoin game session button text
+    public void changeGameSessionText(String text) {
+        // Change button back to join game sessions
+        this.showGameSessions.setText(text);
+    }
     // Starting single player game
     private void startSinglePlayerGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSinglePlayerGameActionPerformed
         
@@ -716,24 +764,74 @@ public class RPSClientApplication extends javax.swing.JFrame {
     // Lists all the available game sessions
     // Mainly effects the gui as the list will populate a menu screen.
     // Returns a list of unique gamesession ids
-    public static String[] listGameSessions() {
+    public void listGameSessions(JSONObject json) {
 		
-		return new String[0]; 		// Change this!!!
-	}
+        // Send the string array of sessions to the game sessions list
+        String[] tmpArray = new String[Integer.parseInt(json.get("numOfGames").toString())];
+        
+        for (int i = 0; i < tmpArray.length; i++) {
+            tmpArray[i] = json.get("server" + i).toString();
+        }
+        
+        // Now send that array to the game sessions list
+        log.printToLog("INFO", tmpArray.toString());
+        gsList.refreshList(tmpArray);
+        
+    }
 	
     // Creates a game session by telling master server to create a new session
     // Master server then takes the supplied username and creates a unique gamesessionid
-    public static boolean createGameSession() {
-		
-		return false;				// Change this!!
-	}
+    public boolean createGameSession() {
 	
-    // Joins either a newly created game session or a session listed
-    // in the game session list by suppling the unique game session id
-    public static boolean joinGameSession(String gameSessionId) {
-		
-		return false;				// Change This!!
-	}
+        // Create JSON and GSon objects
+        JSONObject json = new JSONObject();
+        Gson gson = new Gson();
+            
+        // Put message into JSON
+        json.put("messageType", "Action");
+        json.put("message", "CreateGameServer");
+        json.put("password", "shuttlebutt");
+            
+        //Make printer writer
+        PrintWriter pw = new PrintWriter(toServer);
+        
+        log.printToLog("INFO", "Sending create game session");
+            
+        // Send the message
+        pw.println(gson.toJson(json));
+        pw.flush();
+
+	return true;				
+    }
+	
+    // Sets the socket to either the game server or the master server
+    public void joinGameSession(int port) {
+	
+        try {
+            // Create a socket to connect to the server
+            Socket tmpSocket = new Socket(gameServerIp, port);
+            
+            // Note it in the log
+            log.printToLog("LOG", "Connect to GameServer at IP: " + tmpSocket.getInetAddress().getHostAddress() + 
+                        " on PORT: " + tmpSocket.getPort());
+            
+            connectedToMasterServer = false;
+            connectedToGameServer = true;
+            
+            this.socket = tmpSocket;
+            
+            toServer = new DataOutputStream(this.socket.getOutputStream());
+            fromServer = new DataInputStream(this.socket.getInputStream());
+        }
+        catch (IOException ex) {
+            log.printToLog("ERROR", ex.toString());
+        }     
+    }
+    
+    // Grabs the master server i[
+    public String getMasterServerIp() {
+        return this.masterServerIp;
+    }
 	
     // Sends a message to the server
     public void sendMessageToServer(String messageType, String message) {
@@ -848,7 +946,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
       // Class variables
       //private Socket socket; // A connected socket
       
-      private DataInputStream fromServer;						// Input from either the game server or master server
+      
       private boolean runThread = true;                                                 // Do we keep running the thread
 
     /** Construct a thread */
@@ -905,65 +1003,87 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Handles the response from the game or master server
     public void handleDataFromServer(JSONObject json) {
-                
+        
+        // Variables
+        String tmpMessages;
+        JSONObject tmpJson;
+        Gson gson;
+        
         // Determine how to handle the message
-        if (json.get("messageType").toString().equals("Test"))                  // Test Message
-            log.printToLog("TEST", (String) json.get("message"));
-        
-        else if (json.get("messageType").toString().equals("Info")) {           // Print to log
-            String tmpMessages = chatMessages.getText();
-            tmpMessages = tmpMessages + "[SYSTEM] " + json.get("message").toString() + "\n";
-            chatMessages.setText(tmpMessages);
-            log.printToLog("INFO", (String) json.get("message"));
-        }
-        
-        else if (json.get("messageType").toString().equals("ChatMessage")) {    // Chat message recieved add to chat box
-            // Add the message to the chat box
-            String tmpMessages = chatMessages.getText();
-            tmpMessages = tmpMessages + json.get("message").toString() + "\n";
-            chatMessages.setText(tmpMessages);
-        }
-        
-        else if (json.get("messageType").toString().equals("Action")) {         // Action Performed from client
-            
-            // Send player data
-            if (json.get("message").toString().equals("SendPlayerData")) {
+        switch (json.get("messageType").toString()) {
+            case "Test":
+                log.printToLog("TEST", (String) json.get("message"));
+                break;
                 
-                // Create json of player data
-                JSONObject tmpJson = new JSONObject();
-                Gson gson = new Gson();
+            case "Info":
+                tmpMessages = chatMessages.getText();
+                tmpMessages = tmpMessages + "[SYSTEM] " + json.get("message").toString() + "\n";
+                chatMessages.setText(tmpMessages);
+                log.printToLog("INFO", (String) json.get("message"));
+                break;
+                
+            case "ChatMessage":
+                // Add the message to the chat box
+                tmpMessages = chatMessages.getText();
+                tmpMessages = tmpMessages + json.get("message").toString() + "\n";
+                chatMessages.setText(tmpMessages);
+                break;
+                
+            case "Action":
+                switch (json.get("message").toString()){
+                    
+                    case "SendPlayerData":
+                        log.printToLog("INFO", "Sending player data for new game.");
+                
+                        // Create json of player data
+                        tmpJson = new JSONObject();
+                        gson = new Gson();
             
-                // Put message into JSON
-                tmpJson.put("messageType", "NewPlayer");
-                tmpJson.put("message", "PlayerData");
-                tmpJson.put("playerId", player.getPlayerId());
-                tmpJson.put("playerUsername", player.getPlayerUsername());
-                tmpJson.put("totalWins", String.valueOf(player.getWinsTotal()));
-                tmpJson.put("totalTies", String.valueOf(player.getTiesTotal()));
-                tmpJson.put("totalLosses", String.valueOf(player.getLossesTotal()));
+                        // Put message into JSON
+                        tmpJson.put("messageType", "NewPlayer");
+                        tmpJson.put("message", "NewPlayer");
+                        tmpJson.put("playerId", player.getPlayerId());
+                        tmpJson.put("playerUsername", player.getPlayerUsername());
+                        tmpJson.put("totalWins", String.valueOf(player.getWinsTotal()));
+                        tmpJson.put("totalTies", String.valueOf(player.getTiesTotal()));
+                        tmpJson.put("totalLosses", String.valueOf(player.getLossesTotal()));
             
-                //Make printer writer
-                PrintWriter pw = new PrintWriter(toServer);
+                        //Make printer writer
+                        PrintWriter pw = new PrintWriter(toServer);
             
-                // Send the message
-                pw.println(gson.toJson(json));
-                pw.flush();
-            }
+                        // Send the message
+                        pw.println(gson.toJson(tmpJson));
+                        pw.flush();
+                        break;
+                        
+                    case "RequestedGames":
+                        // Create json of player data    
+                        gson = new Gson();
+                        tmpJson = new JSONObject(gson.fromJson(json.get("messageJson").toString(), JSONObject.class));
+                
+                        listGameSessions(tmpJson);
+                        break;
+                }
+                break;
+                
+            case "UpdateGameLogic":
+                // create json from string
+                gson = new Gson();
+                tmpJson = new JSONObject(gson.fromJson(json.get("messageJson").toString(), JSONObject.class));
             
+                 // update game logic
+                gameLogic.setGameLogicFromJson(tmpJson);
+            
+                // Now refresh gui
+                refreshGui();
+                break;
+                
+            case "GameSessionCreated":
+                // Request the list of games
+                sendMessageToServer("Action", "RequestGames");
+                break;
         }
-        
-        else if (json.get("messageType").toString().equals("UpdateGameLogic")) {         // Action Performed from client
-            
-            // create json from string
-            Gson gson = new Gson();
-            JSONObject jsontmp = new JSONObject(gson.fromJson(json.get("message").toString(), JSONObject.class));
-            
-            // update game logic
-            gameLogic.setGameLogicFromJson(jsontmp);
-            
-            // Now refresh gui
-            refreshGui();
-        }
+
     }
     
   }

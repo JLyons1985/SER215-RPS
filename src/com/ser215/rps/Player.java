@@ -162,7 +162,7 @@ public class Player {
 		return this.canMakeAThrow;
 	}
 	
-        public JSONObject getPlayerDataAsJson() {
+        public String getPlayerDataAsJson() {
             
             // Make json
             JSONObject json = new JSONObject();
@@ -183,6 +183,6 @@ public class Player {
             }
             
             // return json
-            return json;
+            return json.toJSONString();
         }
 }

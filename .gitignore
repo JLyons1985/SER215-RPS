@@ -9,3 +9,4 @@ nbproject/build-impl.xml
 *.class
 *.class
 bin/com/ser215/rps/RPSClientApplication$1.class
+/nbdist/

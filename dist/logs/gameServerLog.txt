@@ -1,0 +1,4 @@
+2016/02/24 08:46:36
+LOG: GameServer starting up.
+2016/02/24 08:46:36
+LOG: Game Server socket created. GameSessionId: Test

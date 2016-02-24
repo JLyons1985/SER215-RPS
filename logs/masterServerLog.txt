@@ -274,3 +274,689 @@ LOG: Server socket created.
 LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
 2016/02/22 09:42:56
 LOG: Started Thread
+2016/02/24 08:23:29
+LOG: MasterServer starting up.
+2016/02/24 08:23:29
+LOG: Server socket created.
+2016/02/24 08:23:33
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:23:33
+LOG: Started Thread
+2016/02/24 08:26:02
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:26:02
+LOG: Started Thread
+2016/02/24 08:26:07
+INFO: Client disconnected.
+2016/02/24 08:26:08
+INFO: Client disconnected.
+2016/02/24 08:26:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:26:13
+LOG: Started Thread
+2016/02/24 08:26:31
+INFO: Client disconnected.
+2016/02/24 08:27:56
+LOG: MasterServer starting up.
+2016/02/24 08:27:56
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/24 08:28:02
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:28:02
+LOG: Started Thread
+2016/02/24 08:28:13
+LOG: MasterServer starting up.
+2016/02/24 08:28:13
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/24 08:28:25
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:28:25
+LOG: Started Thread
+2016/02/24 08:30:17
+LOG: MasterServer starting up.
+2016/02/24 08:30:17
+LOG: Server socket created.
+2016/02/24 08:30:20
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:30:20
+LOG: Started Thread
+2016/02/24 08:30:24
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 08:38:00
+LOG: MasterServer starting up.
+2016/02/24 08:38:00
+LOG: Server socket created.
+2016/02/24 08:38:03
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:38:03
+LOG: Started Thread
+2016/02/24 08:38:05
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 08:38:06
+INFO: Just tried starting the game server.
+2016/02/24 08:38:09
+INFO: Client disconnected.
+2016/02/24 08:43:14
+LOG: MasterServer starting up.
+2016/02/24 08:43:14
+LOG: Server socket created.
+2016/02/24 08:43:17
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:43:17
+LOG: Started Thread
+2016/02/24 08:43:20
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 08:43:21
+ERROR: null
+2016/02/24 08:43:22
+ERROR: null
+2016/02/24 08:43:23
+ERROR: null
+2016/02/24 08:43:24
+ERROR: null
+2016/02/24 08:43:25
+ERROR: null
+2016/02/24 08:43:27
+ERROR: null
+2016/02/24 08:43:28
+ERROR: null
+2016/02/24 08:43:29
+ERROR: null
+2016/02/24 08:43:30
+ERROR: null
+2016/02/24 08:43:31
+ERROR: null
+2016/02/24 08:43:32
+ERROR: null
+2016/02/24 08:43:33
+ERROR: null
+2016/02/24 08:43:34
+ERROR: null
+2016/02/24 08:43:36
+ERROR: null
+2016/02/24 08:43:37
+ERROR: null
+2016/02/24 08:43:38
+ERROR: null
+2016/02/24 08:43:39
+ERROR: null
+2016/02/24 08:43:40
+ERROR: null
+2016/02/24 08:43:41
+ERROR: null
+2016/02/24 08:43:42
+ERROR: null
+2016/02/24 08:43:44
+ERROR: null
+2016/02/24 08:43:45
+ERROR: null
+2016/02/24 08:43:46
+ERROR: null
+2016/02/24 08:43:47
+ERROR: null
+2016/02/24 08:43:48
+ERROR: null
+2016/02/24 08:43:49
+ERROR: null
+2016/02/24 08:43:50
+ERROR: null
+2016/02/24 08:43:52
+ERROR: null
+2016/02/24 08:43:53
+ERROR: null
+2016/02/24 08:43:54
+ERROR: null
+2016/02/24 08:47:53
+LOG: MasterServer starting up.
+2016/02/24 08:47:53
+LOG: Server socket created.
+2016/02/24 08:48:33
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:48:33
+LOG: Started Thread
+2016/02/24 08:48:59
+INFO: Client disconnected.
+2016/02/24 08:52:59
+LOG: MasterServer starting up.
+2016/02/24 08:52:59
+LOG: Server socket created.
+2016/02/24 08:53:02
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:53:02
+LOG: Started Thread
+2016/02/24 08:53:09
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 08:53:39
+INFO: Client disconnected.
+2016/02/24 08:57:22
+LOG: MasterServer starting up.
+2016/02/24 08:57:22
+LOG: Server socket created.
+2016/02/24 08:57:25
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 08:57:25
+LOG: Started Thread
+2016/02/24 08:57:35
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 08:57:36
+IFNO: java -cp SER215-RPS.jar com.ser215.rps.RPSGameServer 9001 2016_02_24_08_57_36-9001
+2016/02/24 08:59:57
+LOG: MasterServer starting up.
+2016/02/24 08:59:57
+LOG: Server socket created.
+2016/02/24 09:00:01
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 09:00:01
+LOG: Started Thread
+2016/02/24 09:00:03
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 09:00:04
+IFNO: java -cp SER215-RPS.jar com.ser215.rps.RPSGameServer 9001 2016_02_24_09_00_04-9001
+2016/02/24 09:00:18
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/24 09:03:40
+LOG: MasterServer starting up.
+2016/02/24 09:03:40
+LOG: Server socket created.
+2016/02/24 09:03:43
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 09:03:43
+LOG: Started Thread
+2016/02/24 09:03:48
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 09:03:49
+IFNO: java -cp SER215-RPS.jar com.ser215.rps.RPSGameServer 9001 2016_02_24_09_03_49-9001
+2016/02/24 09:04:17
+INFO: Client disconnected.
+2016/02/24 09:04:43
+LOG: MasterServer starting up.
+2016/02/24 09:04:43
+LOG: Server socket created.
+2016/02/24 09:05:06
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 09:05:06
+LOG: Started Thread
+2016/02/24 09:17:13
+LOG: MasterServer starting up.
+2016/02/24 09:17:13
+LOG: Server socket created.
+2016/02/24 09:17:18
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 09:17:18
+LOG: Started Thread
+2016/02/24 09:17:33
+INFO: Client disconnected.
+2016/02/24 09:17:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 09:17:38
+LOG: Started Thread
+2016/02/24 09:17:42
+ERROR: java.net.SocketException: socket closed
+2016/02/24 09:18:06
+LOG: MasterServer starting up.
+2016/02/24 09:18:06
+LOG: Server socket created.
+2016/02/24 09:18:15
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 09:18:15
+LOG: Started Thread
+2016/02/24 09:18:31
+INFO: Client disconnected.
+2016/02/24 10:03:50
+LOG: MasterServer starting up.
+2016/02/24 10:03:50
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/24 10:03:55
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 10:03:55
+LOG: Started Thread
+2016/02/24 10:03:59
+ERROR: java.net.SocketException: socket closed
+2016/02/24 10:04:07
+LOG: MasterServer starting up.
+2016/02/24 10:04:07
+LOG: Server socket created.
+2016/02/24 10:04:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 10:04:13
+LOG: Started Thread
+2016/02/24 10:04:15
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 10:08:06
+LOG: MasterServer starting up.
+2016/02/24 10:08:06
+LOG: Server socket created.
+2016/02/24 10:08:10
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 10:08:10
+LOG: Started Thread
+2016/02/24 10:08:14
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 10:08:23
+INFO: Client disconnected.
+2016/02/24 11:09:58
+LOG: MasterServer starting up.
+2016/02/24 11:09:58
+LOG: Server socket created.
+2016/02/24 11:10:01
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:10:01
+LOG: Started Thread
+2016/02/24 11:10:04
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:14:06
+LOG: MasterServer starting up.
+2016/02/24 11:14:06
+LOG: Server socket created.
+2016/02/24 11:14:09
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:14:09
+LOG: Started Thread
+2016/02/24 11:14:13
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:17:18
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:17:18
+LOG: Started Thread
+2016/02/24 11:17:35
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:17:36
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:22:02
+LOG: MasterServer starting up.
+2016/02/24 11:22:02
+LOG: Server socket created.
+2016/02/24 11:22:06
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:22:06
+LOG: Started Thread
+2016/02/24 11:22:09
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:22:11
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:22:28
+INFO: Client disconnected.
+2016/02/24 11:23:15
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:23:15
+LOG: Started Thread
+2016/02/24 11:23:30
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:23:42
+INFO: Client disconnected.
+2016/02/24 11:28:17
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:17
+LOG: Started Thread
+2016/02/24 11:28:25
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:28:30
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:28:52
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:28:54
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:29:06
+INFO: Client disconnected.
+2016/02/24 11:31:20
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:31:20
+LOG: Started Thread
+2016/02/24 11:43:56
+LOG: MasterServer starting up.
+2016/02/24 11:43:56
+LOG: Server socket created.
+2016/02/24 11:43:59
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:43:59
+LOG: Started Thread
+2016/02/24 11:44:01
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:55:39
+LOG: MasterServer starting up.
+2016/02/24 11:55:39
+LOG: Server socket created.
+2016/02/24 11:55:43
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:55:43
+LOG: Started Thread
+2016/02/24 11:55:46
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 11:56:14
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:56:14
+LOG: Started Thread
+2016/02/24 11:56:20
+INFO: Client disconnected.
+2016/02/24 11:56:20
+INFO: Client disconnected.
+2016/02/24 11:59:02
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:59:02
+LOG: Started Thread
+2016/02/24 11:59:09
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:59:09
+LOG: Started Thread
+2016/02/24 11:59:32
+INFO: Client disconnected.
+2016/02/24 11:59:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:59:38
+LOG: Started Thread
+2016/02/24 12:31:56
+LOG: MasterServer starting up.
+2016/02/24 12:31:56
+LOG: Server socket created.
+2016/02/24 12:32:01
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:32:01
+LOG: Started Thread
+2016/02/24 12:32:06
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:32:07
+LOG: Started Thread
+2016/02/24 12:32:14
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 12:32:29
+INFO: Client disconnected.
+2016/02/24 12:35:05
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:35:05
+LOG: Started Thread
+2016/02/24 12:35:07
+INFO: Client disconnected.
+2016/02/24 12:35:11
+LOG: MasterServer starting up.
+2016/02/24 12:35:11
+LOG: Server socket created.
+2016/02/24 12:35:16
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:35:16
+LOG: Started Thread
+2016/02/24 12:35:20
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 12:37:42
+LOG: MasterServer starting up.
+2016/02/24 12:37:42
+LOG: Server socket created.
+2016/02/24 12:37:46
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:37:46
+LOG: Started Thread
+2016/02/24 12:37:48
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 12:46:30
+LOG: MasterServer starting up.
+2016/02/24 12:46:30
+LOG: Server socket created.
+2016/02/24 12:46:34
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:46:34
+LOG: Started Thread
+2016/02/24 12:46:36
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 12:59:51
+LOG: MasterServer starting up.
+2016/02/24 12:59:51
+LOG: Server socket created.
+2016/02/24 12:59:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:59:54
+LOG: Started Thread
+2016/02/24 13:00:02
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:05:35
+LOG: MasterServer starting up.
+2016/02/24 13:05:35
+LOG: Server socket created.
+2016/02/24 13:05:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:05:38
+LOG: Started Thread
+2016/02/24 13:07:12
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:09:28
+LOG: MasterServer starting up.
+2016/02/24 13:09:28
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/24 13:09:38
+LOG: MasterServer starting up.
+2016/02/24 13:09:38
+LOG: Server socket created.
+2016/02/24 13:09:41
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:09:41
+LOG: Started Thread
+2016/02/24 13:09:43
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:11:21
+LOG: MasterServer starting up.
+2016/02/24 13:11:21
+LOG: Server socket created.
+2016/02/24 13:11:27
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:11:27
+LOG: Started Thread
+2016/02/24 13:11:29
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:16:05
+LOG: MasterServer starting up.
+2016/02/24 13:16:05
+LOG: Server socket created.
+2016/02/24 13:16:08
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:16:08
+LOG: Started Thread
+2016/02/24 13:16:10
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:20:11
+LOG: MasterServer starting up.
+2016/02/24 13:20:11
+LOG: Server socket created.
+2016/02/24 13:20:15
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:20:15
+LOG: Started Thread
+2016/02/24 13:20:24
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:21:18
+LOG: MasterServer starting up.
+2016/02/24 13:21:18
+LOG: Server socket created.
+2016/02/24 13:21:21
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:21:21
+LOG: Started Thread
+2016/02/24 13:21:23
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:22:21
+LOG: MasterServer starting up.
+2016/02/24 13:22:21
+LOG: Server socket created.
+2016/02/24 13:22:24
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:22:24
+LOG: Started Thread
+2016/02/24 13:22:26
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:23:50
+LOG: MasterServer starting up.
+2016/02/24 13:23:50
+LOG: Server socket created.
+2016/02/24 13:23:57
+LOG: MasterServer starting up.
+2016/02/24 13:23:58
+LOG: Server socket created.
+2016/02/24 13:24:00
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:24:00
+LOG: Started Thread
+2016/02/24 13:24:02
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:24:14
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:24:14
+LOG: Started Thread
+2016/02/24 13:28:55
+LOG: MasterServer starting up.
+2016/02/24 13:28:55
+LOG: Server socket created.
+2016/02/24 13:28:59
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:28:59
+LOG: Started Thread
+2016/02/24 13:29:04
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:29:10
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:29:10
+LOG: Started Thread
+2016/02/24 13:34:32
+LOG: MasterServer starting up.
+2016/02/24 13:34:32
+LOG: Server socket created.
+2016/02/24 13:34:35
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:34:35
+LOG: Started Thread
+2016/02/24 13:34:38
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:34:51
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:34:51
+LOG: Started Thread
+2016/02/24 13:36:58
+LOG: MasterServer starting up.
+2016/02/24 13:36:58
+LOG: Server socket created.
+2016/02/24 13:37:03
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:37:03
+LOG: Started Thread
+2016/02/24 13:37:05
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:37:12
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:37:12
+LOG: Started Thread
+2016/02/24 13:42:40
+LOG: MasterServer starting up.
+2016/02/24 13:42:40
+LOG: Server socket created.
+2016/02/24 13:42:44
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:42:44
+LOG: Started Thread
+2016/02/24 13:42:46
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:42:55
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:42:55
+LOG: Started Thread
+2016/02/24 13:46:45
+LOG: MasterServer starting up.
+2016/02/24 13:46:45
+LOG: Server socket created.
+2016/02/24 13:46:49
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:46:49
+LOG: Started Thread
+2016/02/24 13:46:51
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:47:03
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:47:03
+LOG: Started Thread
+2016/02/24 13:48:55
+LOG: MasterServer starting up.
+2016/02/24 13:48:55
+ERROR: java.net.BindException: Address already in use: JVM_Bind
+2016/02/24 13:49:02
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:49:02
+LOG: Started Thread
+2016/02/24 13:49:09
+LOG: MasterServer starting up.
+2016/02/24 13:49:09
+LOG: Server socket created.
+2016/02/24 13:49:12
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:49:12
+LOG: Started Thread
+2016/02/24 13:49:16
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:50:05
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:50:05
+LOG: Started Thread
+2016/02/24 13:51:12
+LOG: MasterServer starting up.
+2016/02/24 13:51:13
+LOG: Server socket created.
+2016/02/24 13:51:17
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:51:17
+LOG: Started Thread
+2016/02/24 13:51:19
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:51:26
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:51:26
+LOG: Started Thread
+2016/02/24 13:53:27
+LOG: MasterServer starting up.
+2016/02/24 13:53:27
+LOG: Server socket created.
+2016/02/24 13:53:32
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:53:32
+LOG: Started Thread
+2016/02/24 13:53:37
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 13:53:56
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:53:56
+LOG: Started Thread
+2016/02/24 17:18:05
+LOG: MasterServer starting up.
+2016/02/24 17:18:05
+LOG: Server socket created.
+2016/02/24 17:18:09
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:18:09
+LOG: Started Thread
+2016/02/24 17:18:11
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 17:18:16
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:18:16
+LOG: Started Thread
+2016/02/24 17:18:32
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 17:18:41
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:18:41
+LOG: Started Thread
+2016/02/24 17:18:45
+INFO: Client disconnected.
+2016/02/24 17:22:05
+LOG: MasterServer starting up.
+2016/02/24 17:22:05
+LOG: Server socket created.
+2016/02/24 17:22:08
+LOG: MasterServer starting up.
+2016/02/24 17:22:08
+LOG: Server socket created.
+2016/02/24 17:22:12
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:22:12
+LOG: Started Thread
+2016/02/24 17:22:14
+INFO: Received create game session: {"password":"shuttlebutt","messageType":"Action","message":"CreateGameServer"}
+2016/02/24 17:22:18
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:22:18
+LOG: Started Thread
+2016/02/24 17:22:27
+INFO: Client disconnected.

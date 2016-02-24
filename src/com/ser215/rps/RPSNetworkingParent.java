@@ -54,8 +54,12 @@ public class RPSNetworkingParent {
                     sendMessageToClient("Info", "Server closing", (Socket) this.sockets.get(i));
                 }
                 
+                else if (messageType.equals("Info")) {
+                    sendMessageToClient("Info", message, (Socket) this.sockets.get(i));
+                }
+                
                 else if (messageType.equals("UpdateGameLogic")) {
-                    sendMessageToClient("UpdateGameLogic", message, (Socket) this.sockets.get(i));
+                    sendMessageToClient("UpdateGameLogic", "UpdateGameLogic", message, (Socket) this.sockets.get(i));
                 }
                 
             }
@@ -76,6 +80,35 @@ public class RPSNetworkingParent {
                 // Put message into JSON
                 json.put("messageType", messageType);
                 json.put("message", message);
+            
+                //Make printer writer
+                PrintWriter pw = new PrintWriter(outputToClient);
+            
+                // Send the message
+                pw.println(gson.toJson(json));
+                pw.flush();
+            }
+            catch(IOException e) {
+                log.printToLog("ERROR", e.toString());
+            }
+                        
+    }
+        
+         // Sends a message to a specific client
+        public void sendMessageToClient(String messageType, String message, String messageJson, Socket socket) {
+            
+            try {
+                // Variables
+                DataOutputStream outputToClient = new DataOutputStream(socket.getOutputStream());            // output stream
+            
+                // Create JSON and GSon objects
+                JSONObject json = new JSONObject();
+                Gson gson = new Gson();
+            
+                // Put message into JSON
+                json.put("messageType", messageType);
+                json.put("message", message);
+                json.put("messageJson", messageJson);
             
                 //Make printer writer
                 PrintWriter pw = new PrintWriter(outputToClient);

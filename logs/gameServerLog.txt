@@ -1,0 +1,484 @@
+2016/02/24 10:04:16
+LOG: GameServer starting up.
+2016/02/24 10:04:16
+LOG: Game Server socket created. GameSessionId: 2016_02_24_10_04_16-9001
+2016/02/24 10:08:15
+LOG: GameServer starting up.
+2016/02/24 10:08:15
+LOG: Game Server socket created. GameSessionId: 2016_02_24_10_08_15-9001
+2016/02/24 11:10:05
+LOG: GameServer starting up.
+2016/02/24 11:10:05
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_10_05-9001
+2016/02/24 11:14:14
+LOG: GameServer starting up.
+2016/02/24 11:14:14
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_14_14-9001
+2016/02/24 11:17:35
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:17:35
+LOG: Started Thread
+2016/02/24 11:17:36
+LOG: GameServer starting up.
+2016/02/24 11:17:36
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_17_36-9002
+2016/02/24 11:17:36
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:17:36
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:17:36
+LOG: Started Thread
+2016/02/24 11:17:36
+LOG: Started Thread
+2016/02/24 11:17:37
+LOG: GameServer starting up.
+2016/02/24 11:17:37
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_17_37-9003
+2016/02/24 11:18:04
+ERROR: java.net.SocketException: socket closed
+2016/02/24 11:22:10
+LOG: GameServer starting up.
+2016/02/24 11:22:10
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_22_10-9001
+2016/02/24 11:22:11
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:22:11
+LOG: Started Thread
+2016/02/24 11:22:12
+LOG: GameServer starting up.
+2016/02/24 11:22:12
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_22_12-9002
+2016/02/24 11:23:30
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:23:30
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:23:30
+LOG: Started Thread
+2016/02/24 11:23:30
+LOG: Started Thread
+2016/02/24 11:23:31
+LOG: GameServer starting up.
+2016/02/24 11:23:31
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_23_31-9003
+2016/02/24 11:28:25
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:25
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:26
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:26
+LOG: Started Thread
+2016/02/24 11:28:26
+LOG: Started Thread
+2016/02/24 11:28:26
+LOG: Started Thread
+2016/02/24 11:28:27
+LOG: GameServer starting up.
+2016/02/24 11:28:27
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_28_27-9004
+2016/02/24 11:28:30
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:30
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:30
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:30
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:30
+LOG: Started Thread
+2016/02/24 11:28:30
+LOG: Started Thread
+2016/02/24 11:28:30
+LOG: Started Thread
+2016/02/24 11:28:30
+LOG: Started Thread
+2016/02/24 11:28:31
+LOG: GameServer starting up.
+2016/02/24 11:28:31
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_28_31-9005
+2016/02/24 11:28:52
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:52
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:52
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:52
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:52
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:53
+LOG: Started Thread
+2016/02/24 11:28:53
+LOG: Started Thread
+2016/02/24 11:28:53
+LOG: Started Thread
+2016/02/24 11:28:53
+LOG: Started Thread
+2016/02/24 11:28:53
+LOG: Started Thread
+2016/02/24 11:28:53
+LOG: GameServer starting up.
+2016/02/24 11:28:54
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_28_53-9006
+2016/02/24 11:28:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:28:54
+LOG: Started Thread
+2016/02/24 11:28:54
+LOG: Started Thread
+2016/02/24 11:28:54
+LOG: Started Thread
+2016/02/24 11:28:54
+LOG: Started Thread
+2016/02/24 11:28:54
+LOG: Started Thread
+2016/02/24 11:28:54
+LOG: Started Thread
+2016/02/24 11:28:55
+LOG: GameServer starting up.
+2016/02/24 11:28:55
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_28_55-9007
+2016/02/24 11:31:44
+ERROR: java.net.SocketException: socket closed
+2016/02/24 11:44:02
+LOG: GameServer starting up.
+2016/02/24 11:44:02
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_44_02-9001
+2016/02/24 11:55:47
+LOG: GameServer starting up.
+2016/02/24 11:55:47
+LOG: Game Server socket created. GameSessionId: 2016_02_24_11_55_47-9001
+2016/02/24 11:55:48
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:55:48
+LOG: Started Thread
+2016/02/24 11:59:16
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 11:59:16
+LOG: Started Thread
+2016/02/24 11:59:31
+INFO: Client disconnected.
+2016/02/24 12:32:15
+LOG: GameServer starting up.
+2016/02/24 12:32:15
+LOG: Game Server socket created. GameSessionId: 2016_02_24_12_32_15-9001
+2016/02/24 12:32:16
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:32:16
+LOG: Started Thread
+2016/02/24 12:32:28
+INFO: Client disconnected.
+2016/02/24 12:35:21
+LOG: GameServer starting up.
+2016/02/24 12:35:21
+LOG: Game Server socket created. GameSessionId: 2016_02_24_12_35_21-9001
+2016/02/24 12:35:22
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:35:22
+LOG: Started Thread
+2016/02/24 12:35:32
+INFO: Client disconnected.
+2016/02/24 12:37:49
+LOG: GameServer starting up.
+2016/02/24 12:37:49
+LOG: Game Server socket created. GameSessionId: 2016_02_24_12_37_49-9001
+2016/02/24 12:37:50
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:37:50
+LOG: Started Thread
+2016/02/24 12:46:37
+LOG: GameServer starting up.
+2016/02/24 12:46:37
+LOG: Game Server socket created. GameSessionId: 2016_02_24_12_46_37-9001
+2016/02/24 12:46:38
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 12:46:38
+LOG: Started Thread
+2016/02/24 13:00:03
+LOG: GameServer starting up.
+2016/02/24 13:00:03
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_00_03-9001
+2016/02/24 13:00:04
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:00:04
+LOG: Started Thread
+2016/02/24 13:07:13
+LOG: GameServer starting up.
+2016/02/24 13:07:13
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_07_13-9001
+2016/02/24 13:07:15
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:07:15
+LOG: Started Thread
+2016/02/24 13:09:44
+LOG: GameServer starting up.
+2016/02/24 13:09:44
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_09_44-9001
+2016/02/24 13:09:45
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:09:45
+LOG: Started Thread
+2016/02/24 13:11:30
+LOG: GameServer starting up.
+2016/02/24 13:11:30
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_11_30-9001
+2016/02/24 13:11:31
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:11:31
+LOG: Started Thread
+2016/02/24 13:11:39
+INFO: Client disconnected.
+2016/02/24 13:16:11
+LOG: GameServer starting up.
+2016/02/24 13:16:11
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_16_11-9001
+2016/02/24 13:16:12
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:16:12
+LOG: Started Thread
+2016/02/24 13:20:25
+LOG: GameServer starting up.
+2016/02/24 13:20:25
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_20_25-9001
+2016/02/24 13:20:28
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:20:28
+LOG: Started Thread
+2016/02/24 13:20:40
+INFO: Client disconnected.
+2016/02/24 13:21:24
+LOG: GameServer starting up.
+2016/02/24 13:21:24
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_21_24-9001
+2016/02/24 13:21:25
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:21:25
+LOG: Started Thread
+2016/02/24 13:21:25
+INFO: New player is joining....
+2016/02/24 13:21:34
+INFO: Client disconnected.
+2016/02/24 13:22:27
+LOG: GameServer starting up.
+2016/02/24 13:22:27
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_22_27-9001
+2016/02/24 13:22:28
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:22:28
+LOG: Started Thread
+2016/02/24 13:22:28
+INFO: New player is joining....
+2016/02/24 13:24:04
+LOG: GameServer starting up.
+2016/02/24 13:24:04
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_24_04-9001
+2016/02/24 13:24:04
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:24:04
+LOG: Started Thread
+2016/02/24 13:24:04
+INFO: New player is joining....
+2016/02/24 13:24:17
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:24:17
+LOG: Started Thread
+2016/02/24 13:24:17
+INFO: New player is joining....
+2016/02/24 13:29:05
+LOG: GameServer starting up.
+2016/02/24 13:29:05
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_29_05-9001
+2016/02/24 13:29:05
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:29:05
+LOG: Started Thread
+2016/02/24 13:29:05
+INFO: New player is joining....
+2016/02/24 13:29:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:29:13
+LOG: Started Thread
+2016/02/24 13:29:13
+INFO: New player is joining....
+2016/02/24 13:34:39
+LOG: GameServer starting up.
+2016/02/24 13:34:39
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_34_39-9001
+2016/02/24 13:34:40
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:34:40
+LOG: Started Thread
+2016/02/24 13:34:40
+INFO: New player is joining....
+2016/02/24 13:34:54
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:34:54
+LOG: Started Thread
+2016/02/24 13:34:54
+INFO: New player is joining....
+2016/02/24 13:37:06
+LOG: GameServer starting up.
+2016/02/24 13:37:06
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_37_06-9001
+2016/02/24 13:37:06
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:37:06
+LOG: Started Thread
+2016/02/24 13:37:06
+INFO: New player is joining....
+2016/02/24 13:37:15
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:37:15
+LOG: Started Thread
+2016/02/24 13:37:15
+INFO: New player is joining....
+2016/02/24 13:42:48
+LOG: GameServer starting up.
+2016/02/24 13:42:48
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_42_48-9001
+2016/02/24 13:42:48
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:42:48
+LOG: Started Thread
+2016/02/24 13:42:48
+INFO: New player is joining....
+2016/02/24 13:42:57
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:42:57
+LOG: Started Thread
+2016/02/24 13:46:52
+LOG: GameServer starting up.
+2016/02/24 13:46:52
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_46_52-9001
+2016/02/24 13:46:53
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:46:53
+LOG: Started Thread
+2016/02/24 13:46:53
+INFO: New player is joining....
+2016/02/24 13:47:08
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:47:08
+LOG: Started Thread
+2016/02/24 13:47:08
+INFO: New player is joining....
+2016/02/24 13:47:39
+INFO: Client disconnected.
+2016/02/24 13:47:41
+INFO: Client disconnected.
+2016/02/24 13:49:17
+LOG: GameServer starting up.
+2016/02/24 13:49:17
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_49_17-9001
+2016/02/24 13:49:18
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:49:18
+LOG: Started Thread
+2016/02/24 13:49:18
+INFO: New player is joining....
+2016/02/24 13:50:08
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:50:08
+LOG: Started Thread
+2016/02/24 13:50:08
+INFO: New player is joining....
+2016/02/24 13:50:13
+INFO: Client disconnected.
+2016/02/24 13:50:14
+INFO: Client disconnected.
+2016/02/24 13:51:20
+LOG: GameServer starting up.
+2016/02/24 13:51:20
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_51_20-9001
+2016/02/24 13:51:21
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:51:21
+LOG: Started Thread
+2016/02/24 13:51:21
+INFO: New player is joining....
+2016/02/24 13:51:29
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:51:29
+LOG: Started Thread
+2016/02/24 13:51:45
+INFO: Client disconnected.
+2016/02/24 13:51:46
+INFO: Client disconnected.
+2016/02/24 13:53:38
+LOG: GameServer starting up.
+2016/02/24 13:53:38
+LOG: Game Server socket created. GameSessionId: 2016_02_24_13_53_38-9001
+2016/02/24 13:53:40
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:53:40
+LOG: Started Thread
+2016/02/24 13:53:40
+INFO: New player is joining....
+2016/02/24 13:54:01
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 13:54:01
+LOG: Started Thread
+2016/02/24 13:54:01
+INFO: New player is joining....
+2016/02/24 13:54:10
+INFO: Client disconnected.
+2016/02/24 13:54:11
+INFO: Client disconnected.
+2016/02/24 17:18:12
+LOG: GameServer starting up.
+2016/02/24 17:18:12
+LOG: Game Server socket created. GameSessionId: 2016_02_24_17_18_12-9001
+2016/02/24 17:18:13
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:18:13
+LOG: Started Thread
+2016/02/24 17:18:13
+INFO: New player is joining....
+2016/02/24 17:18:16
+INFO: Client disconnected.
+2016/02/24 17:18:16
+INFO: Shutting down session: 2016_02_24_17_18_12-9001
+2016/02/24 17:18:16
+ERROR: java.net.SocketException: socket closed
+2016/02/24 17:18:33
+LOG: GameServer starting up.
+2016/02/24 17:18:33
+LOG: Game Server socket created. GameSessionId: 2016_02_24_17_18_33-9001
+2016/02/24 17:18:36
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:18:36
+LOG: Started Thread
+2016/02/24 17:18:36
+INFO: New player is joining....
+2016/02/24 17:18:41
+INFO: Client disconnected.
+2016/02/24 17:18:41
+INFO: Shutting down session: 2016_02_24_17_18_33-9001
+2016/02/24 17:18:41
+ERROR: java.net.SocketException: socket closed
+2016/02/24 17:22:15
+LOG: GameServer starting up.
+2016/02/24 17:22:15
+LOG: Game Server socket created. GameSessionId: 2016_02_24_17_22_15-9001
+2016/02/24 17:22:16
+LOG: New client connected on IP: 127.0.0.1 with HOSTNAME: 127.0.0.1. Creating handler thread. 
+2016/02/24 17:22:16
+LOG: Started Thread
+2016/02/24 17:22:16
+INFO: New player is joining....
+2016/02/24 17:22:18
+INFO: Client disconnected.
+2016/02/24 17:22:18
+INFO: Shutting down session: 2016_02_24_17_22_15-9001
+2016/02/24 17:22:18
+ERROR: java.net.SocketException: socket closed

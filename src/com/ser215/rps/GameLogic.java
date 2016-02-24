@@ -27,6 +27,10 @@ public class GameLogic {
                 
                 this.numOfPlayers += 1;
             }
+            
+            this.playerOne = new Player();
+            this.playerTwo = new Player();
+            
 	}
         
         public GameLogic(boolean isSinglePlayer, RPSClientApplication mainApp) {
@@ -70,12 +74,12 @@ public class GameLogic {
                 if (this.playerOne == null){
                     // No player one add here
                     setPlayerSlot(1, player);
-                    this.numOfMaxPlayers += 1;
+                    this.numOfPlayers += 1;
                 }
                 else {
                     // Player one taken add here
                     setPlayerSlot(2, player);
-                    this.numOfMaxPlayers += 1;
+                    this.numOfPlayers += 1;
                 }
             }
         }
@@ -147,16 +151,21 @@ public class GameLogic {
         }
         
         public void setGameLogicFromJson(JSONObject json){
+            Gson gson = new Gson();
             
             // Now go through the task of creating the json
             this.isSinglePlayer = Boolean.getBoolean(json.get("isSinglePlayer").toString());
             this.numOfMaxPlayers = Integer.parseInt(json.get("numOfMaxPlayers").toString());
             this.numOfPlayers = Integer.parseInt(json.get("numOfPlayers").toString());
-            this.playerOne.setPlayerDataFromJson((JSONObject)json.get("playerOne"));
-            this.playerTwo.setPlayerDataFromJson((JSONObject)json.get("playerTwo"));
+            this.playerOne.setPlayerDataFromJson(new JSONObject(gson.fromJson(json.get("playerOne").toString(), JSONObject.class)));
+            this.playerTwo.setPlayerDataFromJson(new JSONObject(gson.fromJson(json.get("playerTwo").toString(), JSONObject.class)));
             this.round = Integer.parseInt(json.get("round").toString());
             this.turn = Integer.parseInt(json.get("turn").toString());
             
+        }
+        
+        public void setCurrentPlayers(int currentPlayers){
+            this.numOfPlayers = currentPlayers;
         }
         
         // Get round data
@@ -179,7 +188,8 @@ public class GameLogic {
             return this.numOfPlayers;
         }
         
-        public JSONObject getGameLogicAsJson(){
+      
+        public String getGameLogicAsJson(){
             
             // Create json object
             JSONObject json = new JSONObject();
@@ -194,7 +204,7 @@ public class GameLogic {
             json.put("turn", String.valueOf(this.turn));
             
             // Return json
-            return json;
+            return json.toJSONString();
         }
 	
 }
