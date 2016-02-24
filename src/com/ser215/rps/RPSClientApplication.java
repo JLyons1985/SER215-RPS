@@ -175,6 +175,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         });
 
         chatMessages.setColumns(20);
+        chatMessages.setLineWrap(true);
         chatMessages.setRows(5);
         jScrollPane2.setViewportView(chatMessages);
 

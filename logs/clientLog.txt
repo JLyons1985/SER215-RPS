@@ -280,3 +280,19 @@ LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
 INFO: Connected to server.
 2016/02/22 09:43:01
 INFO: Server closing
+2016/02/23 22:11:29
+LOG: Client starting up.
+2016/02/23 22:11:29
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 22:11:29
+INFO: Connected to server.
+2016/02/23 22:25:02
+INFO: Closing socket connections.
+2016/02/23 22:25:08
+LOG: Client starting up.
+2016/02/23 22:25:08
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 22:25:08
+INFO: Connected to server.
+2016/02/23 22:33:11
+INFO: Closing socket connections.
