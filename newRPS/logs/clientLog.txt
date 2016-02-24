@@ -1,0 +1,418 @@
+2016/02/18 14:59:53
+LOG: Client starting up.
+2016/02/18 15:00:22
+LOG: Client starting up.
+2016/02/18 15:43:25
+LOG: Client starting up.
+2016/02/20 17:19:58
+LOG: Client starting up.
+2016/02/20 17:21:02
+LOG: Client starting up.
+2016/02/20 17:30:56
+LOG: Client starting up.
+2016/02/20 17:31:13
+LOG: Client starting up.
+2016/02/20 17:31:14
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:39:30
+LOG: Client starting up.
+2016/02/20 17:39:32
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:42:24
+LOG: Client starting up.
+2016/02/20 17:42:25
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:43:19
+LOG: Client starting up.
+2016/02/20 17:43:20
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:47:20
+LOG: Client starting up.
+2016/02/20 17:47:21
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:48:37
+LOG: Client starting up.
+2016/02/20 17:48:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:48:38
+TEST: "{\"messageType\":\"Test\",\"message\":\"Connected test good. Now add more functions\"}"
+2016/02/20 17:49:12
+LOG: Client starting up.
+2016/02/20 17:49:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:50:52
+LOG: Client starting up.
+2016/02/20 17:51:02
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:51:02
+TEST: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 17:51:03
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:51:03
+TEST: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 17:53:06
+LOG: Client starting up.
+2016/02/20 17:53:07
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:53:07
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 17:54:37
+LOG: Client starting up.
+2016/02/20 17:54:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 17:54:38
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:05:40
+LOG: Client starting up.
+2016/02/20 18:05:41
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:05:41
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:05:45
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:05:45
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:07:10
+LOG: Client starting up.
+2016/02/20 18:07:11
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:07:11
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:07:11
+TEST: Test
+2016/02/20 18:08:42
+LOG: Client starting up.
+2016/02/20 18:08:43
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:08:44
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:08:44
+TEST: Test
+2016/02/20 18:10:15
+LOG: Client starting up.
+2016/02/20 18:10:17
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 18:10:17
+TEST: Handling: {"messageType":"Test","message":"Connected test good. Now add more functions"}
+2016/02/20 18:10:17
+TEST: Test
+2016/02/20 18:10:17
+TEST: Connected test good. Now add more functions
+2016/02/20 23:10:39
+LOG: Client starting up.
+2016/02/20 23:10:39
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:22:10
+LOG: Client starting up.
+2016/02/20 23:22:10
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:22:11
+INFO: Connected to server.
+2016/02/20 23:56:37
+LOG: Client starting up.
+2016/02/20 23:56:37
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:56:37
+INFO: Connected to server.
+2016/02/20 23:56:50
+INFO: Closing socket connections.
+2016/02/20 23:59:56
+LOG: Client starting up.
+2016/02/20 23:59:56
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/20 23:59:56
+INFO: Connected to server.
+2016/02/20 23:59:59
+INFO: Closing socket connections.
+2016/02/21 00:01:13
+LOG: Client starting up.
+2016/02/21 00:01:13
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:01:13
+INFO: Connected to server.
+2016/02/21 00:01:16
+INFO: Closing socket connections.
+2016/02/21 00:08:05
+LOG: Client starting up.
+2016/02/21 00:08:05
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:08:06
+INFO: Connected to server.
+2016/02/21 00:08:07
+INFO: Closing socket connections.
+2016/02/21 00:09:04
+LOG: Client starting up.
+2016/02/21 00:09:04
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:09:04
+INFO: Connected to server.
+2016/02/21 00:09:06
+INFO: Closing socket connections.
+2016/02/21 00:09:35
+LOG: Client starting up.
+2016/02/21 00:09:36
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:09:36
+INFO: Connected to server.
+2016/02/21 00:09:41
+INFO: Closing socket connections.
+2016/02/21 00:10:31
+LOG: Client starting up.
+2016/02/21 00:10:32
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:10:42
+INFO: Closing socket connections.
+2016/02/21 00:10:43
+INFO: Closing socket connections.
+2016/02/21 00:10:44
+INFO: Closing socket connections.
+2016/02/21 00:12:47
+LOG: Client starting up.
+2016/02/21 00:12:48
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:13:53
+LOG: Client starting up.
+2016/02/21 00:13:54
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:15:38
+LOG: Client starting up.
+2016/02/21 00:15:39
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:16:12
+LOG: Client starting up.
+2016/02/21 00:16:13
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/21 00:16:22
+LOG: Client starting up.
+2016/02/21 00:16:22
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/21 00:16:22
+INFO: Connected to server.
+2016/02/21 00:16:24
+INFO: Closing socket connections.
+2016/02/22 08:58:47
+LOG: Client starting up.
+2016/02/22 08:58:48
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 08:58:48
+INFO: Connected to server.
+2016/02/22 09:00:01
+INFO: Closing socket connections.
+2016/02/22 09:03:05
+LOG: Client starting up.
+2016/02/22 09:03:05
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:03:05
+INFO: Connected to server.
+2016/02/22 09:03:38
+INFO: Closing socket connections.
+2016/02/22 09:04:38
+LOG: Client starting up.
+2016/02/22 09:04:38
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:04:38
+INFO: Connected to server.
+2016/02/22 09:04:56
+INFO: Closing socket connections.
+2016/02/22 09:05:56
+LOG: Client starting up.
+2016/02/22 09:05:57
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:05:57
+INFO: Connected to server.
+2016/02/22 09:06:13
+INFO: Closing socket connections.
+2016/02/22 09:06:22
+LOG: Client starting up.
+2016/02/22 09:06:23
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:06:23
+INFO: Connected to server.
+2016/02/22 09:06:43
+INFO: Closing socket connections.
+2016/02/22 09:08:08
+LOG: Client starting up.
+2016/02/22 09:08:08
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:08:08
+INFO: Connected to server.
+2016/02/22 09:08:12
+LOG: Client starting up.
+2016/02/22 09:08:13
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:08:13
+INFO: Connected to server.
+2016/02/22 09:08:46
+INFO: Closing socket connections.
+2016/02/22 09:08:48
+INFO: Closing socket connections.
+2016/02/22 09:26:45
+LOG: Client starting up.
+2016/02/22 09:26:46
+ERROR: java.net.ConnectException: Connection refused: connect
+2016/02/22 09:30:06
+LOG: Client starting up.
+2016/02/22 09:30:07
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:30:07
+INFO: Connected to server.
+2016/02/22 09:30:13
+INFO: Password is incorrect.
+2016/02/22 09:30:22
+INFO: Server closing
+2016/02/22 09:30:31
+INFO: Closing socket connections.
+2016/02/22 09:41:13
+LOG: Client starting up.
+2016/02/22 09:41:13
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:41:13
+INFO: Connected to server.
+2016/02/22 09:41:22
+INFO: Server closing
+2016/02/22 09:41:25
+INFO: Closing socket connections.
+2016/02/22 09:42:56
+LOG: Client starting up.
+2016/02/22 09:42:56
+LOG: Connect to MasterServer at IP: 127.0.0.1 on PORT: 9000
+2016/02/22 09:42:56
+INFO: Connected to server.
+2016/02/22 09:43:01
+INFO: Server closing
+2016/02/23 13:23:12
+LOG: Client starting up.
+2016/02/23 13:23:12
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 13:23:12
+INFO: Connected to server.
+2016/02/23 13:23:59
+INFO: Closing socket connections.
+2016/02/23 13:25:36
+LOG: Client starting up.
+2016/02/23 13:25:37
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 13:25:37
+INFO: Connected to server.
+2016/02/23 13:45:23
+INFO: Closing socket connections.
+2016/02/23 13:48:19
+LOG: Client starting up.
+2016/02/23 13:48:20
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 13:48:20
+INFO: Connected to server.
+2016/02/23 13:48:59
+INFO: Closing socket connections.
+2016/02/23 13:49:50
+LOG: Client starting up.
+2016/02/23 13:49:51
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 13:49:51
+INFO: Connected to server.
+2016/02/23 13:50:08
+INFO: Closing socket connections.
+2016/02/23 13:54:53
+LOG: Client starting up.
+2016/02/23 13:54:54
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 13:54:54
+INFO: Connected to server.
+2016/02/23 13:55:17
+INFO: Closing socket connections.
+2016/02/23 14:52:26
+LOG: Client starting up.
+2016/02/23 14:52:27
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 14:52:27
+INFO: Connected to server.
+2016/02/23 14:52:54
+INFO: Closing socket connections.
+2016/02/23 14:56:21
+LOG: Client starting up.
+2016/02/23 14:56:21
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 14:56:22
+INFO: Connected to server.
+2016/02/23 14:56:24
+INFO: Closing socket connections.
+2016/02/23 14:59:31
+LOG: Client starting up.
+2016/02/23 14:59:31
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 14:59:31
+INFO: Connected to server.
+2016/02/23 14:59:40
+INFO: Closing socket connections.
+2016/02/23 15:00:59
+LOG: Client starting up.
+2016/02/23 15:00:59
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 15:00:59
+INFO: Connected to server.
+2016/02/23 15:01:09
+INFO: Closing socket connections.
+2016/02/23 15:09:06
+LOG: Client starting up.
+2016/02/23 15:09:07
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 15:09:07
+INFO: Connected to server.
+2016/02/23 15:09:31
+INFO: Closing socket connections.
+2016/02/23 20:03:55
+LOG: Client starting up.
+2016/02/23 20:03:56
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:03:56
+INFO: Connected to server.
+2016/02/23 20:04:11
+INFO: Closing socket connections.
+2016/02/23 20:15:22
+LOG: Client starting up.
+2016/02/23 20:15:23
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:15:23
+INFO: Connected to server.
+2016/02/23 20:15:55
+INFO: Closing socket connections.
+2016/02/23 20:16:15
+LOG: Client starting up.
+2016/02/23 20:16:15
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:16:15
+INFO: Connected to server.
+2016/02/23 20:16:35
+INFO: Closing socket connections.
+2016/02/23 20:17:21
+LOG: Client starting up.
+2016/02/23 20:17:21
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:17:21
+INFO: Connected to server.
+2016/02/23 20:17:26
+INFO: Closing socket connections.
+2016/02/23 20:26:41
+LOG: Client starting up.
+2016/02/23 20:26:42
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:26:42
+INFO: Connected to server.
+2016/02/23 20:26:47
+INFO: Closing socket connections.
+2016/02/23 20:31:30
+LOG: Client starting up.
+2016/02/23 20:31:30
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:31:30
+INFO: Connected to server.
+2016/02/23 20:31:40
+INFO: Closing socket connections.
+2016/02/23 20:32:19
+LOG: Client starting up.
+2016/02/23 20:32:20
+LOG: Connect to MasterServer at IP: 52.5.11.136 on PORT: 9000
+2016/02/23 20:32:20
+INFO: Connected to server.
+2016/02/23 20:32:51
+INFO: Closing socket connections.
