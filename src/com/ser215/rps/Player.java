@@ -21,6 +21,8 @@ public class Player {
         private boolean[] rpsUses = new boolean[3];                     // Holds the array for if the player used any options
         private boolean canMakeAThrow = true;                           // Can the playe make a throw or have they already gone.
 	
+        
+        
 	// Constructors
 	public Player() {
 		this.playerId = "";
