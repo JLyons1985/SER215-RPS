@@ -31,8 +31,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private boolean isPlayingSinglePlayer;                                              // Is the player playing the computer?
     private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     public static RPSLog log;								// Reference to the lRPSLog class for printing to log files
-    private Thread clientThread;                                                        // Reference to the client thread
-    private Socket socket;                                                       // Reference to the client socket
+    private Socket socket;                                                              // Reference to the client socket
     private static DataOutputStream toServer;						// Output stream to master server or game server
     private static DataInputStream fromServer;						// Input from either the game server or master server
     private boolean connectedToMasterServer = false, connectedToGameServer = false;     // Are we connected to the master server

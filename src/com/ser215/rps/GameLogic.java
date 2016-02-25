@@ -77,7 +77,7 @@ public class GameLogic {
                 this.numOfPlayers +=1;
             }
             else {      // Find out which slot is open
-                if (this.playerOne == null){
+                if (this.playerOne.getPlayerId().equals("")){
                     // No player one add here
                     setPlayerSlot(1, player);
                     this.numOfPlayers += 1;
