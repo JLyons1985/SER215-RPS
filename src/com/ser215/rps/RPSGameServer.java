@@ -252,6 +252,11 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                         
                         gameLogic.newRound();
                         
+                        // set game has started
+                        gameLogic.setGameHasStarted(true);
+                        
+                        //System.out.println(gameLogic.getHasGameStarted());
+                        
                         // send game logic data to players
                         sendGameLogicToPlayers();
                     }
@@ -259,6 +264,11 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                         
                         // Tell players waiting for another
                         broadcastMessage("Info", "Waiting on another player...");
+                        
+                        // set game has started
+                        gameLogic.setGameHasStarted(false);
+                        
+                        //System.out.println(gameLogic.getHasGameStarted());
                         
                         sendGameLogicToPlayers();
                     }

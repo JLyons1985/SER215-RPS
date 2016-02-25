@@ -16,6 +16,7 @@ public class GameLogic {
         private Player playerOne = null, playerTwo = null;              // Reference to the players
         private int round = 0, turn = 0;                                // Rounds and turns
         private RPSClientApplication mainApp;                           // Holds reference to main app
+        private boolean gameHasStarted;
 	
         //new
         static  int  playerTies = 0,CPUTies = 0;
@@ -36,6 +37,7 @@ public class GameLogic {
             
             this.playerOne = new Player();
             this.playerTwo = new Player();
+            this.isSinglePlayer = isSinglePlayer;
             
 	}
         
@@ -156,18 +158,21 @@ public class GameLogic {
             return new Player();
         }
         
-        public void setGameLogicFromJson(JSONObject json){
+        public static GameLogic setGameLogicFromJson(JSONObject json){
             Gson gson = new Gson();
+            GameLogic tmpLogic = new GameLogic(Boolean.getBoolean(json.get("isSinglePlayer").toString()));
             
             // Now go through the task of creating the json
-            this.isSinglePlayer = Boolean.getBoolean(json.get("isSinglePlayer").toString());
-            this.numOfMaxPlayers = Integer.parseInt(json.get("numOfMaxPlayers").toString());
-            this.numOfPlayers = Integer.parseInt(json.get("numOfPlayers").toString());
-            this.playerOne.setPlayerDataFromJson(new JSONObject(gson.fromJson(json.get("playerOne").toString(), JSONObject.class)));
-            this.playerTwo.setPlayerDataFromJson(new JSONObject(gson.fromJson(json.get("playerTwo").toString(), JSONObject.class)));
-            this.round = Integer.parseInt(json.get("round").toString());
-            this.turn = Integer.parseInt(json.get("turn").toString());
-            
+            tmpLogic.isSinglePlayer = Boolean.parseBoolean(json.get("isSinglePlayer").toString());
+            tmpLogic.numOfMaxPlayers = Integer.parseInt(json.get("numOfMaxPlayers").toString());
+            tmpLogic.numOfPlayers = Integer.parseInt(json.get("numOfPlayers").toString());
+            tmpLogic.playerOne.setPlayerDataFromJson(new JSONObject(gson.fromJson(json.get("playerOne").toString(), JSONObject.class)));
+            tmpLogic.playerTwo.setPlayerDataFromJson(new JSONObject(gson.fromJson(json.get("playerTwo").toString(), JSONObject.class)));
+            tmpLogic.round = Integer.parseInt(json.get("round").toString());
+            tmpLogic.turn = Integer.parseInt(json.get("turn").toString());
+            tmpLogic.gameHasStarted = Boolean.parseBoolean(json.get("gameHasStarted").toString());
+
+            return tmpLogic;
         }
         
         public void setCurrentPlayers(int currentPlayers){
@@ -208,10 +213,22 @@ public class GameLogic {
             json.put("playerTwo", playerTwo.getPlayerDataAsJson());
             json.put("round", String.valueOf(this.round));
             json.put("turn", String.valueOf(this.turn));
+            json.put("gameHasStarted", String.valueOf(this.gameHasStarted));
             
             // Return json
             return json.toJSONString();
         }
+        
+        // Get if the game has started
+        public boolean getHasGameStarted(){
+            return this.gameHasStarted;
+        }
+        
+        // Set game has started
+        public void setGameHasStarted(boolean started){
+            this.gameHasStarted = started;
+        }
+        
 	
         
      
