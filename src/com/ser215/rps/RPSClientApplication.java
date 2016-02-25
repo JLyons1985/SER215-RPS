@@ -595,6 +595,26 @@ public class RPSClientApplication extends javax.swing.JFrame {
     // Player clicked on the rock button
     private void playerRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerRockActionPerformed
        makeAThrow(0);
+       
+       this.gameLogic = new GameLogic(true);
+       this.gameLogic.rockButtonPushed(this.gameLogic.ComputerMakeAThrow());
+       
+      String getTiesThisGame = Integer.toString( this.player.getTiesThisGame());
+      playerTotalTies.setText(getTiesThisGame);
+      oponnentTotalTies.setText(getTiesThisGame);
+      
+      
+      String getLossesThisGame = Integer.toString( this.player.getLossesThisGame());
+      playerTotalLosses.setText(getLossesThisGame)
+    
+     
+      
+      
+      ;
+     
+     
+      
+      
     }//GEN-LAST:event_playerRockActionPerformed
 
     // Player clicked on the paper buttn
