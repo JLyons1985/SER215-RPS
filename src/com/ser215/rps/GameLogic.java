@@ -5,6 +5,7 @@ package com.ser215.rps;
 // Imports
 import org.json.simple.JSONObject;
 import com.google.gson.Gson;
+import java.util.Random;
 
 public class GameLogic {
 
@@ -16,6 +17,11 @@ public class GameLogic {
         private int round = 0, turn = 0;                                // Rounds and turns
         private RPSClientApplication mainApp;                           // Holds reference to main app
 	
+        //new
+        static  int  playerTies = 0,CPUTies = 0;
+        static   int  playerWins = 0,CPUWins = 0;
+        static int  playerlosses = 0,CPULosses = 0;
+        
 	// Constructors
 	public GameLogic(boolean isSinglePlayer) {
             
@@ -207,4 +213,55 @@ public class GameLogic {
             return json.toJSONString();
         }
 	
+        
+     
+     public char ComputerMakeAThrow(){
+   
+       char CPU = 0;
+       Random ran = new Random();
+       
+       int random = ran.nextInt(3);
+       
+       if(random == 0){CPU = 'R';}
+       if(random == 1){CPU = 'P';}
+       if(random == 2){CPU = 'S';}
+   
+   return CPU;
+   } 
+    
+     public void rockButtonPushed(char CPU){
+        
+        
+    if(CPU == 'R')
+    {
+       
+      playerTies++;CPUTies++;
+     this.  playerOne.setTiesThisGame(playerTies);
+      this. playerTwo.setTiesThisGame(CPUTies);
+     
+    }
+     
+    if(CPU == 'P')
+    {
+        CPUWins++;
+        playerlosses++;
+       this. playerOne.setWinsThisGame(playerlosses);
+       this. playerTwo.setLossesThisGame(CPUWins);
+        
+        
+         
+    }
+    if(CPU == 'S')
+    {
+         playerWins++;
+         CPULosses++;
+       this.  playerOne.setWinsThisGame(playerWins);
+      this.   playerTwo.setLossesThisGame(CPULosses);
+    
+    }
+         
+   
+     
+     
+     }
 }
