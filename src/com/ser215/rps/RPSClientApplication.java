@@ -1,5 +1,5 @@
 /*
- * This is the main application class for the rock paper scissors game. Test
+ * This is the main application class for the rock paper scissors game. Test ME
  */
 package com.ser215.rps;
 
