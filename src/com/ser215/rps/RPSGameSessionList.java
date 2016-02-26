@@ -1,28 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***********************************************************************
+ * App Name: Rock, Paper, Scissors
+ * Class Name: RPSGameSessionList
+ * Class Description: Form used to display game sessions.
+ * Author(s): Joshua Lyons
+ **********************************************************************/
+
 package com.ser215.rps;
 
-import java.io.IOException;
-import java.net.Socket;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.*;
 
-/**
- *
- * @author jlyon
- */
+// Main class
 public class RPSGameSessionList extends javax.swing.JDialog {
-
-    /**
-     * Creates new form RPSGameSessionList
-     */
     
-    private RPSClientApplication rpsMain;
+    // Variables
+    private RPSClientApplication rpsMain;               // Holds the main form reference
     
+    // Constructor
     public RPSGameSessionList(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -131,6 +125,7 @@ public class RPSGameSessionList extends javax.swing.JDialog {
         // now close the window
         this.dispose();
     } 
+    
     /**
      * @param args the command line arguments
      */

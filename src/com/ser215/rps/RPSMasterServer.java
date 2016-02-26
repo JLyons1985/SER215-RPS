@@ -1,6 +1,11 @@
-package com.ser215.rps;
+/***********************************************************************
+ * App Name: Rock, Paper, Scissors
+ * Class Name: RPSMasterserver
+ * Class Description: Master server used for networking. 
+ * Author(s): Joshua Lyons
+ **********************************************************************/
 
-// Shell for master server. This will hold all master server Methods
+package com.ser215.rps;
 
 //Imports
 import java.io.*;
@@ -11,13 +16,13 @@ import com.google.gson.Gson;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+// Main class
 public class RPSMasterServer extends RPSNetworkingParent {
 	
     // Class Variables
     private ServerSocket serverSocket;					// Holds the server socket for the master server
     private boolean masterServerRunning = true;                         // Holds a reference to if the master server is running.
     private final int PORTSTART = 9001, PORTEND = 9999;                 // Star and end ports to search for availability
-    
     private ArrayList gameServers;                                      // Holds all the game servers that are active
 
     // Class constructor
@@ -111,13 +116,21 @@ public class RPSMasterServer extends RPSNetworkingParent {
         
         // Variables
         JSONObject json = new JSONObject();
-        
-        json.put("numOfGames", String.valueOf(gameServers.size()));
-        
+        int numOfGames = 0;
+        int z = 0;
+               
         // Now loop through adding each
         for (int i = 0; i < gameServers.size(); i++){
-            json.put("server" + i, ((RPSGameServer)gameServers.get(i)).getGameSessionId());
+            // Check if they are full or not
+           if (((RPSGameServer)gameServers.get(i)).getGameLogic().getMaxPlayers() != ((RPSGameServer)gameServers.get(i)).getGameLogic().getCurrentPlayers()) {
+               // Server is not full
+               json.put("server" + z, ((RPSGameServer)gameServers.get(i)).getGameSessionId());
+               z += 1;
+               numOfGames += 1;
+           }
         }
+        
+        json.put("numOfGames", String.valueOf(numOfGames));
         
         return json;
     }
@@ -160,9 +173,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
             
             // First loop through all game sessions and tell them to shut down
             for (int i = 0; i < gameServers.size(); i++) {
-                
                 ((RPSGameServer) gameServers.get(i)).shutdown();
-
             }
             
             // Clear out game servers
@@ -181,8 +192,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
     public void removeGameSession(RPSGameServer rpsGameServer){
         gameServers.remove(rpsGameServer);
     }
-               
-        
+                
     // Inner class for HandleAClient
     class HandleAClient implements Runnable {
             
@@ -243,69 +253,64 @@ public class RPSMasterServer extends RPSNetworkingParent {
         public void handleDataFromClient(JSONObject json) {
                 
             // Determine how to handle the message
-            if (json.get("messageType").toString().equals("Test"))                  // Test Message
-                log.printToLog("TEST", json.get("message").toString());
-                
-            else if (json.get("messageType").toString().equals("Action")) {         // Action Performed from client
+            switch (json.get("messageType").toString()) {
+                case "Test":
+                    log.printToLog("TEST", json.get("message").toString());
+                    break;
                     
-                if (json.get("message").toString().equals("ClosingConnection")) {   // Client Closing Connection
-                    try {
+                case "Action":
+                    switch (json.get("message").toString()){
+                        case "ClosingConnection":
+                            try {
                             
-                        //Remove this socket from socket list first find it
-                        sockets.remove(socket);
-                        this.socket.close();
-                        this.inputFromClient.close();
-                                                        
-                        clientConnected = false;
-                        // Log the disconnect
-                        log.printToLog("INFO", "Client disconnected.");
-                    }
-                    catch(IOException e) {
-                        log.printToLog("ERROR", e.toString());
-                    }
-                }
-                    
-                else if (json.get("message").toString().equals("Shutdown")) {   // Client says to shut down server
-                    // First can we trust the client
-                    if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
-                        shutdown();
-                    }
-                    else {
-                        // Send password wrong
-                        sendMessageToClient("Info", "Password is incorrect.", this.socket);
-                    }
-                }
-                
-                else if (json.get("message").toString().equals("CreateGameServer")) {   // Client says create a new game server
-                    log.printToLog("INFO", "Received create game session: " + json.toJSONString());
-                    if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
-                        // Send the client the game port that a new game session is created on
-                        sendMessageToClient("GameSessionCreated", startNewGameServer(), this.socket);
-                    }
-                    else {
-                        // Send password wrong
-                        sendMessageToClient("Info", "Password is incorrect.", this.socket);
-                    }
-                }
-                
-                else if (json.get("message").toString().equals("RequestGames")) {   // Send the list of games to client
-                    
-                    // Send the list of games to the player
-                    sendMessageToClient("Action", "RequestedGames", createGameServersList().toJSONString(), this.socket);
-                    
-                }
-            }
-                
-            else if (json.get("messageType").toString().equals("ChatMessage"))    // Chat message retrieved broadcast to all
-                broadcastMessage("ChatMessage", json.get("message").toString());
-                    
-                
-                
-        }
-        
-    }
-	
-        
-	
+                                //Remove this socket from socket list first find it
+                                sockets.remove(socket);
+                                this.socket.close();
+                                this.inputFromClient.close();
 
+                                clientConnected = false;
+                                // Log the disconnect
+                                log.printToLog("INFO", "Client disconnected.");
+                            }
+                            catch(IOException e) {
+                                log.printToLog("ERROR", e.toString());
+                            }
+                            break;
+                            
+                        case "Shutdown":
+                            // First can we trust the client
+                            if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
+                                shutdown();
+                            }
+                            else {
+                                // Send password wrong
+                                sendMessageToClient("Info", "Password is incorrect.", this.socket);
+                            }
+                            break;
+                            
+                        case "CreateGameServer":
+                            log.printToLog("INFO", "Received create game session: " + json.toJSONString());
+                            if (json.get("password").toString().equals(masterServerPassword)){ // We trust them
+                                // Send the client the game port that a new game session is created on
+                                sendMessageToClient("GameSessionCreated", startNewGameServer(), this.socket);
+                            }
+                            else {
+                                // Send password wrong
+                                sendMessageToClient("Info", "Password is incorrect.", this.socket);
+                            }
+                            break;
+                            
+                        case "RequestGames":
+                            // Send the list of games to the player
+                            sendMessageToClient("Action", "RequestedGames", createGameServersList().toJSONString(), this.socket);
+                            break;
+                    }
+                    break;
+                    
+                case "ChatMessage":
+                    broadcastMessage("ChatMessage", json.get("message").toString());
+                    break;
+            }   
+        }
+    }
 }
