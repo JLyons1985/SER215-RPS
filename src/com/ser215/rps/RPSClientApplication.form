@@ -39,11 +39,11 @@
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="opponentRock" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="oponnentRock" min="-2" pref="157" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="opponentPaper" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="oponnentPaper" min="-2" pref="157" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="opponentScissors" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="oponnentScissors" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="playerRock" min="-2" pref="157" max="-2" attributes="0"/>
@@ -52,7 +52,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="playerScissors" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="messageScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="chatInput" min="-2" pref="430" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -143,12 +143,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="opponentPaper" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="opponentScissors" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="opponentRock" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="oponnentPaper" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="oponnentScissors" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="oponnentRock" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="117" max="-2" attributes="0"/>
+                              <Component id="messageScrollPane" min="-2" pref="117" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="chatInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -224,7 +224,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="opponentScissors">
+    <Component class="javax.swing.JButton" name="oponnentScissors">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/com/ser215/rps/s.png"/>
@@ -237,11 +237,12 @@
             <BevelBorder/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="opponentRock">
+    <Component class="javax.swing.JButton" name="oponnentRock">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/com/ser215/rps/r.png"/>
@@ -254,11 +255,12 @@
             <BevelBorder/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="opponentPaper">
+    <Component class="javax.swing.JButton" name="oponnentPaper">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/com/ser215/rps/p.png"/>
@@ -271,6 +273,7 @@
             <BevelBorder/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -288,6 +291,7 @@
             <BevelBorder/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -308,6 +312,7 @@
             <BevelBorder/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -328,6 +333,7 @@
             <BevelBorder/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -335,7 +341,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playerScissorsActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+    <Container class="javax.swing.JScrollPane" name="messageScrollPane">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>

@@ -112,6 +112,7 @@ public class Player {
             this.setWinsThisGame(Integer.parseInt(json.get("winsThisGame").toString()));
             this.setTiesThisGame(Integer.parseInt(json.get("tiesThisGame").toString()));
             this.setLossesThisGame(Integer.parseInt(json.get("lossesThisGame").toString()));
+            this.setCanMakeAThrow(Boolean.parseBoolean(json.get("canMakeAThrow").toString()));
             
             for (int i = 0; i < 3; i++){
                 this.setRPSUses(i, Boolean.getBoolean(json.get("rpsUses" + i).toString()));
@@ -178,7 +179,7 @@ public class Player {
             json.put("winsThisGame", String.valueOf(this.getWinsThisGame()));
             json.put("tiesThisGame", String.valueOf(this.getTiesThisGame()));
             json.put("lossesThisGame", String.valueOf(this.getLossesThisGame()));
-            json.put("canMakeThrow", String.valueOf(this.getCanMakeAThrow()));
+            json.put("canMakeAThrow", String.valueOf(this.getCanMakeAThrow()));
             
             for (int i = 0; i < 3; i++){
                 json.put("rpsUses" + i, String.valueOf(this.getRPSUses(i)));

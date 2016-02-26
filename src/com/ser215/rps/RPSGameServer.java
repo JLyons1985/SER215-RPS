@@ -38,7 +38,7 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
         this.gameSessionId = gameId;
         
         // Create the gameLogic object
-        this.gameLogic = new GameLogic(false);
+        this.gameLogic = new GameLogic(false, this);
             
         // Create initial sockets list
         this.sockets = new ArrayList(0);
@@ -106,6 +106,12 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
         broadcastMessage("UpdateGameLogic", gameLogic.getGameLogicAsJson());
     }
     
+    // Get the log
+    public RPSLog getGameLog(){
+        return this.log;
+    }
+    
+    // Get the session id
     public String getGameSessionId() {
         return this.gameSessionId;
     }
@@ -184,6 +190,22 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                 case "Action":
                     switch (json.get("message").toString()) {   
                         
+                        case "PlayerMadeAThrow":
+                            // First check that the player is allowed to make that throw
+                            if (gameLogic.canPlayerMakeThrow(json.get("playerId").toString(), Integer.parseInt(json.get("throwType").toString()))){
+                                // Player can make throw
+                                log.printToLog("Info", json.get("playerId").toString() + " can make the throw of " + json.get("throwType").toString());
+                                
+                                gameLogic.playerMadeAThrow(json.get("playerId").toString(), Integer.parseInt(json.get("throwType").toString()));
+                                // Send game logic
+                                sendGameLogicToPlayers();
+                            }
+                            else { // Player cant make throw
+                                log.printToLog("Info", json.get("playerId").toString() + " can NOT make the throw of " + json.get("throwType").toString());
+                                sendMessageToClient("Info", "You can't make that throw try again.", this.socket);
+                            }
+                            break;
+                        
                         case "ClosingConnection":
                             try {
                             
@@ -196,7 +218,18 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                                 // Log the disconnect
                                 log.printToLog("INFO", "Client disconnected.");
                                 
-                                gameLogic.setCurrentPlayers(gameLogic.getCurrentPlayers() - 1);
+                                
+                                if (players[0].getPlayerId().equals(json.get("playerId").toString())){ 
+                                    players[0] = new Player();
+                                    gameLogic.removePlayerFromGame(json.get("playerId").toString());
+                                }
+                                else if (players[1].getPlayerId().equals(json.get("playerId").toString())){
+                                    players[1] = new Player();
+                                    gameLogic.removePlayerFromGame(json.get("playerId").toString());
+                                }
+                                else {
+                                    log.printToLog("ERROR", "No one by the player id.");
+                                }
                                 
                                 if (gameLogic.getCurrentPlayers() <= 0) {
                                     // Shut down
@@ -252,6 +285,11 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                         
                         gameLogic.newRound();
                         
+                        // set game has started
+                        gameLogic.setGameHasStarted(true);
+                        
+                        //System.out.println(gameLogic.getHasGameStarted());
+                        
                         // send game logic data to players
                         sendGameLogicToPlayers();
                     }
@@ -259,6 +297,11 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                         
                         // Tell players waiting for another
                         broadcastMessage("Info", "Waiting on another player...");
+                        
+                        // set game has started
+                        gameLogic.setGameHasStarted(false);
+                        
+                        //System.out.println(gameLogic.getHasGameStarted());
                         
                         sendGameLogicToPlayers();
                     }
