@@ -140,6 +140,11 @@ public class GameLogic {
                 setPlayerSlot(2, player);
                 this.numOfPlayers += 1;
             }
+            
+            // Clear the rounds, messages and turns
+            this.round = 0;
+            this.turn = 0;
+            this.gameMessage = "";
         }
     }
 

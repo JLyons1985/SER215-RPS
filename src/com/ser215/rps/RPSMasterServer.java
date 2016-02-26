@@ -111,7 +111,7 @@ public class RPSMasterServer extends RPSNetworkingParent {
 	return tmpGameId;			
     }
     
-    
+    // Create the game server list
     public JSONObject createGameServersList() {
         
         // Variables

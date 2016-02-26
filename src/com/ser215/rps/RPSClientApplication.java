@@ -903,7 +903,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         }
         
         // Now send that array to the game sessions list
-        log.printToLog("INFO", tmpArray.toString());
+        //log.printToLog("INFO", tmpArray.toString());
         gsList.refreshList(tmpArray);
         
     }
