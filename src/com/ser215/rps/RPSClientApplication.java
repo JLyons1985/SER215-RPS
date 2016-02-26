@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultCaret;
 
 /**
  *
@@ -55,6 +56,10 @@ public class RPSClientApplication extends javax.swing.JFrame {
         
         initComponents();
         
+        // Make it so the text area auto scrolls
+        DefaultCaret caret = (DefaultCaret)chatMessages.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        
         // Load player previous data from file
         loadPlayerDataFromFile();
         loadPlayerDataToGui();
@@ -78,7 +83,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerRock = new javax.swing.JButton();
         playerPaper = new javax.swing.JButton();
         playerScissors = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        messageScrollPane = new javax.swing.JScrollPane();
         chatMessages = new javax.swing.JTextArea();
         chatInput = new javax.swing.JTextField();
         chatSend = new javax.swing.JButton();
@@ -187,7 +192,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         chatMessages.setColumns(20);
         chatMessages.setLineWrap(true);
         chatMessages.setRows(5);
-        jScrollPane2.setViewportView(chatMessages);
+        messageScrollPane.setViewportView(chatMessages);
 
         chatInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,7 +320,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
                                 .addComponent(playerPaper, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(playerScissors, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2)
+                            .addComponent(messageScrollPane)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -390,7 +395,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
                                     .addComponent(oponnentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(oponnentRock, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(27, 27, 27)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(messageScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1102,7 +1107,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane messageScrollPane;
     private javax.swing.JButton oponnentPaper;
     private javax.swing.JButton oponnentRock;
     private javax.swing.JButton oponnentScissors;

@@ -239,17 +239,17 @@ public class GameLogic {
                     if ((this.playerOne.getWinsThisGame() - this.playerTwo.getWinsThisGame()) > 0){ // Player 1 has more wins
                         this.playerOne.setWinsTotal(this.playerOne.getWinsTotal() + 1);
                         this.playerTwo.setLossesTotal(this.playerTwo.getLossesTotal() + 1);
-                        this.gameMessage = this.getMessage() + this.playerOne.getPlayerUsername() + " wins this round. Starting new round....";
+                        this.gameMessage = this.getMessage() + "\n" + "[SYSTEM] " +  this.playerOne.getPlayerUsername() + " wins this round. Starting new round....";
                     }
                     else if ((this.playerOne.getWinsThisGame() - this.playerTwo.getWinsThisGame()) < 0){ // Player 2 has more wins
                         this.playerTwo.setWinsTotal(this.playerTwo.getWinsTotal() + 1);
                         this.playerOne.setLossesTotal(this.playerOne.getLossesTotal() + 1);
-                        this.gameMessage = this.getMessage() + this.playerTwo.getPlayerUsername() + " wins this round. Starting new round....";
+                        this.gameMessage = this.getMessage() + "\n" + "[SYSTEM] " + this.playerTwo.getPlayerUsername() + " wins this round. Starting new round....";
                     }
                     else { // Same amount so tie
                         this.playerTwo.setTiesTotal(this.playerTwo.getTiesTotal() + 1);
                         this.playerOne.setTiesTotal(this.playerOne.getTiesTotal() + 1);
-                        this.gameMessage = this.getMessage() + "The round was a tie. Starting new round....";
+                        this.gameMessage = this.getMessage() + "\n" + "[SYSTEM] " +  "The round was a tie. Starting new round....";
                     }
                     this.newRound();
                 }

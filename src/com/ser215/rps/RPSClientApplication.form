@@ -52,7 +52,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="playerScissors" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="messageScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="chatInput" min="-2" pref="430" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -148,7 +148,7 @@
                                   <Component id="oponnentRock" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="117" max="-2" attributes="0"/>
+                              <Component id="messageScrollPane" min="-2" pref="117" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="chatInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -341,7 +341,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playerScissorsActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+    <Container class="javax.swing.JScrollPane" name="messageScrollPane">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
