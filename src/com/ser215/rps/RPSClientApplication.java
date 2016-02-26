@@ -25,8 +25,8 @@ import javax.swing.text.DefaultCaret;
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private final String masterServerIp = "localhost";                   // Holds the ip address to the master address, localhost for same computer
-    private final String gameServerIp = "localhost";                     // When a game server ip is passed it goes here					
+    private final String masterServerIp = "www.lyonsdensoftware.com";                   // Holds the ip address to the master address, localhost for same computer
+    private final String gameServerIp = "www.lyonsdensoftware.com";                     // When a game server ip is passed it goes here					
     private final int masterServerPort = 9000;                                          // port  to the master server
     private Player player;                                                              // Holds a reference to the player data for this client
     private boolean isPlayingSinglePlayer = false;                                      // Is the player playing the computer?
