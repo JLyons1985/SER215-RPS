@@ -1,6 +1,10 @@
-/*
- * This is the main application class for the rock paper scissors game.
- */
+/***********************************************************************
+ * App Name: Rock, Paper, Scissors
+ * Class Name: RPSMainpplication
+ * Class Description: Main form of the application. Holds the main gui and interaction.
+ * Author(s): Joshua Lyons, Nergal Givarkes
+ **********************************************************************/
+
 package com.ser215.rps;
 
 // Imports
@@ -17,20 +21,16 @@ import java.nio.file.Path;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultCaret;
 
-/**
- *
- * @author Josh Lyons, Nergal Givarkes
- */
+// Main class
 public class RPSClientApplication extends javax.swing.JFrame {
     
     // Class Variables
-    private final String masterServerIp = "www.lyonsdensoftware.com";                                  // Holds the ip address to the master address, localhost for same computer
-    private final String gameServerIp = "www.lyonsdensoftware.com";                                    // When a game server ip is passed it goes here					
+    private final String masterServerIp = "www.lyonsdensoftware.com";                   // Holds the ip address to the master address, localhost for same computer
+    private final String gameServerIp = "www.lyonsdensoftware.com";                     // When a game server ip is passed it goes here					
     private final int masterServerPort = 9000;                                          // port  to the master server
-    private int gameServerPort = 0;							// When a game server port is passed it goes here
     private Player player;                                                              // Holds a reference to the player data for this client
     private boolean isPlayingSinglePlayer = false;                                      // Is the player playing the computer?
-    private static GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
+    private GameLogic gameLogic;							// Holds a reference to the game logic, only used during single player
     public static RPSLog log;								// Reference to the lRPSLog class for printing to log files
     private Socket socket;                                                              // Reference to the client socket
     private static DataOutputStream toServer;						// Output stream to master server or game server
@@ -54,18 +54,19 @@ public class RPSClientApplication extends javax.swing.JFrame {
         // Setup game logic
         this.gameLogic = new GameLogic(false);
         
-        initComponents();
+        // Initiates the components
+        this.initComponents();
         
         // Make it so the text area auto scrolls
         DefaultCaret caret = (DefaultCaret)chatMessages.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         
         // Load player previous data from file
-        loadPlayerDataFromFile();
-        loadPlayerDataToGui();
+        this.loadPlayerDataFromFile();
+        this.loadPlayerDataToGui();
        
         // Automatically connect to master servers
-        connectToMasterServer();
+        this.connectToMasterServer();
     }
 
     /**
@@ -124,7 +125,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         oponnentScissors.setText("Scissors");
         oponnentScissors.setToolTipText("");
         oponnentScissors.setActionCommand("opponentScissors");
-        oponnentScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        oponnentScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         oponnentScissors.setEnabled(false);
         oponnentScissors.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         oponnentScissors.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -133,7 +134,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         oponnentRock.setText("Rock");
         oponnentRock.setToolTipText("");
         oponnentRock.setActionCommand("opponentRock");
-        oponnentRock.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        oponnentRock.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         oponnentRock.setEnabled(false);
         oponnentRock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         oponnentRock.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -142,7 +143,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         oponnentPaper.setText("Paper");
         oponnentPaper.setToolTipText("");
         oponnentPaper.setActionCommand("opponentPaper");
-        oponnentPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        oponnentPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         oponnentPaper.setEnabled(false);
         oponnentPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         oponnentPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -151,7 +152,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerRock.setText("Rock");
         playerRock.setToolTipText("");
         playerRock.setActionCommand("playerRock");
-        playerRock.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        playerRock.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         playerRock.setEnabled(false);
         playerRock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerRock.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -165,7 +166,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerPaper.setText("Paper");
         playerPaper.setToolTipText("");
         playerPaper.setActionCommand("playerPaper");
-        playerPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        playerPaper.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         playerPaper.setEnabled(false);
         playerPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -179,7 +180,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         playerScissors.setText("Scissors");
         playerScissors.setToolTipText("");
         playerScissors.setActionCommand("playerScissors");
-        playerScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        playerScissors.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         playerScissors.setEnabled(false);
         playerScissors.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         playerScissors.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -299,9 +300,9 @@ public class RPSClientApplication extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(shutDownServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(showGameSessions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -326,7 +327,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(chatSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
+                        .addGap(207, 207, 207)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(round, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,57 +379,58 @@ public class RPSClientApplication extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oponnentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(oponnentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(oponnentRock, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(27, 27, 27)
+                        .addComponent(messageScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chatSend)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(oponnentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(oponnentTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(oponnentTotalTies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addGap(4, 4, 4)
+                        .addComponent(oponnentTotalLosses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(startSinglePlayerGame, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(showGameSessions, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shutDownServer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(turn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(playerScissors))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(round, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 24, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(oponnentPaper, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(oponnentScissors, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(oponnentRock, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(27, 27, 27)
-                                .addComponent(messageScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(chatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chatSend)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oponnentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oponnentTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oponnentTotalTies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addGap(4, 4, 4)
-                                .addComponent(oponnentTotalLosses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel9)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(playerPaper)
+                            .addComponent(playerRock)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(turn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addComponent(playerScissors))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(playerTotalWins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -445,13 +447,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(playerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(round, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(playerPaper)
-                                    .addComponent(playerRock))))))
+                                .addComponent(startSinglePlayerGame, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(showGameSessions, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(shutDownServer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -564,6 +564,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
             
             // Disable buttons
             enablePlayerButtons(true, false);
+            enablePlayerButtons(false, true);
             
             try {
                 // Create a socket to connect to the server
@@ -591,7 +592,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_showGameSessionsActionPerformed
 
-    // Change jjoin game session button text
+    // Change join game session button text
     public void changeGameSessionText(String text) {
         // Change button back to join game sessions
         this.showGameSessions.setText(text);
@@ -602,6 +603,8 @@ public class RPSClientApplication extends javax.swing.JFrame {
         
         // First check if we are playing single player
         if (this.isPlayingSinglePlayer) {  // already playing so quit
+            
+            // Change gameLogic to null and single player to false
             this.gameLogic = null;
             this.isPlayingSinglePlayer = false;
             
@@ -610,23 +613,25 @@ public class RPSClientApplication extends javax.swing.JFrame {
             
             // Disable buttons
             enablePlayerButtons(true, false);
+            enablePlayerButtons(false, false);
             
             // Clear text boxes
             clearBoxes();
             
-            // Let the player know a new single player game has quuiit
+            // Let the player know a new single player game has quit
             String tmpMessages = chatMessages.getText();
             tmpMessages = tmpMessages + "[SYSTEM] The single player game has ended. \n";
             chatMessages.setText(tmpMessages);
         }
         else {
-            // Variables
-            this.gameLogic = new GameLogic(true);
+            // Create new game logic and add the player to the game
+            this.gameLogic = new GameLogic(true, this);
             this.gameLogic.handleNewPlayer(this.player);
             this.isPlayingSinglePlayer = true;
 
             // enable player buttons
             enablePlayerButtons(true, true);
+            enablePlayerButtons(false, true);
 
             // Change button on single player to quit singleplayer
             this.startSinglePlayerGame.setText("Leave Single Player");
@@ -636,21 +641,22 @@ public class RPSClientApplication extends javax.swing.JFrame {
             tmpMessages = tmpMessages + "[SYSTEM] New single player game started. Begin by making your first throw! \n";
             chatMessages.setText(tmpMessages);
 
+            // Tell the logic game has started
+            this.gameLogic.setGameHasStarted(true);
+            
             // Start a new round
             this.gameLogic.newRound();
 
-            // Load opponent data
-            Player tmpPlayer = this.gameLogic.getPlayerData(2);
-            loadOponnentDataToGui(tmpPlayer);
-
-            // Update gui with new data
-            updateGameDataOnGui();
+            // Refresh the gui
+            refreshGui();
+            
         }
         
     }//GEN-LAST:event_startSinglePlayerGameActionPerformed
 
     // Clear boxes not needed
     public void clearBoxes() {
+        // Chnages all the boxes to empty
         this.round.setText("");
         this.turn.setText("");
         this.oponnentTotalLosses.setText("");
@@ -676,26 +682,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
     // Player clicked on the rock button
     private void playerRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerRockActionPerformed
        makeAThrow(0);
-       
-       this.gameLogic = new GameLogic(true);
-       this.gameLogic.rockButtonPushed(this.gameLogic.ComputerMakeAThrow());
-       
-      String getTiesThisGame = Integer.toString( this.player.getTiesThisGame());
-      playerTotalTies.setText(getTiesThisGame);
-      oponnentTotalTies.setText(getTiesThisGame);
-      
-      
-      String getLossesThisGame = Integer.toString( this.player.getLossesThisGame());
-      playerTotalLosses.setText(getLossesThisGame)
-    
-     
-      
-      
-      ;
-     
-     
-      
-      
     }//GEN-LAST:event_playerRockActionPerformed
 
     // Player clicked on the paper buttn
@@ -774,6 +760,15 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 }
                 else { // Deal with it locally
                     
+                    // Tell the local gameLogic about the throw
+                    this.gameLogic.playerMadeAThrow(this.player.getPlayerId(), throwType);
+                    
+                    // Now have the computer throw
+                    int tmpInt = this.gameLogic.ComputerMakeAThrow();
+                    this.gameLogic.playerMadeAThrow(this.gameLogic.getPlayerData(2).getPlayerId(), tmpInt);
+                    
+                    refreshGui();
+                    
                 }
                 
             }
@@ -786,6 +781,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Update gui from game logic
     public void updateGameDataOnGui() {
+        // Set the round and turn text
         this.round.setText(String.valueOf(this.gameLogic.getRound()));
         this.turn.setText(String.valueOf(this.gameLogic.getTurn()));
         
@@ -798,6 +794,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Loads the player data to the gui
     private void loadPlayerDataToGui() {
+        // Lods the player gui info from the player
         this.playerUsername.setText(this.player.getPlayerUsername());
         this.playerTotalWins.setText(String.valueOf(this.player.getWinsTotal()));
         this.playerTotalTies.setText(String.valueOf(this.player.getTiesTotal()));
@@ -806,6 +803,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Loads the oponnent data to gui
     private void loadOponnentDataToGui (Player player){
+        // Loads the oponnent info from the player
         this.oponnentUsername.setText(player.getPlayerUsername());
         this.oponnentTotalWins.setText(String.valueOf(player.getWinsTotal()));
         this.oponnentTotalTies.setText(String.valueOf(player.getTiesTotal()));
@@ -821,9 +819,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
         if (Files.exists(path)) {
         
             try {
+                // Read the file into byte array then into string
                 byte[] encoded = Files.readAllBytes(path);
                 String jsonString = new String(encoded, StandardCharsets.UTF_8);
-            
+                
+                // Create gson and json to convert from string to json object
                 Gson gson = new Gson();
                 JSONObject json = new JSONObject(gson.fromJson(jsonString, JSONObject.class));
             
@@ -861,9 +861,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 Files.createDirectory(Paths.get("./saves/"));
             }
             
+            // get the path to the save
             Path path = Paths.get("./saves/userData.txt");
             FileOutputStream fos = new FileOutputStream(path.toString());
             
+            // Write data to byte array
             byte[] encoded = json.toJSONString().getBytes(StandardCharsets.UTF_8);
             
             fos.write(encoded);
@@ -982,23 +984,23 @@ public class RPSClientApplication extends javax.swing.JFrame {
         
     // Quits the game, informs master server the client is shutting down, and cleans
     // up unneeded stuff.
-	public void quit() {
-		// Close sockets when window is closing
-            if (socket != null) {
-                log.printToLog("INFO", "Closing socket connections.");
-                try {
-                    // Tell the master server we are closing
-                    sendMessageToServer("Action", "ClosingConnection");
+    public void quit() {
+	// Close sockets when window is closing
+        if (socket != null) {
+            log.printToLog("INFO", "Closing socket connections.");
+            try {
+                // Tell the master server we are closing
+                sendMessageToServer("Action", "ClosingConnection");
                 
-                    socket.close();
-                }
-                catch (IOException ex) {
-                    log.printToLog("ERROR", ex.toString());
-                }
+                socket.close();
             }
-            
-            savePlayerDataToFile();
-	}
+            catch (IOException ex) {
+                log.printToLog("ERROR", ex.toString());
+            }
+        }
+        // Save player info
+        savePlayerDataToFile();
+    }
         
     // Refresh gui from gameLogic
     public void refreshGui() {
@@ -1007,17 +1009,16 @@ public class RPSClientApplication extends javax.swing.JFrame {
         
         int playerIndex = 0;
         
-        System.out.println(this.gameLogic.getHasGameStarted() + " From refresh");
-        
         // Check if the game has begun
         if (this.gameLogic.getHasGameStarted()){
+            
             // Enable buttons
             this.enablePlayerButtons(true, true);
             this.enablePlayerButtons(false, true);
         }
         else
         {
-            // Enable buttons
+            // Disable buttons
             this.enablePlayerButtons(true, false);
             this.enablePlayerButtons(false, false);
         }
@@ -1043,40 +1044,40 @@ public class RPSClientApplication extends javax.swing.JFrame {
         
         // Decide if the player has used any throws and adjust the button image and enable or disable
         if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(0))
-            this.playerRock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/rUsed.png")));
+            this.playerRock.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/rUsed.png").toString()));
         else
-            this.playerRock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/r.png")));
+            this.playerRock.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/r.png").toString()));
             
         if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(1))
-            this.playerPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/pUsed.png")));
+            this.playerPaper.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/pUsed.png").toString()));
         else
-            this.playerPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/p.png")));
+            this.playerPaper.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/p.png").toString()));
             
         if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(2))
-            this.playerScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/sUsed.png")));
+            this.playerScissors.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/sUsed.png").toString()));
         else
-           this.playerScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/s.png")));
+           this.playerScissors.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/s.png").toString()));
         
-        if (playerIndex == 1)
-            playerIndex = 2;
-        else          
-            playerIndex = 1;
+//        if (playerIndex == 1)
+//            playerIndex = 2;
+//        else          
+//            playerIndex = 1;
         
         // Now change the opponnents
-        if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(0))
-            this.oponnentRock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/rUsed.png")));
-        else
-            this.oponnentRock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/r.png")));
-            
-        if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(1))
-            this.oponnentPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/pUsed.png")));
-        else
-            this.oponnentPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/p.png")));
-            
-        if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(2))
-            this.oponnentScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/sUsed.png")));
-        else
-           this.oponnentScissors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ser215/rps/s.png")));
+//        if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(0))
+//            this.oponnentRock.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/rUsed.png").toString()));
+//        else
+//            this.oponnentRock.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/r.png").toString()));
+//            
+//        if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(1))
+//            this.oponnentPaper.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/pUsed.png").toString()));
+//        else
+//            this.oponnentPaper.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/p.png").toString()));
+//            
+//        if (this.gameLogic.getPlayerData(playerIndex).getRPSUses(2))
+//            this.oponnentScissors.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/sUsed.png").toString()));
+//        else
+//           this.oponnentScissors.setIcon(new javax.swing.ImageIcon(Paths.get("./data/textures/s.png").toString()));
             
         
     }
@@ -1134,9 +1135,6 @@ public class RPSClientApplication extends javax.swing.JFrame {
   class ClientNetworkingThread implements Runnable {
       
       // Class variables
-      //private Socket socket; // A connected socket
-      
-      
       private boolean runThread = true;                                                 // Do we keep running the thread
 
     /** Construct a thread */
@@ -1172,11 +1170,13 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 BufferedReader in = new BufferedReader(new InputStreamReader(fromServer));
                 
                 if (in.ready()) {
+                    // Convert in data to json
                     Gson gson = new Gson();
                 
                     JSONObject json = new JSONObject(gson.fromJson(in.readLine(), JSONObject.class));
                                         
                     if (!json.isEmpty())
+                        // handle the data
                         handleDataFromServer(json);    
                 }
             }
@@ -1205,24 +1205,24 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 log.printToLog("TEST", (String) json.get("message"));
                 break;
                 
-            case "Info":
+            case "Info":  // Display the message in the chat box from the server
                 tmpMessages = chatMessages.getText();
                 tmpMessages = tmpMessages + "[SYSTEM] " + json.get("message").toString() + "\n";
                 chatMessages.setText(tmpMessages);
                 log.printToLog("INFO", (String) json.get("message"));
                 break;
                 
-            case "ChatMessage":
+            case "ChatMessage": // Chat message from other users. Display in chat box
                 // Add the message to the chat box
                 tmpMessages = chatMessages.getText();
                 tmpMessages = tmpMessages + json.get("message").toString() + "\n";
                 chatMessages.setText(tmpMessages);
                 break;
                 
-            case "Action":
+            case "Action":  // Action from server
                 switch (json.get("message").toString()){
                     
-                    case "SendPlayerData":
+                    case "SendPlayerData": // Send the player data request
                         log.printToLog("INFO", "Sending player data for new game.");
                 
                         // Create json of player data
@@ -1246,7 +1246,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
                         pw.flush();
                         break;
                         
-                    case "RequestedGames":
+                    case "RequestedGames":  // List of game sessions requested by the client
                         // Create json of player data    
                         gson = new Gson();
                         tmpJson = new JSONObject(gson.fromJson(json.get("messageJson").toString(), JSONObject.class));
@@ -1256,7 +1256,7 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 }
                 break;
                 
-            case "UpdateGameLogic":
+            case "UpdateGameLogic": // Game logic sent from the servers
                 // create json from string
                 gson = new Gson();
                 tmpJson = new JSONObject(gson.fromJson(json.get("messageJson").toString(), JSONObject.class));
@@ -1265,14 +1265,11 @@ public class RPSClientApplication extends javax.swing.JFrame {
                 
                 break;
                 
-            case "GameSessionCreated":
+            case "GameSessionCreated":  // Lets the client know a game session was created
                 // Request the list of games
                 sendMessageToServer("Action", "RequestGames");
                 break;
         }
-
     }
-    
   }
-    
 }

@@ -1,6 +1,11 @@
-package com.ser215.rps;
+/***********************************************************************
+ * App Name: Rock, Paper, Scissors
+ * Class Name: RPSGameServer
+ * Class Description: Holds the game server code. This controls the actions of players in a networked game
+ * Author(s): Joshua Lyons
+ **********************************************************************/
 
-// This is the shell for the game server. 
+package com.ser215.rps;
 
 // Imports
 import com.google.gson.Gson;
@@ -9,6 +14,7 @@ import java.net.*;
 import java.util.*;
 import org.json.simple.JSONObject;
 
+// Main class
 public class RPSGameServer extends RPSNetworkingParent implements Runnable{
 	
     // Class Variables
@@ -114,6 +120,11 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
     // Get the session id
     public String getGameSessionId() {
         return this.gameSessionId;
+    }
+    
+    // Get the game Logic
+    public GameLogic getGameLogic() {
+        return this.gameLogic;
     }
     
     // Inner class for HandleAClient
@@ -310,9 +321,7 @@ public class RPSGameServer extends RPSNetworkingParent implements Runnable{
                 case "ChatMessage":
                     broadcastMessage("ChatMessage", json.get("message").toString());
                     break;
-            }             
-                
+            }   
         }
-        
     }
 }
