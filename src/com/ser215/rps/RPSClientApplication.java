@@ -533,7 +533,21 @@ public class RPSClientApplication extends javax.swing.JFrame {
         else if (connectedToGameServer){
             
             // Connected to game server so connect back to master server and tell game server you quit.
-            sendMessageToServer("Action", "ClosingConnection");
+            // Create JSON and GSon objects
+            JSONObject json = new JSONObject();
+            Gson gson = new Gson();
+            
+            // Put message into JSON
+            json.put("messageType", "Action");
+            json.put("message", "ClosingConnection");
+            json.put("playerId", this.player.getPlayerId());
+            
+            //Make printer writer
+            PrintWriter pw = new PrintWriter(toServer);
+            
+            // Send the message
+            pw.println(gson.toJson(json));
+            pw.flush();
             
             String tmpMessages;
             tmpMessages = chatMessages.getText();
@@ -728,28 +742,53 @@ public class RPSClientApplication extends javax.swing.JFrame {
     
     // Make a throw
     public void makeAThrow (int throwType) {
-        // First is this a single player game
-        if (this.isPlayingSinglePlayer) {
-            // Single player so talk to local game logic
-            
             // Can the player go or have they already used this throw
             if (this.gameLogic.canPlayerMakeThrow(this.player.getPlayerId(), throwType)) {
                 // Player can make this throw so make it
                 
+                if (!this.isPlayingSinglePlayer){ // Send throw to servers
+                    // Create JSON and GSon objects
+                    JSONObject json = new JSONObject();
+                    Gson gson = new Gson();
+            
+                    // Put message into JSON
+                    json.put("messageType", "Action");
+                    json.put("message", "PlayerMadeAThrow");
+                    json.put("playerId", this.player.getPlayerId());
+                    json.put("throwType", String.valueOf(throwType));
+                    
+                    String tmpMessages = "[SYSTEM] Throwing: " + throwType + "\n";
+                    chatMessages.append(tmpMessages);
+            
+                    //Make printer writer
+                    PrintWriter pw = new PrintWriter(toServer);
+            
+                    // Send the message
+                    pw.println(gson.toJson(json));
+                    pw.flush();
+                }
+                else { // Deal with it locally
+                    
+                }
+                
             }
             else {
                 // Player cant make this throw so tell them
-                String tmpMessages = chatMessages.getText();
-                tmpMessages = tmpMessages + "[SYSTEM] You can not make the same throw twice in a round make another. \n";
-                chatMessages.setText(tmpMessages);
+                String tmpMessages = "[SYSTEM] You can not make this throw. \n";
+                chatMessages.append(tmpMessages);
             }
-        }
     }
     
     // Update gui from game logic
     public void updateGameDataOnGui() {
         this.round.setText(String.valueOf(this.gameLogic.getRound()));
         this.turn.setText(String.valueOf(this.gameLogic.getTurn()));
+        
+        // Grab any messages
+        if (!gameLogic.getMessage().equals("")) {
+            String tmpMessages = "[SYSTEM] " + gameLogic.getMessage() +  "\n";
+            chatMessages.append(tmpMessages);
+        }
     }
     
     // Loads the player data to the gui

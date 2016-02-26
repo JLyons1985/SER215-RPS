@@ -16,7 +16,10 @@ public class GameLogic {
         private Player playerOne = null, playerTwo = null;              // Reference to the players
         private int round = 0, turn = 0;                                // Rounds and turns
         private RPSClientApplication mainApp;                           // Holds reference to main app
+        private RPSGameServer rpsGameServer;                            // Holds a reference to the game server
         private boolean gameHasStarted;
+        private int playerOneThrow, playerTwoThrow;                     // Holds the temp throw for this turn
+        private String gameMessage = "";                                // Holds a message to pass to players
 	
         //new
         static  int  playerTies = 0,CPUTies = 0;
@@ -24,7 +27,23 @@ public class GameLogic {
         static int  playerlosses = 0,CPULosses = 0;
         
 	// Constructors
-	public GameLogic(boolean isSinglePlayer) {
+        public GameLogic(boolean isSinglePlayer) {
+            
+            if (isSinglePlayer) {
+		this.isSinglePlayer = isSinglePlayer;
+                
+                // Set player two as CPU
+                this.playerTwo = new Player("CPU");
+                
+                this.numOfPlayers += 1;
+            }
+            
+            this.playerOne = new Player();
+            this.playerTwo = new Player();
+            this.isSinglePlayer = isSinglePlayer;         
+	}
+        
+	public GameLogic(boolean isSinglePlayer, RPSGameServer rpsGameServer) {
             
             if (isSinglePlayer) {
 		this.isSinglePlayer = isSinglePlayer;
@@ -38,7 +57,7 @@ public class GameLogic {
             this.playerOne = new Player();
             this.playerTwo = new Player();
             this.isSinglePlayer = isSinglePlayer;
-            
+            this.rpsGameServer = rpsGameServer;            
 	}
         
         public GameLogic(boolean isSinglePlayer, RPSClientApplication mainApp) {
@@ -57,18 +76,43 @@ public class GameLogic {
         
         // Methods
         
+        // Get message
+        public String getMessage() {
+            return this.gameMessage;
+        }
+        
         // Starts a new round resets the turns and options uses
         public void newRound() {
             this.round += 1;
-            this.turn = 1;
+            this.turn = 0;
+            
+            newTurn();
             
             this.playerOne.setRPSUses(0, false);
             this.playerOne.setRPSUses(1, false);
             this.playerOne.setRPSUses(2, false);
+            this.playerOne.setTiesThisGame(0);
+            this.playerOne.setWinsThisGame(0);
+            this.playerOne.setLossesThisGame(0);
             
             this.playerTwo.setRPSUses(0, false);
             this.playerTwo.setRPSUses(1, false);
             this.playerTwo.setRPSUses(2, false);
+            this.playerTwo.setTiesThisGame(0);
+            this.playerTwo.setWinsThisGame(0);
+            this.playerTwo.setLossesThisGame(0);
+            
+        }
+        
+        // Starts new turn
+        public void newTurn() {
+            
+            this.turn += 1;
+            
+            this.playerOneThrow = 9;
+            this.playerTwoThrow = 9;
+            this.playerOne.setCanMakeAThrow(true);
+            this.playerTwo.setCanMakeAThrow(true);
         }
         
         // New player joined game
@@ -126,10 +170,93 @@ public class GameLogic {
             if (this.playerOne.getPlayerId().matches(playerId)){  // Player one made the throw
                 // Set the throw to true
                 this.playerOne.setRPSUses(throwType, true);
+                this.playerOneThrow = throwType;
+                this.playerOne.setCanMakeAThrow(false);
             }
             else {
                 // Set the throw to true
                 this.playerTwo.setRPSUses(throwType, true);
+                this.playerTwoThrow = throwType;
+                this.playerTwo.setCanMakeAThrow(false);
+            }
+            
+            // Check to see if both players made a turn yet.
+            if (this.playerOneThrow == 9 || this.playerTwoThrow == 9){ // Waiting on someone to throw
+                this.gameMessage = "Waiting for another player to throw....";
+            }
+            else { // Both made a throw so compare them
+                
+                // First check if the throws are the same
+                if (this.playerOneThrow == this.playerTwoThrow) {
+                    this.playerOne.setTiesThisGame(this.playerOne.getTiesThisGame() + 1);
+                    this.playerTwo.setTiesThisGame(this.playerTwo.getTiesThisGame() + 1);
+                    this.gameMessage = "This round is a tie.";
+                }
+                else { // Now check who wins
+                    switch (this.playerOneThrow){
+                        case 0: // Rock
+                            if (this.playerTwoThrow == 1) { // Player 2 wins
+                                this.playerOne.setLossesThisGame(this.playerOne.getLossesThisGame() + 1);
+                                this.playerTwo.setWinsThisGame(this.playerTwo.getWinsThisGame() + 1);
+                                this.gameMessage = this.playerTwo.getPlayerUsername() + " wins the turn.";
+                            }
+                            else if (this.playerTwoThrow == 2) { // Player 1 wins
+                                this.playerOne.setWinsThisGame(this.playerOne.getWinsThisGame() + 1);
+                                this.playerTwo.setLossesThisGame(this.playerTwo.getLossesThisGame() + 1);
+                                this.gameMessage = this.playerOne.getPlayerUsername() + " wins the turn.";
+                            }
+                            break;
+                        case 1: // Paper
+                            if (this.playerTwoThrow == 2) { // Player 2 wins
+                                this.playerOne.setLossesThisGame(this.playerOne.getLossesThisGame() + 1);
+                                this.playerTwo.setWinsThisGame(this.playerTwo.getWinsThisGame() + 1);
+                                this.gameMessage = this.playerTwo.getPlayerUsername() + " wins the turn.";
+                            }
+                            else if (this.playerTwoThrow == 0) { // Player 1 wins
+                                this.playerOne.setWinsThisGame(this.playerOne.getWinsThisGame() + 1);
+                                this.playerTwo.setLossesThisGame(this.playerTwo.getLossesThisGame() + 1);
+                                this.gameMessage = this.playerOne.getPlayerUsername() + " wins the turn.";
+                            }
+                            break;
+                        case 2: // Scissors
+                            if (this.playerTwoThrow == 0) { // Player 2 wins
+                                this.playerOne.setLossesThisGame(this.playerOne.getLossesThisGame() + 1);
+                                this.playerTwo.setWinsThisGame(this.playerTwo.getWinsThisGame() + 1);
+                                this.gameMessage = this.playerTwo.getPlayerUsername() + " wins the turn.";
+                            }
+                            else if (this.playerTwoThrow == 1) { // Player 1 wins
+                                this.playerOne.setWinsThisGame(this.playerOne.getWinsThisGame() + 1);
+                                this.playerTwo.setLossesThisGame(this.playerTwo.getLossesThisGame() + 1);
+                                this.gameMessage = this.playerOne.getPlayerUsername() + " wins the turn.";
+                            }
+                            break;
+                    }
+                }
+                
+                // Now see what turn it is
+                if (this.turn == 3){ // last turn so now decides who wins the round
+                    
+                    if ((this.playerOne.getWinsThisGame() - this.playerTwo.getWinsThisGame()) > 0){ // Player 1 has more wins
+                        this.playerOne.setWinsTotal(this.playerOne.getWinsTotal() + 1);
+                        this.playerTwo.setLossesTotal(this.playerTwo.getLossesTotal() + 1);
+                        this.gameMessage = this.getMessage() + this.playerOne.getPlayerUsername() + " wins this round. Starting new round....";
+                    }
+                    else if ((this.playerOne.getWinsThisGame() - this.playerTwo.getWinsThisGame()) < 0){ // Player 2 has more wins
+                        this.playerTwo.setWinsTotal(this.playerTwo.getWinsTotal() + 1);
+                        this.playerOne.setLossesTotal(this.playerOne.getLossesTotal() + 1);
+                        this.gameMessage = this.getMessage() + this.playerTwo.getPlayerUsername() + " wins this round. Starting new round....";
+                    }
+                    else { // Same amount so tie
+                        this.playerTwo.setTiesTotal(this.playerTwo.getTiesTotal() + 1);
+                        this.playerOne.setTiesTotal(this.playerOne.getTiesTotal() + 1);
+                        this.gameMessage = this.getMessage() + "The round was a tie. Starting new round....";
+                    }
+                    this.newRound();
+                }
+                else {
+                    this.newTurn();
+                }
+                    
             }
             
         }
@@ -171,6 +298,7 @@ public class GameLogic {
             tmpLogic.round = Integer.parseInt(json.get("round").toString());
             tmpLogic.turn = Integer.parseInt(json.get("turn").toString());
             tmpLogic.gameHasStarted = Boolean.parseBoolean(json.get("gameHasStarted").toString());
+            tmpLogic.gameMessage = json.get("gameMessage").toString();
 
             return tmpLogic;
         }
@@ -214,6 +342,7 @@ public class GameLogic {
             json.put("round", String.valueOf(this.round));
             json.put("turn", String.valueOf(this.turn));
             json.put("gameHasStarted", String.valueOf(this.gameHasStarted));
+            json.put("gameMessage", this.gameMessage);
             
             // Return json
             return json.toJSONString();
@@ -229,7 +358,21 @@ public class GameLogic {
             this.gameHasStarted = started;
         }
         
-	
+	// Remove the player from the game logic
+        public void removePlayerFromGame(String playerId){
+            // Which players is the player id associated
+            if (this.playerOne.getPlayerId().equals(playerId)) { 
+                this.playerOne = new Player();
+                this.numOfPlayers -= 1;
+            }
+            else if (this.playerTwo.getPlayerId().equals(playerId)) {
+                this.playerTwo = new Player();
+                this.numOfPlayers -= 1;
+            }
+            else { // No one by that name
+                this.rpsGameServer.getGameLog().printToLog("ERROR", "No one by the player id.");
+            }
+        }
         
      
      public char ComputerMakeAThrow(){
