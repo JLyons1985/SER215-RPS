@@ -37,6 +37,6 @@ To run the game you need java installed. To compile from source you need JDK 1.7
 
 7. Acknowledgements
 ----
-The game and source code were built by [Joshua Lyons](https://github.com/JLyons1985), [Nergal Givarkes](https://github.com/nergal1986), and uploaded to GitHub February 2015
+The game and source code were built by [Joshua Lyons](https://github.com/JLyons1985), [Nergal Givarkes](https://github.com/nergal1986), and uploaded to GitHub February 2016
 
 
