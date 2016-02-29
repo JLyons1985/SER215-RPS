@@ -1,6 +1,0 @@
-2016/02/24 08:48:00
-LOG: Client starting up.
-2016/02/24 08:48:04
-ERROR: java.net.ConnectException: Connection refused: connect
-2016/02/24 09:04:51
-LOG: Client starting up.
